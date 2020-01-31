@@ -1,0 +1,1914 @@
+/*#######################################################*/
+/* ------------------ variabels ---------------------*/
+/*------------------------ colors -----------------------*/
+/* -------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 28px;
+  background-color: #F5F5F5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+a,
+div,
+span,
+figure,
+section {
+  margin: 0;
+}
+
+/* ------------------------------------ */
+.retina-img {
+  width: 50%;
+  height: 50%;
+}
+
+.ch-jumbo-acu1, h1 {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 72px;
+  line-height: 72px;
+  letter-spacing: -0.05em;
+}
+
+.ch-jumbo-acu2, h2 {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 58px;
+  line-height: 52px;
+  letter-spacing: -0.05em;
+}
+
+.ch-jumbo-acu3, h3 {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: -0.05em;
+}
+
+.ch-jumbo-acu4, h4 {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.05em;
+}
+
+.ch-jumbo-rift1, h5 {
+  font-family: rift, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.05em;
+}
+
+.ch-jumbo-rift2, h6 {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 19px;
+  letter-spacing: -0.03em;
+}
+
+.ch-p-bold {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ch-caption {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ch-p-reg {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.005rem;
+}
+
+.ch-disclaimer {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+}
+
+.ch-disclaimer-bold {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/*#######################################################*/
+/*--------------------- buttons ------------------------*/
+/*--------- btn-primary -------------*/
+/*button {
+  font-family: rift, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #131313;
+  border-radius: 4px;
+}*/
+
+
+.ch-btn-video {
+  background-color: #2152FF;
+  border: none;
+  height: 49px;
+  min-width: 160px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 1px 15px 24px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 15px 24px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 15px 24px 0px rgba(0, 0, 0, 0.1);
+}
+
+.ch-btn-video p {
+  color: #fff;
+  font-size: 16px;
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-left: 15px;
+  text-transform: uppercase;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  padding: 0 28px;
+}
+
+.ch-btn-video:before {
+  position: absolute;
+  content: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Polygon4.svg);
+  left: 22px;
+  top: 18px;
+}
+
+.ch-btn-video:focus {
+  outline: none;
+}
+
+.ch-btn-video:hover {
+  background-color: #0b2ca2e0;
+  cursor: pointer;
+}
+
+/*--------------- btn-light ---------------------*/
+.ch-btn-story {
+  border: none;
+  background-color: #ffffff;
+  height: 39px;
+  min-width: 210px;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.1);
+  -webkit-box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.1);
+  -moz-box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.1);
+}
+
+.ch-btn-story p {
+  color: #2152FF;
+  font-size: 16px;
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-left: 25px;
+  text-transform: uppercase;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  padding: 0 23px;
+}
+
+.ch-btn-story:before {
+  position: absolute;
+  content: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Polygon5.svg);
+  left: 25px;
+  top: 14px;
+}
+
+.ch-btn-story:hover {
+  cursor: pointer;
+  box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.07);
+  -webkit-box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.07);
+  -moz-box-shadow: 1px 15px 24px 0px rgba(19, 19, 19, 0.07);
+}
+
+.ch-btn-story:focus {
+  outline: none;
+}
+
+/*----------------------- ntm-primary2 -------------------*/
+.ch-btn-link {
+  height: 59px;
+  min-width: 154px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2152FF;
+  position: relative;
+}
+
+.ch-btn-link p {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-right: 25px;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 0 28px;
+}
+
+.ch-btn-link:before {
+  position: absolute;
+  content: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Component.svg);
+  right: 22px;
+  top: 23px;
+}
+
+.ch-btn-link:hover {
+  background-color: #0b2ca2e0;
+  cursor: pointer;
+}
+
+/*#######################################################*/
+/*--------------------- buttons ------------------------*/
+.primary-color {
+  color: #ffffff;
+}
+
+.ch-brand-color {
+  color: #2152FF;
+}
+
+.ch-black-color {
+  color: #131313;
+}
+
+.ch-dark-white {
+  color: #FAFAFA;
+}
+
+.ch-darker-gray {
+  color: #C8C8C8;
+}
+
+.ch-lighter-gray {
+  color: #F5F5F5;
+}
+
+.ch-brand-gray {
+  color: #919192;
+}
+
+.ch-disclaimer-color {
+  color: #979797;
+}
+
+/* -------------------------------------------------- */
+/* date 21.11.2019  */
+/* challenge member portal style  */
+/* ------ ch-btn-primary ----------  */
+.ch-btn-primary {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FCFDFF;
+  background-color: #2152FF;
+  -webkit-box-shadow: 1px 15px 24px rgba(33, 82, 255, 0.3);
+  box-shadow: 1px 15px 24px rgba(33, 82, 255, 0.3);
+  border: none;
+  border-radius: 5px;
+  height: 49px;
+  max-width: 335px;
+  width: 100%;
+  padding-right: 20px;
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Component.svg);
+  background-repeat: no-repeat;
+  background-position: 85% 50%;
+  background-size: auto;
+}
+
+.ch-btn-primary:focus {
+  outline: none;
+}
+
+.ch-btn-primary:hover {
+  cursor: pointer;
+  background-color: #0b2ca2e0;
+}
+
+.ch-btn-invite {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FCFDFF;
+  background: #2152FF;
+  border: none;
+  border-radius: 5px;
+  /* height: 49px; */
+  max-width: 335px;
+  width: 100%;
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 85% 50%;
+  background-size: auto;
+  text-align: center;
+  padding: 15px 0px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ------- ch-btn-success -------  */
+.ch-btn-success {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FCFDFF;
+  background: #12AB18;
+  border: none;
+  border-radius: 5px;
+  height: 49px;
+  max-width: 335px;
+  width: 100%;
+  padding-right: 20px;
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Component.svg);
+  background-repeat: no-repeat;
+  background-position: 85% 50%;
+  background-size: auto;
+}
+
+.ch-btn-success:focus,
+.ch-btn-invite:focus {
+  outline: none;
+  color: #fff;
+  text-decoration: none;
+}
+.ch-btn-invite:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.ch-btn-success:hover {
+  cursor: pointer;
+  background-color: #3aba4f;
+}
+
+/* -------- ch-btn-nextlesson ------  */
+.ch-btn-nextlesson {
+  -webkit-box-shadow: 0px 6px 24px #E4E5F1;
+  box-shadow: 0px 6px 24px #E4E5F1;
+  border-radius: 5px;
+  height: 59px;
+  max-width: 335px;
+  width: 100%;
+  border: none;
+  padding-left: 25px;
+  text-align: left;
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #ffffff;
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/Component-blue.svg);
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  background-size: auto;
+}
+
+.ch-btn-nextlesson:focus {
+  outline: none;
+}
+
+.ch-btn-nextlesson--top {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  color: #131313;
+}
+
+.ch-btn-nextlesson--bottom {
+  display: block;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2152FF;
+}
+
+.ch-btn-nextlesson:hover {
+  cursor: pointer;
+  background-color: #f8f8f8d1;
+}
+
+/* -------- ch-btn-primary-journey ----------  */
+.ch-btn-primary-journey {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  height: 38px;
+  width: 100%;
+  max-width: 175px;
+  border: none;
+  -webkit-box-shadow: 0px 9px 24px #E2E5F5;
+  box-shadow: 0px 9px 24px #E2E5F5;
+  border-radius: 50px;
+  background-color: #2152FF;
+}
+
+.ch-btn-primary-journey:focus {
+  outline: none;
+}
+
+.ch-btn-primary-journey:hover {
+  cursor: pointer;
+  background-color: #2152ffeb;
+}
+
+/* -------- ch-btn-success-journey ----------  */
+.ch-btn-success-journey {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #57DBAB;
+  background-color: #FFFFFF;
+  height: 38px;
+  width: 100%;
+  max-width: 175px;
+  border: none;
+  -webkit-box-shadow: 0px 9px 24px #4BBCA2;
+  box-shadow: 0px 9px 24px #4BBCA2;
+  border-radius: 50px;
+}
+
+.ch-btn-success-journey:focus {
+  outline: none;
+}
+
+.ch-btn-success-journey:hover {
+  cursor: pointer;
+  background-color: #f8f8f8d1;
+}
+
+/* ----- ch-btn-share --------  */
+.ch-btn-share {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FF7C75;
+  height: 28px;
+  max-width: 70px;
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: 50px;
+}
+
+.ch-btn-share:focus {
+  outline: none;
+}
+
+.ch-btn-share:hover {
+  cursor: pointer;
+  background-color: #f8f8f8d1;
+}
+
+.ch-member-acu-18-23 {
+  font-family: acumin-pro, sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+
+.ch-member-acu-14-18 {
+  font-family: acumin-pro, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.ch-member-acu-16-22 {
+  font-family: acumin-pro, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.ch-member-acu-16-21 {
+  font-family: acumin-pro, sans-serif;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+}
+
+.ch-member-acu-24-29 {
+  font-family: acumin-pro, sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.05em;
+}
+
+.ch-member-rift-14-17 {
+  font-family: rift, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ch-member-rift-16-19 {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ch-details-text-color {
+  color: #373738;
+}
+
+.challenge__member--mobile {
+  display: none;
+}
+
+.challenge__member {
+  /*--------------------------------- navbar ------------------------------*/
+  /*--------------------------- product-page-header-banner -----------------------*/
+}
+
+.challenge__member--custom-navbar {
+  background-color: transparent;
+  border-color: transparent;
+  margin-bottom: 0;
+}
+
+.challenge__member--nav-container {
+  position: relative;
+}
+
+.challenge__member--nav-container .navbar-links {
+  position: absolute;
+  right: 0;
+  top: 27px;
+}
+
+.challenge__member--nav-container .navbar-links ul {
+  list-style: none;
+}
+
+.challenge__member--nav-container .navbar-links ul li {
+  display: inline;
+}
+
+.challenge__member--nav-container .navbar-links ul li a {
+  padding: 5px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.challenge__member--nav-container .navbar-links ul li a:hover {
+  color: #2152FF;
+}
+
+.challenge__member--nav-container .navbar-links ul li a:focus {
+  outline: none;
+}
+
+.challenge__member--nav-container .navbar-links ul li:not(:last-child) {
+  margin-right: 5px;
+}
+
+.challenge__member--custom-navbar-brand {
+  height: auto;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.challenge__member--custom-navbar-brand img {
+  background-color: #131313;
+  padding: 15px;
+  height: auto;
+  width: 61px;
+  border-radius: 5px;
+}
+
+@media (max-width: 990px) {
+  .challenge__member {
+    display: none;
+  }
+  .challenge__member--mobile {
+    display: block;
+  }
+  .challenge__member--mobile--bg {
+    background-color: #131313;
+    border: none;
+    margin-bottom: -1px;
+  }
+  .challenge__member--mobile--button {
+    position: absolute;
+    border: none;
+    padding: 0;
+    margin: 10px 0 0 10px;
+    background-color: transparent;
+  }
+
+  .challenge__member--mobile--button.share-btn {
+    right: 10px;
+    top: 0;
+  }
+
+  .challenge__member--mobile--button-icon {
+    height: 24px;
+    width: 24px;
+  }
+  .challenge__member--mobile--button:hover, .challenge__member--mobile--button:focus {
+    background-color: transparent !important;
+    cursor: pointer;
+  }
+  .challenge__member--mobile--brand {
+    float: unset;
+    display: block;
+    text-align: center;
+    padding: 13px 10px;
+  }
+  .challenge__member--mobile--brand--img {
+    display: inline-block !important;
+    height: 28px;
+    width: auto;
+  }
+}
+
+.section__challenge__compleate {
+  padding-top: 20px;
+  padding-bottom: 16px;
+  background-color: #F5F5F5;
+  padding-top: 0;
+  /* height: 100vh; */
+}
+
+.section__challenge__compleate .compleate__text {
+  margin-top: 12px;
+}
+
+.section__challenge__compleate .compleate__text--main {
+  margin-bottom: 12px;
+}
+
+.section__challenge__compleate .compleate__text--sub-text {
+  line-height: 20px;
+}
+
+.section__challenge__compleate .compleate__text--sub-text:last-child {
+  color: #2152FF;
+}
+
+.section__challenge__compleate .compleate__text--continue {
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+
+.section__challenge__compleate .compleate__done {
+  padding-left: 25px;
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/check-circle.svg);
+  background-size: auto;
+  background-position: left 9px;
+  background-repeat: no-repeat;
+}
+
+.challenge__stage {
+  padding: 0;
+}
+
+.challenge__stage--item {
+  padding: 0 15px;
+  text-align: center;
+}
+
+.challenge__stage-content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 14px 16px;
+  margin: 0 10px;
+  box-shadow: 0 12px 24px rgba(0,0,0,.1);
+}
+
+.challenge__stage-content--title {
+  text-align: left;
+  padding-bottom: 14px;
+}
+
+.challenge__stage-content--sub {
+  margin-bottom: 14px;
+}
+
+.challenge__stage-content ul {
+  list-style: none;
+}
+
+.challenge__stage-content ul li {
+  padding: 9px 0;
+  border-top: 1px solid rgba(14, 18, 35, 0.05);
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/chevron-down-1.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 7%;
+}
+
+.challenge__stage-content ul li a {
+  font-family: acumin-pro, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #131313;
+}
+
+.challenge__stage-content ul li a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.challenge__stage-content ul li a:hover {
+  text-decoration: none;
+}
+
+.challenge__stage-content:hover {
+  cursor: pointer;
+}
+
+.challenge__stage-content:focus {
+  outline: none;
+}
+
+.challenge__stage--disable {
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/lock-alt.svg);
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.challenge__stage--disable * {
+  cursor: not-allowed;
+}
+
+.challenge__stage--disable .challenge__stage-details {
+  opacity: .05;
+  /* pointer-events: none; */
+}
+
+.challenge__stage--disable .challenge__stage-details ul li {
+  pointer-events: none;
+}
+
+.chellenge__compleate--details {
+  padding-top: 0;
+}
+
+.chellenge__compleate--details-custom-container {
+  padding: 0;
+}
+
+.chellenge__compleate--details--text {
+  max-width: 420px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  padding-top: 15px;
+}
+
+.chellenge__compleate--details--title {
+  margin-bottom: 10px;
+}
+
+.chellenge__compleate--details-nav ul {
+  list-style: none;
+  background-color: #131313;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.chellenge__compleate--details-nav ul li {
+  width: 17%;
+  display: inline-block;
+  padding: 15px 0;
+}
+
+.chellenge__compleate--details-nav ul li a {
+  color: #FAFAFA;
+  display: block;
+  padding: 5px 0;
+}
+
+.chellenge__compleate--details-nav ul li a:hover, .chellenge__compleate--details-nav ul li a:active, .chellenge__compleate--details-nav ul li a:focus {
+  text-decoration: none;
+}
+
+.chellenge__compleate--details-nav ul .active,
+.chellenge__compleate--details-nav ul li:hover {
+  border-bottom: 2px solid #2152FF;
+}
+
+.chellenge__compleate--details-nav ul .active a,
+.chellenge__compleate--details-nav ul li:hover a {
+  color: #2152FF;
+}
+
+.chellenge__compleate--details-resourcea ul {
+  list-style: none;
+  border-top: 1px solid rgba(14, 18, 35, 0.05);
+}
+
+.chellenge__compleate--details-resourcea ul li {
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/chevron-down-1.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 4%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.chellenge__compleate--details-resourcea ul li a {
+  font-family: acumin-pro, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #131313;
+  display: block;
+  padding: 15px 0;
+}
+
+.chellenge__compleate--details-resourcea ul li a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.chellenge__compleate--details-resourcea ul li a:hover {
+  text-decoration: none;
+}
+
+.section__challenge__resource {
+  padding-bottom: 0;
+}
+
+.chellenge__compleate--video-content {
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .chellenge__compleate--details-nav ul li {
+    width: 30%;
+  }
+  .chellenge__compleate--details-resourcea {
+    min-height: 50vh;
+  }
+  .chellenge__compleate--details-resourcea ul li {
+    background-position: 97%;
+    background-size: 5%;
+    padding: 0 10px;
+  }
+}
+
+.challenge__c__modal {
+  z-index: 3;
+  display: none;
+  padding-top: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.challenge__c__modal--content {
+  margin: auto;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  width: 30%;
+  text-align: center;
+  background: -o-linear-gradient(308.58deg, #40CB75 0%, #70ECE4 100%);
+  background: linear-gradient(141.42deg, #40CB75 0%, #70ECE4 100%);
+  -webkit-box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+}
+
+.challenge__c__modal--content .popup-body {
+  padding: 30px;
+  text-align: left;
+}
+
+.challenge__c__modal--content .popup-footer {
+  padding-top: 25px;
+  padding-bottom: 45px;
+}
+
+.challenge__c__modal--content .popup-container:after,
+.challenge__c__modal--content .popup-container:before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.challenge__c__modal--content .popup-display-topright {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: #55DAA6;
+  height: 25px;
+  width: 25px;
+}
+
+.challenge__c__modal--content .popup-display-topright-text {
+  position: absolute;
+  top: -3px;
+  right: 5.5px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.challenge__c__modal--content .popup-display-topright:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 990px) {
+  .challenge__c__modal--content {
+    margin: 0 10px;
+    width: auto;
+  }
+  .challenge__c__modal--content .popup-body {
+    padding: 30px 20px;
+  }
+  .challenge__c__modal--content .popup-footer {
+    padding-top: 40px;
+  }
+}
+
+
+.slick-track .challenge__stage-content.slick-slide {
+  max-width: 335px;
+}
+
+.section__challenge__compleate .slick-list.draggable {
+  max-width: 25%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+
+.section__challenge__compleate {
+  overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+
+  .section__challenge__compleate .slick-list.draggable{
+
+    max-width: 100%;
+  }
+
+  .challenge__stage-content {
+    margin: 0 5px;
+  }
+}
+
+
+p.ch-details-text-color p:last-child {
+  display: none;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+
+
+
+/*=============================================*/
+
+
+
+/*------------ member-home page */
+
+.challenge__member--custom-navbar-brand img {
+  height: 48px;
+  width: 48px;
+  padding: 10px;
+}
+
+
+.challenge__member--custom-navbar {
+  background-color: #f5f5f5;
+}
+
+.section__challenge__compleate .compleate__text--main {
+  font-weight: 700;
+}
+
+.challenge__stage-content--title {
+  font-weight: 700;
+}
+
+.challenge__stage-content--sub {
+  font-weight: 700;
+}
+
+/*-------- lesson-list */
+.chellenge__compleate--details--title {
+  font-weight: 700;
+}
+
+/*-------- lesson popup */
+.challenge__c__modal--content .popup-display-topright-text {
+  top: -3.36px;
+}
+
+
+/*details video not final */
+.chellenge__compleate--video {
+  background-color: #000;
+}
+
+.chellenge__compleate--video-content {
+  width: 620px;
+  margin: 0 auto;
+  display: block;
+  height: auto;
+}
+
+/* ---------------------------  */
+
+/*.chellenge__compleate--video-content.for-video-only {
+  padding: 18.55% 0 0 0 !important;
+  max-width: 620px;
+}*/
+
+
+.chellenge__compleate--video-content.for-video-only .w-bottom-bar {
+  bottom: -8px;
+}
+
+@media (max-width: 767px) {
+  .chellenge__compleate--video-content.for-video-only {
+    padding: 56.25% 0 0 0 !important;
+    max-width: 100%;
+  }
+  .chellenge__compleate--video-content {
+    width: 100%;
+  }
+  
+  .chellenge__compleate--video-content.for-video-only .w-bottom-bar {
+    bottom: 0;
+  }
+}
+
+
+.chellenge__videobox__container {
+	max-width: 620px;
+	margin: 0 auto;
+}
+
+
+/*-------- 10-12-2019 ------------*/
+
+
+.challenge__member--custom-navbar-brand {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.challenge__member--nav-container .navbar-links {
+  top: 17px;
+}
+
+.section__challenge__compleate .compleate__text--continue {
+  margin-bottom: 30px;
+}
+
+.chellenge__compleate--details-resourcea ul li {
+  background-size: 17px;
+}
+
+.challenge__stage-content ul li {
+  background-size: 17px;
+}
+
+
+@media (max-width: 767px) {
+  .compleate.text-center {
+    padding-top: 10px;
+  }
+
+  .slick-track .challenge__stage-content.slick-slide {
+      max-width: 100%;
+  }
+
+  .section__challenge__compleate .slick-list.draggable {
+      padding: 0 25px !important;
+  }
+}
+
+
+
+
+/* ===================================================== */
+/* Slick Round-Arrows (start) */
+
+.slick-next-round.slick-arrow,
+.slick-prev-round.slick-arrow {
+  border-radius: 50%;
+  
+  background-color: #FFF;
+  color: #2152FF;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+  box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+  /*box-shadow:  0 0 5px 2px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
+  -o-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);*/
+  
+  width: 34px;
+  height: 34px;
+  
+  position: absolute;
+  top: 50%;
+  display: block;
+  -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+    outline: none;
+  
+  font-size: 24px;
+    line-height: 0;
+    opacity: 1;
+  
+  
+}
+
+
+.slick-prev-round:hover,
+.slick-prev-round:focus,
+.slick-next-round:hover,
+.slick-next-round:focus
+{
+    outline: none;
+}
+
+
+.slick-prev-round {
+  left: 5px;
+  z-index: 111111;
+}
+.slick-next-round {
+  right: 5px;
+}
+
+
+.slick-prev-round.slick-disabled.slick-arrow,
+.slick-next-round.slick-disabled.slick-arrow {
+  opacity: .50;
+  color: #ccc;
+  display: none !important;
+  
+}
+
+
+
+/* Slick Round-Arrows (end) */
+/* ===================================================== */
+
+
+.back__icon__desktop {
+  max-width: 460px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.back__icon {
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+
+.back__icon__desktop .fal {
+  font-weight: 400;
+}
+
+
+.challenge__stage-details .lesson-list-wrap {
+  width: 90%;
+}
+
+a{
+  color: #2152FF;
+}
+
+a:hover {
+  color: #2152FF;
+}
+
+.lesson-progress text {
+  font-family: rift, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.chellenge__compleate--details--text ol, .chellenge__compleate--details--text ul {
+  padding-left: 15px;
+}
+
+.chellenge__compleate--details--text li {
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 1600px) and (min-width: 1250px)  {
+
+  .section__challenge__compleate .slick-list.draggable {
+    min-width: 35%;
+  }
+}
+
+@media only screen and (max-width: 1250px) and (min-width: 767px)  {
+
+  .section__challenge__compleate .slick-list.draggable {
+    min-width: 60%;
+  }
+}
+
+
+
+
+
+
+
+
+/*
+#########################################################
+---------------- 06-Jan-2020 ---------------------------
+##########################################################
+*/
+
+
+
+.ch-m-form-control {
+  font-size: 20px;
+  line-height: 28px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+  padding-left: 15px;
+  font-family: acumin-pro, sans-serif;
+  color: #000;
+}
+
+.ch-m-form-control::-webkit-input-placeholder {
+  font-size: 20px;
+}
+
+.ch-m-form-control::-moz-placeholder {
+  font-size: 20px;
+}
+
+.ch-m-form-control:-ms-input-placeholder {
+  font-size: 20px;
+}
+
+.ch-m-form-control::-ms-input-placeholder {
+  font-size: 20px;
+}
+
+.ch-m-form-control::placeholder {
+  font-size: 20px;
+}
+
+.ch-m-form-control:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.ch-m-from-group {
+  margin-bottom: 13px;
+}
+
+
+.select {
+  position: relative;
+  line-height: 3;
+  overflow: hidden;
+  }
+  
+  .select::after {
+  content: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/chevron-down.svg);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+  }
+  
+  @-moz-document url-prefix() {
+    .select::after {
+      top: 0;
+      right: 15px;
+    }
+  }
+
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+.form__radio {
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+.form__radio-group {
+  display: block;
+  width: 100%;
+}
+
+.form__radio-group:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+.form__radio-input {
+  display: none;
+}
+
+.form__radio-label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #131313;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+}
+
+.form__radio-button {
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid #979797;
+  display: inline-block;
+}
+
+.form__radio-button::after {
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 14px;
+  background-color: #2152FF;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  display: block;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1;
+}
+
+.ch-m-upload-btn {
+  font-family: rift, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #131313;
+  border: none;
+  border-radius: 50px;
+  height: 28px;
+  padding: 0 12px;
+  min-width: 70px;
+}
+
+.ch-m-upload-btn:hover {
+  background-color: rgba(19, 19, 19, 0.8);
+}
+
+.ch-m-upload-btn:focus {
+  outline: none;
+  border: none;
+  outline: none;
+}
+
+.ch-m-better-btn {
+  padding: 13px 10px;
+  max-width: 335px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 16px 16px rgba(233, 234, 241, 0.3);
+  border-radius: 35px;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  letter-spacing: -0.05em;
+  color: #2152FF;
+  border: none;
+  transition: all 0.2s;
+}
+
+.ch-m-better-btn.active {
+  background: #2152FF;
+  color: #ffffff;
+}
+
+.ch-m-better-btn:focus {
+  outline: none;
+}
+
+@media (max-width: 990px) {
+  .ch-m-better-btn {
+    max-width: unset;
+  }
+
+}
+
+.ch-member-acu-20-28 {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.ch-member-acu-18-24 {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.ch-member-acu-24-29 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: -0.05em;
+}
+
+.ch-member-acu-20-29-b {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+
+.ch-member-rift-16-19 {
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.05em;
+}
+
+.ch-member-light-gray {
+  color: #B9B9BA;
+}
+
+.ch-dark-gray {
+  color: #C8C8C8;
+}
+
+.challenge__member--body {
+  margin-top: 20px;
+  min-height: 60vh;
+  padding-bottom: 40px;
+}
+
+.nutshell__content {
+  background-color: #ffffff;
+  min-height: 390px;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+}
+
+.video__content-select {
+  background-color: #ffffff;
+  padding: 32px 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.video__content-select-text {
+  max-width: 215px;
+  margin: 0 auto;
+}
+
+.video__content-select-button {
+  margin-top: 35px;
+}
+
+.video__custom-right-row {
+  padding-right: 10px;
+}
+
+.video__custom-left-row {
+  padding-left: 10px;
+}
+
+.before_after {
+  position: relative;
+}
+
+.before_after--text {
+  width: 30px;
+  background-color: #F5F5F5;
+  margin: 0 auto;
+  z-index: 111111;
+}
+
+.before_after::after {
+  position: absolute;
+  content: "";
+  border: 0.5px solid #919192;
+  width: 100%;
+  left: 0;
+  top: 8px;
+  z-index: -1;
+}
+
+.better__content {
+  padding-top: 26px;
+}
+
+.better__content--btns button:not(:last-child) {
+  margin-bottom: 11px;
+}
+
+.inspire-others-text {
+  padding-bottom: 24px;
+}
+
+
+
+.challenge__member-textarea {
+  min-height: 55vh;
+  border: unset;
+  resize: unset;
+  padding-top: 10px;
+  color: #000;
+}
+  
+.challenge__member-textarea:focus {
+  outline: unset;
+  border: unset;
+  box-shadow: unset;
+}
+
+
+/* ************************ variabels ********************
+*************************** side menu css ***********
+*****************************************************/
+.side__menu {
+  width: 200px;
+  background-color: #131313;
+  height: 100vh;
+  /* position: relative; */
+}
+
+.side__menu-list {
+  list-style: none;
+}
+
+.side__menu-items {
+  padding: 5px 20px;
+}
+
+.side__menu-items:not(:last-child) {
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+}
+
+/*.side__menu-items:hover,
+.side__menu .active {
+  background: linear-gradient(90deg, #FF6580 -12.86%, #FC9C7A 129.29%);
+  cursor: pointer;
+}*/
+
+.side__menu-container--top {
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+}
+
+.side__menu-container--bottom {
+  border-top: 1px solid rgba(250, 250, 250, 0.15);
+  border-bottom: unset;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.side__menu--links {
+  color: #ffffff;
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 35px;
+  text-decoration: none;
+  display: block;
+}
+
+.side__menu--links:hover, .side__menu--links:focus {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.side__menu--colse-icon {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.side__menu--colse-icon:hover, .side__menu--colse-icon:focus {
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.flag-icon-us {
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/us.svg);
+}
+.flag-icon-ca {
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/ca.svg);
+}
+.flag-icon-au {
+  background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/au.svg);
+}
+.flag-icon {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  margin-right: 10px;
+}
+
+
+/***********************************************
+******************** invite friends ************
+************************************************/
+
+.invite__friend {
+  text-align: center;
+}
+
+.invite__friend-form {
+  padding-top: 30px;
+}
+
+.invite__friend--or {
+  padding: 30px 0;
+}
+
+.invite__friend-btn, .invite__friend-btn:link, .invite__friend-btn:visited {
+  /* max-width: 335px; */
+  width: 100%;
+  font-family: rift, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 0;
+  color: #FCFDFF;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.invite__friend-btn:hover, .invite__friend-btn:focus, .invite__friend-btn:link:hover, .invite__friend-btn:link:focus, .invite__friend-btn:visited:hover, .invite__friend-btn:visited:focus {
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.invite__friend-btn img {
+  width: 24px;
+}
+
+.invite__friend-email {
+  background: linear-gradient(88.38deg, #FF6A80 0.12%, #FD917B 99.8%);
+}
+
+.invite__friend-facebook {
+  background: #3B5998;
+  margin-bottom: 16px;
+}
+
+.invite__friend-twitter {
+  background: #08A0E9;
+}
+
+.invite__friend-link {
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  color: #2152FF;
+}
+
+.invite__friend-link:hover {
+  text-decoration: none;
+  color: #2152FF;
+}
+
+.invite__friend-link img {
+  width: 20px;
+}
+
+.challenge_invite_modal--content {
+  background: none;
+}
+
+.ng-sidebar {
+  z-index: 999999 !important;
+}
+
+.lesson-banner-img {
+  background-position: center center;
+  background-size: cover;
+  height: 385px;
+}
+
+@media (max-width: 440px) {
+  .ch-btn-success,
+  .ch-btn-nextlesson,
+  .ch-btn-invite {
+    max-width: unset;
+  }
+  .lesson-banner-img {
+    height: 250px;
+  }
+}
+
+
+/*****************************************
+*****************************************
+******************************************/
+
+.side__menu--colse {
+  padding: 11px 20px;
+}
+ 
+.side__menu-items:hover, .side__menu-items.active {
+  background: rgba(250, 250, 250, 0.1);
+}
+  
+.challenge__member--mobile--brand--img {
+  transform: translateY(-2px);
+}
+  
+.ch-member-alert {
+  padding-top: 8px;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto -7px;
+}
+  
+.ch-member-alert .alert {
+  font-size: 16px;
+  font-family: acumin-pro, sans-serif;
+  line-height: 22px;
+  font-weight: normal;
+  font-style: normal;
+  border-radius: 43px;
+  padding: 7px 0;
+}
+  
+.ch-member-panding {
+  color: #AF8C73;
+  background-color: #FFDCC4;
+  border: 1px solid #FCC197;
+}
+  
+.ch-member-approved {
+  color: #1CB522;
+  background: rgba(191, 237, 210, 0.5);
+  border: 1px solid #1CB522;
+}
+
+.challenge_active {
+  background: -webkit-gradient(linear, left top, right top, color-stop(-12.86%, #FF6580), color-stop(129.29%, #FC9C7A));
+  background: -o-linear-gradient(left, #FF6580 -12.86%, #FC9C7A 129.29%);
+  background: linear-gradient(90deg, #FF6580 -12.86%, #FC9C7A 129.29%);
+}
+  
+.challenge_active:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), -webkit-gradient(linear, left top, right top, color-stop(-12.86%, #FF6580), color-stop(129.29%, #FC9C7A));
+  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), -o-linear-gradient(left, #FF6580 -12.86%, #FC9C7A 129.29%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90deg, #FF6580 -12.86%, #FC9C7A 129.29%);
+}
+
+.side__menu--colse:hover {
+  background: unset;
+  cursor: default;
+}
+
+.chellenge__compleate--details--text.challenge-img-responsive img {
+  width: 100%;
+  padding: 10px;
+}
+

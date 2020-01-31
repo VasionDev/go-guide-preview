@@ -1,0 +1,211 @@
+<jw-modal id="exp-save-modal" class="challenge__c__modal">
+    <div class="challenge__c__modal--content">
+        <header class="popup-container popup-teal"> 
+            <h2>&nbsp;</h2>
+        </header>
+        <div class="popup-container popup-body">
+            <h3 class="ch-jumbo-acu3 primary-color">Congratulations, you just told your story. We are currently reviewing it. 🎉</h3>
+        </div>
+        <footer class="popup-container popup-footer">
+            <button class="ch-btn-success-journey" (click)="onCloseExpModal()">Close</button>
+        </footer>
+    </div>
+</jw-modal>
+
+
+<ng-sidebar-container style="height: 100vh;">
+
+    <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened">
+        <app-options></app-options>
+    </ng-sidebar>
+
+    <div ng-sidebar-content>
+
+
+
+        <header>
+            <div class="challenge__member">
+              <nav class="navbar navbar-default challenge__member--custom-navbar">
+                <div class="container">
+                  <div class="container-fluid challenge__member--nav-container">
+                    <div class="navbar-header">
+                      <a class="navbar-brand challenge__member--custom-navbar-brand pointer">
+                        <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
+                      </a>
+                    </div>
+          
+                    <div class="navbar-links">
+                      <ul class="product-page-links">
+                        <li>
+                          <a *ngIf="!userLoggedIn" [href]="(redirectUrl) ? redirectUrl : 'javascript: void(0);'" class="ch-jumbo-rift2 ch-black-color pointer">LOG IN</a>
+                          <a *ngIf="userLoggedIn" (click)="onClickSignOut()" class="ch-jumbo-rift2 ch-black-color pointer">LOG OUT</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          
+            <div class="challenge__member--mobile">
+              <nav class="navbar navbar-default challenge__member--mobile--bg"> 
+                <div class="container-fluid"> 
+                  <div class="navbar-header"> 
+                    <button (click)="toggleSidebar()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+                      <img class="challenge__member--mobile--button-icon" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png" alt="menu">
+                    </button>
+          
+                    <a class="navbar-brand challenge__member--mobile--brand">
+                      <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+                    </a> 
+                  </div> 
+                </div> 
+              </nav>
+            </div>
+        </header>
+
+
+        <div class="sk-circle" *ngIf="spinner">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+        </div>
+
+        <div *ngIf="!spinner">
+            <!-- <app-options></app-options> -->
+            <main>
+                <section class="section__challenge__compleate">
+                    <div class="container">
+                        <div class="compleate text-center">
+                            <circle-progress
+                            [percent]="completePercent"
+                            [radius]= 70
+                            [unitsColor]="'#131313'"
+                            [titleColor]="'#131313'"
+                            [outerStrokeWidth]= 4
+                            [innerStrokeWidth] = 2
+                            [outerStrokeColor] = "'#2152FF'"
+                            [innerStrokeColor] = "'#ccc'"
+                            [animation]="true"
+                            [showSubtitle] = "true"
+                            subtitle = "COMPLETED"
+                            subtitleColor = "#131313"
+                            [animationDuration]="400"
+                            [space]= -3
+                            [titleFontSize]= 30
+                            subtitleFontSize = 14
+                            titleFontWeight = 600
+                            subtitleFontWeight = 700
+                            unitsFontSize = 30
+                            unitsFontWeight = 700
+                            class = "lesson-progress"
+                            ></circle-progress>
+                            <div class="compleate__text">
+                                <div *ngIf="!completePercent">
+                                    <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">Earn 10 Prüvit Bucks</h2>
+                                    <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
+                                        <span>for simply telling your Challenge story.</span>
+                                    </h3>
+                                    <button (click)="onExperienceLesson('exp-lesson-1')" class="ch-btn-primary-journey compleate__text--continue">start now</button>
+                                </div>
+                                <div *ngIf="completePercent">
+                                    <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">Your story will be ready for social media</h2>
+                                    <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
+                                        <span>Preview your story <a class="pointer">here.</a></span>
+                                    </h3>
+                                    <button (click)="onSubmitExperience()" class="ch-btn-primary-journey compleate__text--continue">Submit for approval</button>
+                                    <!-- <button class="ch-btn-primary-journey compleate__text--continue">Submit for approval</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="container-fluid challenge__stage">
+                        <div class="challenge__stage-item">
+            
+                            <ngx-slick-carousel class="carousel" 
+                            #slickModal="slick-carousel" 
+                            [config]="slideConfig" 
+                            (init)="slickInit($event)"
+                            (breakpoint)="breakpoint($event)"
+                            (afterChange)="afterChange($event)"
+                            (beforeChange)="beforeChange($event)">
+                            
+                                <div ngxSlickItem class="challenge__stage-content">
+                                    <div class="dchallenge__stage-details">
+                                        <h1 class="ch-member-acu-24-29 ch-black-color challenge__stage-content--title">Tell your story</h1>
+                                        <p class="ch-brand-gray ch-member-rift-14-17 challenge__stage-content--sub">{{completedExpLesson.length}}/7 Steps complete</p>
+                                        <ul>
+                                            <li (click)="onExperienceLesson('exp-lesson-1')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-1')">
+                                                    <a class="pointer">About yourself</a>
+                                                </div>
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-2')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-2')">
+                                                    <a class="pointer">In a nutshell</a>
+                                                </div>
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-3')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-3')">
+                                                    <a class="pointer">Submit a video</a>
+                                                </div>
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-4')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-4')">
+                                                    <a class="pointer">Before & better photo 🙌</a>
+                                                </div>
+                                
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-5')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-5')">
+                                                    <a class="pointer">I felt BETTER…? 👀</a>
+                                                </div>
+                                                
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-6')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-6')">
+                                                    <a class="pointer">Recipe hacks 🚀</a>
+                                                </div>
+                                            </li>
+                                            <li (click)="onExperienceLesson('exp-lesson-7')">
+                                                <div class="lesson-list-wrap" [class.compleate__done]="isCompletedExpLesson('exp-lesson-7')">
+                                                    <a class="pointer">Inspire others 📝</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+            
+                                <!-- <div ngxSlickItem class="challenge__stage-content">
+                                    <div class="dchallenge__stage-details">
+                                        <h1 class="ch-member-acu-24-29 ch-black-color challenge__stage-content--title">Challenge Fast Start</h1>
+                                        <p class="ch-brand-gray ch-member-rift-14-17 challenge__stage-content--sub">2/8 lessons complete</p>
+                                        <ul>
+                                            <li><a href="#" class="">Get Connected</a></li>
+                                            <li><a href="#" class="">Challenge Your Friends</a></li>
+                                            <li><a href="#" class="">Take a Before Photo</a></li>
+                                            <li><a href="#" class="">Mindset Matters</a></li>
+                                            <li><a href="#" class="">The Day Before</a></li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+            
+                            </ngx-slick-carousel>
+                        </div>    
+                    </div>
+            
+                </section>
+            </main>
+        </div>
+    </div>
+</ng-sidebar-container>

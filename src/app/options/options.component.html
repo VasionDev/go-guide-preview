@@ -1,0 +1,94 @@
+
+<!-- <header>
+
+  <div class="challenge__member">
+    <nav class="navbar navbar-default challenge__member--custom-navbar">
+      <div class="container">
+        <div class="container-fluid challenge__member--nav-container">
+          <div class="navbar-header">
+            <a class="navbar-brand challenge__member--custom-navbar-brand" href="#">
+              <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+            </a>
+          </div>
+
+          <div class="navbar-links">
+            <ul class="product-page-links">
+              <li>
+                <a *ngIf="!userLoggedIn" [href]="(redirectUrl) ? redirectUrl : 'javascript: void(0);'" class="ch-jumbo-rift2 ch-black-color pointer">LOG IN</a>
+                <a *ngIf="userLoggedIn" (click)="onClickSignOut()" class="ch-jumbo-rift2 ch-black-color pointer">LOG OUT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="challenge__member--mobile">
+    <nav class="navbar navbar-default challenge__member--mobile--bg"> 
+      <div class="container-fluid"> 
+        <div class="navbar-header"> 
+          <button (click)="toggleSidebar()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+            <img class="challenge__member--mobile--button-icon" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png" alt="menu">
+          </button>
+
+          <a class="navbar-brand challenge__member--mobile--brand">
+            <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+          </a> 
+        </div> 
+      </div> 
+    </nav>
+  </div>
+
+</header> -->
+
+
+<!-- <ng-sidebar #sidebar [(opened)]="menuOpened" [(showBackdrop)]="menuOpened"> -->
+  <!-- <ng-sidebar #sidebar [(opened)]="openedIn">
+  <section class="side__menu">
+    <div class="side__menu-container">
+      <div class="side__menu-container--top">
+        <ul class="side__menu-list">
+          <li class="side__menu-items side__menu--colse"><a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a>
+           
+          </li>
+          <li class="side__menu-items" [class.active]="currentPage === 'experience'"><a (click)="onExperiencePage()" class="side__menu--links pointer">MY EXPERIENCE</a></li>
+          <li class="side__menu-items" [class.active]="currentPage === ''"><a (click)="onHomePage()" class="side__menu--links pointer">TRAINING</a></li>
+        </ul>
+      </div>
+        <div class="side__menu-container--bottom">
+        <ul class="side__menu-list">
+          <li class="side__menu-items"><a (click)="onInvite()" class="side__menu--links pointer">Invite friend</a></li>
+          <li class="side__menu-items"><a class="side__menu--links pointer">GET HELP</a></li>
+          <li *ngIf="!userLoggedIn" class="side__menu-items"><a [href]="(redirectUrl) ? redirectUrl : 'javascript: void(0);'" class="side__menu--links pointer">log in</a></li>
+          <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()" class="side__menu--links pointer">log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</ng-sidebar> -->
+
+
+<section class="side__menu">
+  <div class="side__menu-container">
+    <div class="side__menu-container--top">
+      <ul class="side__menu-list">
+        <li class="side__menu-items side__menu--colse"><a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a></li>
+        <li class="side__menu-items" [class.active]="currentPage === ''"><a (click)="onHomePage()" class="side__menu--links pointer">Go Guide</a></li>
+        <!-- <li class="side__menu-items"><a (click)="onHomePage()" class="side__menu--links pointer">Better Ü</a></li> -->
+        <li class="side__menu-items challenge_active"><a (click)="onInvite()" class="side__menu--links pointer">Challenge Friends</a></li>
+        <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>
+        <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log in</a></li>
+        <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()" class="side__menu--links pointer">log out</a></li>
+      </ul>
+    </div>
+    <!-- <div class="side__menu-container--bottom">
+      <ul class="side__menu-list">
+        <li class="side__menu-items"><a (click)="onInvite()" class="side__menu--links pointer">Challenge Friends</a></li>
+        <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>
+        <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log in</a></li>
+        <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()" class="side__menu--links pointer">log out</a></li>
+      </ul>
+    </div> -->
+  </div>
+</section>

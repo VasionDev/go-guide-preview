@@ -1,0 +1,117 @@
+<header>
+  <!-- Desktop Menu -->
+  <div class="challenge__member">
+    <nav class="navbar navbar-default challenge__member--custom-navbar">
+      <div class="container">
+        <div class="container-fluid challenge__member--nav-container">
+          <div class="navbar-header">
+            <a style="cursor: pointer;" class="navbar-brand challenge__member--custom-navbar-brand" (click)="onClickLeft()">
+              <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
+              <!-- <i class="fal fa-arrow-left"></i> -->
+            </a>
+          </div>
+          <div class="back__icon__desktop">
+            <a (click)="onClickLeft()" class="back__icon pointer"> 
+              <i style="color: #000;" class="fal fa-arrow-left"></i>
+            </a> 
+          </div>
+          <div class="navbar-links">
+            <ul class="product-page-links">
+              <li>
+                <a *ngIf="!userLoggedIn" [href]="(redirectUrl) ? redirectUrl : 'javascript: void(0);'" class="ch-jumbo-rift2 ch-black-color pointer">LOG IN</a>
+                <a *ngIf="userLoggedIn" (click)="onClickSignOut()" class="ch-jumbo-rift2 ch-black-color pointer">LOG OUT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Desktop Menu End -->
+
+  <!-- Mobile Menu -->
+  <div class="challenge__member--mobile">
+    <nav class="navbar navbar-default challenge__member--mobile--bg"> 
+      <div class="container-fluid"> 
+        <div class="navbar-header"> 
+          <button (click)="onClickLeft()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+            <!-- <img class="challenge__member--mobile--button-icon" src="assets/img/chevron-left.svg" alt="menu"> -->
+            <i style="color: #fff" class="fal fa-home"></i>
+          </button> 
+          <a class="navbar-brand challenge__member--mobile--brand pointer">
+            <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+          </a> 
+        </div> 
+      </div> 
+    </nav>
+  </div>
+  <!-- Mobile Menu End -->
+</header>
+
+<main>
+  <section class="section__challenge__compleate chellenge__compleate--details section__challenge__resource">
+
+    <!-- Header Section -->
+    <div class="container-fluid chellenge__compleate--details-custom-container">
+      <div *ngFor="let post of posts">
+        <div *ngIf="post.learnID == indexPost">
+          <div *ngFor="let lesson of post.lesson">
+            <div *ngIf="lesson.lesson_id == indexLesson">
+              <figure class="chellenge__compleate--video">
+                <div class="chellenge__videobox__container">
+                <div *ngIf="lesson.id != ''; else lessonBanner" class="wistia_responsive_padding chellenge__compleate--video-content for-video-only" style="padding:56.25% 0 0 0;position:relative;">
+                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_{{ lesson.id }} autoPlay=false seo=false videoFoam=true" style="height:100%;width:100%">
+                      <div class="sk-circle">
+                        <div class="sk-circle1 sk-child"></div>
+                        <div class="sk-circle2 sk-child"></div>
+                        <div class="sk-circle3 sk-child"></div>
+                        <div class="sk-circle4 sk-child"></div>
+                        <div class="sk-circle5 sk-child"></div>
+                        <div class="sk-circle6 sk-child"></div>
+                        <div class="sk-circle7 sk-child"></div>
+                        <div class="sk-circle8 sk-child"></div>
+                        <div class="sk-circle9 sk-child"></div>
+                        <div class="sk-circle10 sk-child"></div>
+                        <div class="sk-circle11 sk-child"></div>
+                        <div class="sk-circle12 sk-child"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #lessonBanner>
+                  <!-- <img class="chellenge__compleate--video-content" *ngIf="lesson.lesson_image != ''" src="{{ lesson.lesson_image }}" alt="img" /> -->
+                  <div *ngIf="lesson.lesson_image != ''" class="chellenge__compleate--video-content lesson-banner-img" [ngStyle]="{'background-image':'url(' + lesson.lesson_image + ')'}"></div>
+                </ng-template>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chellenge__compleate--details-nav">
+        <ul>
+          <li><a class="ch-member-rift-16-19 pointer" (click)="onClickLesson()">OVERVIEW</a></li>
+          <li class="active"><a class="ch-member-rift-16-19 pointer">RESOURCES</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Header Section End -->
+
+    <!-- Body Section -->
+    <div class="container-fluid chellenge__compleate--details-custom-container">
+      <div *ngFor="let post of posts">
+        <div *ngIf="post.learnID == indexPost">
+          <div class="chellenge__compleate--details-resourcea">
+            <ul *ngFor="let resource of post.resource">
+              <li style="cursor: pointer;"><a (click)="onNavigate(resource.external_link)" class="">{{ resource.title }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Body Section -->
+  </section>
+</main>

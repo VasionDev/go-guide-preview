@@ -1,0 +1,99 @@
+
+
+<header>
+    <!-- Desktop Menu -->
+    <div class="challenge__member">
+      <nav class="navbar navbar-default challenge__member--custom-navbar">
+        <div class="container">
+          <div class="container-fluid challenge__member--nav-container">
+            <div class="navbar-header">
+              <a style="cursor: pointer;" class="navbar-brand challenge__member--custom-navbar-brand" (click)="onClickHome()">
+                <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
+                <!-- <i class="fal fa-arrow-left"></i> -->
+              </a>
+            </div>
+            <div class="back__icon__desktop">
+              <a (click)="onClickBack()" class="back__icon pointer"> 
+                <i style="color: #000;" class="fal fa-arrow-left"></i>
+              </a> 
+            </div>
+            <div class="navbar-links">
+              <ul class="product-page-links">
+                <li>
+                  <a *ngIf="!userLoggedIn" [href]="(redirectUrl) ? redirectUrl : 'javascript: void(0);'" class="ch-jumbo-rift2 ch-black-color pointer">LOG IN</a>
+                  <a *ngIf="userLoggedIn" (click)="onClickSignOut()" class="ch-jumbo-rift2 ch-black-color pointer">LOG OUT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Desktop Menu End -->
+  
+    <!-- Mobile Menu -->
+    <div class="challenge__member--mobile">
+      <nav class="navbar navbar-default challenge__member--mobile--bg"> 
+        <div class="container-fluid"> 
+          <div class="navbar-header"> 
+            <button (click)="onClickBack()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+              <i style="color: #fff" class="fal fa-arrow-left"></i>
+            </button> 
+            <a class="navbar-brand challenge__member--mobile--brand">
+              <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+            </a> 
+          </div> 
+        </div> 
+      </nav>
+    </div>
+    <!-- Mobile Menu End -->
+  </header>
+
+  <main>
+    <section class="section__challenge__compleate chellenge__compleate--details">
+        <div class="container" style="width: 100%;">
+          <div class="chellenge__compleate--details--text">
+            <h1 class="ch-member-acu-24-29 ch-black-color chellenge__compleate--details--title text-center">Challenge your friends 👫</h1>
+  
+            <div class="form-group invite__friend-form text-center">
+              <input type="email" [(ngModel)]="inviteEmail" class="form-control ch-m-form-control" id="invite-email" placeholder="Friend’s email address">
+             
+              <strong *ngIf="showMessage" [@simpleFadeAnimation] style="font-size: 14px;">{{emailMessage}}</strong>
+            
+              <div *ngIf="loadingState" class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+              </div>
+            </div>
+  
+            <div *ngIf="!loadingState" class="invite__friend">
+              <button (click)="inviteByEmail()" class="invite__friend-btn invite__friend-email">Send Email Now</button>
+            </div>
+            <p class="text-center invite__friend--or ch-brand-gray">or</p>
+            <div class="invite__friend">
+              <a (click)="shareLinkOnSocial('facebook')" class="invite__friend-btn invite__friend-facebook pointer">
+                <img src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/facebook.png" alt="FACEBOOK">&nbsp;SHARE ON FACEBOOK</a>
+            </div>
+            <div class="invite__friend">
+              <a (click)="shareLinkOnSocial('twitter')" class="invite__friend-btn invite__friend-twitter pointer">
+                <img src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/twitter.png" alt="TWITTER">&nbsp;&nbsp;SHARE ON TWITTER</a>
+            </div>
+            <p class="text-center invite__friend--or ch-brand-gray">or</p>
+            <div class="invite__friend">
+              <a class="invite__friend-link pointer" (cbOnSuccess)="copiedUniqueLink($event)" ngxClipboard [cbContent]="invitePageURL"><img src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/link-icon.png" alt="link"> Copy your unique link</a>
+              <p><strong *ngIf="copiedLink" [@simpleFadeAnimation] style="font-size: 14px;">Link Copied</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+  </main>
