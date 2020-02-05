@@ -130,6 +130,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   onSubmitExperience() {
+    // this.submittedExpData.status = true;
     this.spinner = true;
     this.wp.saveExperienceData(this.submittedExpData).subscribe((data: any)=>{
       console.log(JSON.parse(data));

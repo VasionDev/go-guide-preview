@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
   constructor(private data: DataService, private wp: WordpressService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-
+    localStorage.removeItem('LastLesson');
+    localStorage.removeItem('CompletedTools');
     this.wp.setUserLogin().subscribe((res: any) => {
       const url = JSON.parse(res);
       this.redirectUrl = url.url;
