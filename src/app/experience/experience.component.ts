@@ -85,7 +85,7 @@ export class ExperienceComponent implements OnInit {
         let status = JSON.parse(res);
         if(status.error || status.exp_token_error) {
           window.location.href = `
-              https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/goguide/`;
+              https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
         } else {
           // this.data.saveExperienceDataTemp(JSON.parse(res));
           this.spinner = false;

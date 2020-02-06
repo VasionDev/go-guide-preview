@@ -262,7 +262,7 @@ export class HomeComponent implements OnInit {
   }
 
   onClickLesson(index: any, lesson: any, lessonTitle: any) {
-    // this.data.eventEmitter('Lesson title', 'click', lessonTitle);
+    this.data.eventEmitter('Lesson title', 'click', lessonTitle);
     this.data.lessonChange(index, lesson);
     this.data.nameChange('LessonComponent');
   }

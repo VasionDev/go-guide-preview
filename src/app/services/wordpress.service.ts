@@ -16,9 +16,15 @@ export class WordpressService {
     // this.apiBaseURL = 'https://challenge.com/preview/wp-json';
   }
 
-  getPosts(): Observable<any[]> {
+  /*getPosts(): Observable<any[]> {
     return this.http.get<any[]>(
       this.apiBaseURL+'/getLearningtools/v2/'
+    );
+  }*/
+
+  getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(
+      this.apiBaseURL+'/get-file-lesson/v2/'
     );
   }
 

@@ -56,7 +56,7 @@
             <h1 class="ch-member-acu-24-29 ch-black-color chellenge__compleate--details--title text-center">Challenge your friends 👫</h1>
   
             <div class="form-group invite__friend-form text-center">
-              <input type="email" [(ngModel)]="inviteEmail" class="form-control ch-m-form-control" id="invite-email" placeholder="Friend’s email address">
+              <input (keydown.enter)="inviteByEmail()" type="email" [(ngModel)]="inviteEmail" class="form-control ch-m-form-control" id="invite-email" placeholder="Friend’s email address">
              
               <strong *ngIf="showMessage" [@simpleFadeAnimation] style="font-size: 14px;">{{emailMessage}}</strong>
             
