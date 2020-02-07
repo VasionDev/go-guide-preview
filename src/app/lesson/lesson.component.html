@@ -145,8 +145,8 @@
                     </p>
                   </button>
                   <ng-template #nextSection>
-                    <!-- <button class="ch-btn-success">All steps are completed</button> -->
-                    <button (click)="onClickLeft()" class="ch-btn-nextlesson">
+                    <button *ngIf="remainSingleLesson != ''" (click)="onClickCompleteLastLesson(postIndex, post.learnID)" class="ch-btn-success">Complete section</button>
+                    <button *ngIf="remainSingleLesson == ''" (click)="onClickLeft()" class="ch-btn-nextlesson">
                       <p>
                         <span class="ch-btn-nextlesson--top">All steps are completed</span> 
                         <span class="ch-btn-nextlesson--bottom">Continue journey</span>

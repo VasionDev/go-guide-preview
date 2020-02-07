@@ -40,6 +40,7 @@ export class LessonComponent implements OnInit {
   emailMessage: any = '';
   systemOS: any;
   logoutTo: any = '';
+  remainSingleLesson: any = '';
 
   constructor(
     private data: DataService,
@@ -162,6 +163,13 @@ export class LessonComponent implements OnInit {
         localStorage.setItem('LastLesson', JSON.stringify(this.posts[postIndex + 1].learnID));
       }
     }
+  }
+
+  onClickCompleteLastLesson(postIndex: any, postID: any) {
+    this.completeChange(this.indexPost, this.indexLesson);
+    this.completedToolName = this.posts[postIndex].learnTitle;
+    localStorage.removeItem('LastLesson');
+    this.modalService.open('lesson-modal');
   }
 
   getTheLesson(learnID: any, lessonID: any) {
@@ -392,6 +400,10 @@ export class LessonComponent implements OnInit {
 
     } else {
       nextLessonTitle = this.lessonTitleShortener(nextLesson.ques);
+    }
+    if(nextLessonTitle == '' && !currentCompletedLessons.includes(this.indexLesson)) {
+      this.remainSingleLesson = this.indexLesson;
+      console.log('last lesson', this.remainSingleLesson);
     }
     return nextLessonTitle;
   }
