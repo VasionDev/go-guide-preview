@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-declare let apiUrl:any 
+declare let apiUrl:any;
+declare let langCode:any;
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class WordpressService {
   }*/
 
   getPosts(): Observable<any[]> {
-    return this.http.get<any[]>(
-      this.apiBaseURL+'/get-file-lesson/v2/'
+    return this.http.post<any[]>(
+      this.apiBaseURL+'/get-file-lesson/v2/', langCode
     );
   }
 
