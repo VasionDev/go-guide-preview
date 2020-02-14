@@ -1,29 +1,28 @@
-import { WordpressService } from './../services/wordpress.service';
-import { DataService } from './../services/data.service';
-import { ModalService } from './../services/modal.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { trigger, transition, animate, style } from '@angular/animations';
+import { WordpressService } from "./../services/wordpress.service";
+import { DataService } from "./../services/data.service";
+import { ModalService } from "./../services/modal.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { trigger, transition, animate, style } from "@angular/animations";
 
 let IndexArray = [];
 let LessonArray = [];
-declare let apiUrl:any;
+declare let apiUrl: any;
 
 @Component({
-  selector: 'app-lesson',
-  templateUrl: './lesson.component.html',
-  styleUrls: ['./lesson.component.css'],
+  selector: "app-lesson",
+  templateUrl: "./lesson.component.html",
+  styleUrls: ["./lesson.component.css"],
   animations: [
-    trigger('slideInOut', [
-      transition(':enter', [
-        style({transform: 'translateX(-100%)'}),
-        animate('200ms ease-in', style({transform: 'translateX(0%)'}))
-      ]),
+    trigger("slideInOut", [
+      transition(":enter", [
+        style({ transform: "translateX(-100%)" }),
+        animate("200ms ease-in", style({ transform: "translateX(0%)" }))
+      ])
     ])
   ]
 })
 export class LessonComponent implements OnInit {
-
   indexLesson: any;
   indexPost: any;
   posts: any;
@@ -37,19 +36,21 @@ export class LessonComponent implements OnInit {
   userLoggedIn: any;
   inviteEmail: any;
   invitePageURL: any;
-  emailMessage: any = '';
+  emailMessage: any = "";
   systemOS: any;
-  logoutTo: any = '';
-  remainSingleLesson: any = '';
+  logoutTo: any = "";
+  remainSingleLesson: any = "";
+  homeParam = "";
 
   constructor(
     private data: DataService,
     private wp: WordpressService,
-    private route: ActivatedRoute, private router: Router,
-    private modalService: ModalService) {}
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit() {
-
     this.logoutTo = apiUrl;
     this.getMobileOperatingSystem();
 
@@ -58,8 +59,9 @@ export class LessonComponent implements OnInit {
     });
 
     this.route.queryParamMap.subscribe(params => {
-      this.indexPost = +params.get('module');
-      this.indexLesson = params.get('lesson');
+      this.indexPost = +params.get("module");
+      this.indexLesson = params.get("lesson");
+      this.homeParam = params.get("lang");
     });
 
     this.wp.setUserLogin().subscribe((res: any) => {
@@ -67,8 +69,8 @@ export class LessonComponent implements OnInit {
       this.redirectUrl = url.url;
     });
 
-    const user = JSON.parse(localStorage.getItem('signInStatus'));
-    if (user === null || user === '') {
+    const user = JSON.parse(localStorage.getItem("signInStatus"));
+    if (user === null || user === "") {
       this.userLoggedIn = false;
     } else {
       this.userLoggedIn = true;
@@ -79,12 +81,12 @@ export class LessonComponent implements OnInit {
   }
 
   closeModal(id: string) {
-      this.modalService.close(id);
-      this.emailMessage = '';
+    this.modalService.close(id);
+    this.emailMessage = "";
   }
 
   onClickResource() {
-    this.data.nameChange('ResourceComponent');
+    this.data.nameChange("ResourceComponent");
   }
 
   onClickComplete(value: boolean) {
@@ -95,29 +97,32 @@ export class LessonComponent implements OnInit {
     }
   }
 
-  onClickNewComplete(postID: any, lessonID: any, lessonList:any) {
+  onClickNewComplete(postID: any, lessonID: any, lessonList: any) {
     // console.log(lessonList);
     this.completeChange(this.indexPost, this.indexLesson);
-    let currentCompletedLessons = JSON.parse(localStorage.getItem('Lesson'));
-    if(currentCompletedLessons.includes(lessonID)) {
+    let currentCompletedLessons = JSON.parse(localStorage.getItem("Lesson"));
+    if (currentCompletedLessons.includes(lessonID)) {
       // console.log(lessonID, 'already exists');
       for (const lesson of lessonList) {
-        if ( !currentCompletedLessons.includes(lesson.lesson_id)) {
-          this.router.navigate(['/'], {queryParams: {module: postID, lesson: lesson.lesson_id}});
+        if (!currentCompletedLessons.includes(lesson.lesson_id)) {
+          this.router.navigate(["/"], {
+            queryParams: { module: postID, lesson: lesson.lesson_id }
+          });
           break;
         }
       }
-
     } else {
-      this.router.navigate(['/'], {queryParams: {module: postID, lesson: lessonID}});
+      this.router.navigate(["/"], {
+        queryParams: { module: postID, lesson: lessonID }
+      });
     }
     window.scrollTo(0, 0);
   }
 
   lessonTitleShortener(title: string) {
     let newTitle: string;
-    if ( title.length > 30 ) {
-      newTitle = title.substr(0, 30) + '...';
+    if (title.length > 30) {
+      newTitle = title.substr(0, 30) + "...";
     } else {
       newTitle = title;
     }
@@ -125,10 +130,10 @@ export class LessonComponent implements OnInit {
   }
 
   onClickSignOut() {
-    localStorage.removeItem('signInStatus');
-    localStorage.removeItem('Index');
-    localStorage.removeItem('Lesson');
-    localStorage.removeItem('UserID');
+    localStorage.removeItem("signInStatus");
+    localStorage.removeItem("Index");
+    localStorage.removeItem("Lesson");
+    localStorage.removeItem("UserID");
     // this.router.navigate(['/']);
     this.wp.logout().subscribe((data: any) => {
       // this.data.nameChange('AppComponent');
@@ -143,9 +148,9 @@ export class LessonComponent implements OnInit {
 
   onClickCompleteAll(postIndex: any, postID: any) {
     const lessonLists = this.posts[postIndex].lesson;
-    const completeLesson = JSON.parse(localStorage.getItem('Lesson'));
+    const completeLesson = JSON.parse(localStorage.getItem("Lesson"));
     if (completeLesson != null) {
-      for(let i = 0; i < lessonLists.length - 1; i++) {
+      for (let i = 0; i < lessonLists.length - 1; i++) {
         if (!completeLesson.includes(lessonLists[i].lesson_id)) {
           this.incompleteLesson.push(lessonLists[i]);
         }
@@ -157,10 +162,13 @@ export class LessonComponent implements OnInit {
     if (!this.incompleteLesson.length) {
       this.completeChange(this.indexPost, this.indexLesson);
       this.completedToolName = this.posts[postIndex].learnTitle;
-      this.modalService.open('lesson-modal');
+      this.modalService.open("lesson-modal");
 
-      if ( postIndex < this.posts.length - 1 ) {
-        localStorage.setItem('LastLesson', JSON.stringify(this.posts[postIndex + 1].learnID));
+      if (postIndex < this.posts.length - 1) {
+        localStorage.setItem(
+          "LastLesson",
+          JSON.stringify(this.posts[postIndex + 1].learnID)
+        );
       }
     }
   }
@@ -168,23 +176,30 @@ export class LessonComponent implements OnInit {
   onClickCompleteLastLesson(postIndex: any, postID: any) {
     this.completeChange(this.indexPost, this.indexLesson);
     this.completedToolName = this.posts[postIndex].learnTitle;
-    localStorage.removeItem('LastLesson');
-    this.modalService.open('lesson-modal');
+    localStorage.removeItem("LastLesson");
+    this.modalService.open("lesson-modal");
   }
 
   getTheLesson(learnID: any, lessonID: any) {
     this.incompleteLesson = [];
-    this.router.navigate(['/'], {queryParams: {module: learnID, lesson: lessonID}});
+    this.router.navigate(["/"], {
+      queryParams: { module: learnID, lesson: lessonID }
+    });
   }
 
   onClickLeft() {
-    this.router.navigate(['/']);
-    this.data.nameChange('HomeComponent');
+    if (this.homeParam !== "") {
+      this.router.navigate(["/"], { queryParams: { lang: this.homeParam } });
+      this.data.nameChange("HomeComponent");
+    } else {
+      this.router.navigate(["/"]);
+      this.data.nameChange("HomeComponent");
+    }
   }
 
   completedTask() {
-    this.completedLesson = JSON.parse(localStorage.getItem('Lesson'));
-    this.completedIndex = JSON.parse(localStorage.getItem('Index'));
+    this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
+    this.completedIndex = JSON.parse(localStorage.getItem("Index"));
 
     if (this.completedIndex !== null && this.completedLesson !== null) {
       const indexes = [];
@@ -208,21 +223,21 @@ export class LessonComponent implements OnInit {
   }
 
   completeChange(completedIndex: any, completedLesson: any) {
-    LessonArray = JSON.parse(localStorage.getItem('Lesson'));
-    IndexArray = JSON.parse(localStorage.getItem('Index'));
+    LessonArray = JSON.parse(localStorage.getItem("Lesson"));
+    IndexArray = JSON.parse(localStorage.getItem("Index"));
     if (LessonArray === null && IndexArray === null) {
       IndexArray = [];
       LessonArray = [];
     }
 
-    if ( !LessonArray.includes(completedLesson)) {
+    if (!LessonArray.includes(completedLesson)) {
       IndexArray.push(completedIndex);
       LessonArray.push(completedLesson);
     }
 
-    localStorage.setItem('Lesson', JSON.stringify(LessonArray));
-    localStorage.setItem('Index', JSON.stringify(IndexArray));
-    const UserId = localStorage.getItem('UserID');
+    localStorage.setItem("Lesson", JSON.stringify(LessonArray));
+    localStorage.setItem("Index", JSON.stringify(IndexArray));
+    const UserId = localStorage.getItem("UserID");
     if (UserId !== null) {
       this.wp
         .saveData({
@@ -236,26 +251,25 @@ export class LessonComponent implements OnInit {
             const value = JSON.parse(res);
             if (value.success === true) {
               this.completed = true;
-              console.log('saved');
+              console.log("saved");
             } else {
               this.completed = false;
             }
           },
           (err: any) => {
-            console.log('add', err);
+            console.log("add", err);
             this.completed = false;
-          },
+          }
         );
     } else {
-      console.log('userID not found');
+      console.log("userID not found");
       this.completed = true;
     }
   }
 
   completeRemove(removedIndex: any, removedLesson: any) {
-
-    LessonArray = JSON.parse(localStorage.getItem('Lesson'));
-    IndexArray = JSON.parse(localStorage.getItem('Index'));
+    LessonArray = JSON.parse(localStorage.getItem("Lesson"));
+    IndexArray = JSON.parse(localStorage.getItem("Index"));
     if (LessonArray === null && IndexArray === null) {
       IndexArray = [];
       LessonArray = [];
@@ -268,9 +282,9 @@ export class LessonComponent implements OnInit {
     if (lessonRemoved > -1) {
       LessonArray.splice(lessonRemoved, 1);
     }
-    localStorage.setItem('Lesson', JSON.stringify(LessonArray));
-    localStorage.setItem('Index', JSON.stringify(IndexArray));
-    const UserId = localStorage.getItem('UserID');
+    localStorage.setItem("Lesson", JSON.stringify(LessonArray));
+    localStorage.setItem("Index", JSON.stringify(IndexArray));
+    const UserId = localStorage.getItem("UserID");
     if (UserId !== null) {
       this.wp
         .saveData({
@@ -288,15 +302,15 @@ export class LessonComponent implements OnInit {
             }
           },
           (err: any) => {
-            console.log('remove', err);
+            console.log("remove", err);
             this.completed = true;
           },
-          () => this.data.nameChange('HomeComponent')
+          () => this.data.nameChange("HomeComponent")
         );
     } else {
-      console.log('userID not found');
+      console.log("userID not found");
       this.completed = false;
-      setTimeout(() => this.data.nameChange('HomeComponent'), 1000);
+      setTimeout(() => this.data.nameChange("HomeComponent"), 1000);
     }
   }
 
@@ -305,7 +319,7 @@ export class LessonComponent implements OnInit {
   }*/
 
   onInviteLesson() {
-    this.data.nameChange('InviteComponent');
+    this.data.nameChange("InviteComponent");
   }
 
   /*inviteByEmail() {
@@ -315,7 +329,7 @@ export class LessonComponent implements OnInit {
       console.log(this.inviteEmail, this.invitePageURL);
       let mailData = {'email_to' : this.inviteEmail, 'share_url' : this.invitePageURL};
       this.wp.sendMail(mailData).subscribe((res:any) => {
-        
+
         let result = JSON.parse(res);
         if(result.act == 'success') {
           this.emailMessage = 'Email send successfully';
@@ -337,27 +351,27 @@ export class LessonComponent implements OnInit {
     } else {
       shareLink = 'https://twitter.com/share?url='+this.invitePageURL;
     }
-    
+
     window.open(shareLink, '', 'width=600, height=400, scrollbars=no');
   }*/
 
   getMobileOperatingSystem() {
     let userAgent = navigator.userAgent || navigator.vendor;
-  
-    if (/windows phone/i.test(userAgent)) {
-      
-    }else if (/android/i.test(userAgent)) {
-      this.systemOS = 'https://play.google.com/store/apps/details?id=com.pruvit&hl=en';
-    }else if (/iPad|iPhone|iPod/.test(userAgent)) {
-      this.systemOS = 'https://itunes.apple.com/us/app/pruvit-pulse/id1097690467?mt=8';
-    }else {
-      this.systemOS = 'https://itunes.apple.com/us/app/pruvit-pulse/id1097690467?mt=8';
-    }
 
+    if (/windows phone/i.test(userAgent)) {
+    } else if (/android/i.test(userAgent)) {
+      this.systemOS =
+        "https://play.google.com/store/apps/details?id=com.pruvit&hl=en";
+    } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+      this.systemOS =
+        "https://itunes.apple.com/us/app/pruvit-pulse/id1097690467?mt=8";
+    } else {
+      this.systemOS =
+        "https://itunes.apple.com/us/app/pruvit-pulse/id1097690467?mt=8";
+    }
   }
 
   shareNavigatorAPI() {
-
     let newVariable: any;
 
     newVariable = window.navigator;
@@ -365,47 +379,50 @@ export class LessonComponent implements OnInit {
 
     if (newVariable && newVariable.share) {
       // Web Share API is supported
-      console.log('Web Share API is supported');
-      newVariable.share({
-        title: 'Challenge Member',
-        text: '',
-        url: window.location.href
-      }).then(() => {
-        console.log('Thanks for sharing!');
-      })
-      .catch(err => {
-        console.log(`Couldn't share because of`, err.message);
-      });
+      console.log("Web Share API is supported");
+      newVariable
+        .share({
+          title: "Challenge Member",
+          text: "",
+          url: window.location.href
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+        })
+        .catch(err => {
+          console.log(`Couldn't share because of`, err.message);
+        });
     } else {
       // Fallback
-      console.log('Fallback');
+      console.log("Fallback");
     }
-
-    
-
   }
 
-  getNextLesson(postID:any, nextLesson:any, lessonList:any) {
-    let nextLessonTitle = '';
+  getNextLesson(postID: any, nextLesson: any, lessonList: any) {
+    let nextLessonTitle = "";
     // console.log(nextLesson.lesson_id)
-    let currentCompletedLessons = JSON.parse(localStorage.getItem('Lesson'));
-    if(currentCompletedLessons.includes(nextLesson.lesson_id)) {
+    let currentCompletedLessons = JSON.parse(localStorage.getItem("Lesson"));
+    if (currentCompletedLessons.includes(nextLesson.lesson_id)) {
       // console.log('included');
       for (const lesson of lessonList) {
-        if ( !currentCompletedLessons.includes(lesson.lesson_id) && lesson.lesson_id != this.indexLesson) {
+        if (
+          !currentCompletedLessons.includes(lesson.lesson_id) &&
+          lesson.lesson_id != this.indexLesson
+        ) {
           nextLessonTitle = this.lessonTitleShortener(lesson.ques);
           break;
         }
       }
-
     } else {
       nextLessonTitle = this.lessonTitleShortener(nextLesson.ques);
     }
-    if(nextLessonTitle == '' && !currentCompletedLessons.includes(this.indexLesson)) {
+    if (
+      nextLessonTitle == "" &&
+      !currentCompletedLessons.includes(this.indexLesson)
+    ) {
       this.remainSingleLesson = this.indexLesson;
-      console.log('last lesson', this.remainSingleLesson);
+      console.log("last lesson", this.remainSingleLesson);
     }
     return nextLessonTitle;
   }
-
 }

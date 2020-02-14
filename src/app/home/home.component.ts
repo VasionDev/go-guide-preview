@@ -1,21 +1,19 @@
-import { DataService } from './../services/data.service';
-import { Component, OnInit } from '@angular/core';
-import { WordpressService } from '../services/wordpress.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from "./../services/data.service";
+import { Component, OnInit } from "@angular/core";
+import { WordpressService } from "../services/wordpress.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 let CompletedTools = [];
 let prerequisites = [];
 
-declare let apiUrl:any;
+declare let apiUrl: any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
-
 export class HomeComponent implements OnInit {
-
   menuOpened: boolean = false;
   posts: any;
   indexPost: any;
@@ -24,53 +22,58 @@ export class HomeComponent implements OnInit {
   nextStartLesson: any;
   lastEndedPostIndex: any;
   userLoggedIn = true;
-  userName = '';
+  userName = "";
   isComplete = 0;
   spinner = false;
   redirectUrl: any;
   completedLesson: any[] = [];
   completedIndex: any[] = [];
   isOpen: any = true;
-  logoutTo: any = '';
+  logoutTo: any = "";
+  homeParam = "";
 
   slideConfig = {
-
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     dots: false,
     centerMode: true,
-    centerPadding: '60px',
+    centerPadding: "60px",
     infinite: false,
     slickGoTo: 0,
-    responsive : [
+    responsive: [
       {
         breakpoint: 480,
         settings: {
           arrows: true,
-          prevArrow: '<button type="button" class="slick-prev-round"><i class="far fa-angle-left"></i></button>',
-          nextArrow: '<button type="button" class="slick-next-round"><i class="far fa-angle-right"></i></button>',
+          prevArrow:
+            '<button type="button" class="slick-prev-round"><i class="far fa-angle-left"></i></button>',
+          nextArrow:
+            '<button type="button" class="slick-next-round"><i class="far fa-angle-right"></i></button>',
           slidesToShow: 1
         }
       }
     ]
   };
 
-  constructor(private data: DataService, private wp: WordpressService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private data: DataService,
+    private wp: WordpressService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
     // this.checkNavigator();
     // console.log(this.completePercent);
     this.logoutTo = apiUrl;
 
     this.nextStartLesson = {
-      lesson_id: ''
+      lesson_id: ""
     };
 
     this.loadSignInStatus();
     this.data.currentData.subscribe((data: any) => {
-
       this.posts = data;
       let allLength = data.length;
       let totalLesson = 0;
@@ -79,8 +82,8 @@ export class HomeComponent implements OnInit {
         totalLesson = totalLesson + data[--allLength].lesson.length;
       }
 
-      const tempIndex = JSON.parse(localStorage.getItem('LastLesson'));
-      this.completedLesson = JSON.parse(localStorage.getItem('Lesson'));
+      const tempIndex = JSON.parse(localStorage.getItem("LastLesson"));
+      this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
       let mainIndex: number;
 
       if (tempIndex === null) {
@@ -90,23 +93,24 @@ export class HomeComponent implements OnInit {
         this.indexSlide = 0;*/
 
         for (mainIndex = 0; mainIndex < this.posts.length; mainIndex++) {
-
-          let lastIndex = JSON.parse(localStorage.getItem('LastLesson'));
-          if(lastIndex  != null && lastIndex != '') {
+          let lastIndex = JSON.parse(localStorage.getItem("LastLesson"));
+          if (lastIndex != null && lastIndex != "") {
             break;
           }
           for (const lesson of this.posts[mainIndex].lesson) {
-            if ( !this.completedLesson.includes(lesson.lesson_id)) {
+            if (!this.completedLesson.includes(lesson.lesson_id)) {
               this.indexPost = this.posts[mainIndex].learnID;
               lastEndedPostLessons = this.posts[mainIndex].lesson;
               this.lastEndedPostIndex = this.posts[mainIndex];
               this.indexSlide = mainIndex;
-              localStorage.setItem('LastLesson', JSON.stringify(this.posts[mainIndex].learnID));
+              localStorage.setItem(
+                "LastLesson",
+                JSON.stringify(this.posts[mainIndex].learnID)
+              );
               break;
             }
           }
         }
-
       } else {
         for (mainIndex = 0; mainIndex < this.posts.length; mainIndex++) {
           if (this.posts[mainIndex].learnID === tempIndex) {
@@ -120,44 +124,48 @@ export class HomeComponent implements OnInit {
 
       this.updateNextStartLesson(lastEndedPostLessons);
       // this.completedLesson = JSON.parse(localStorage.getItem('Lesson'));
-      this.completedIndex = JSON.parse(localStorage.getItem('Index'));
+      this.completedIndex = JSON.parse(localStorage.getItem("Index"));
       // console.log(this.completedLesson.length, totalLesson);
       if (this.completedLesson !== null) {
-        this.completePercent = ((100 * this.completedLesson.length) / totalLesson).toFixed();
+        this.completePercent = (
+          (100 * this.completedLesson.length) /
+          totalLesson
+        ).toFixed();
       } else {
         this.completedLesson = [];
       }
       this.allComplete();
       this.route.queryParamMap.subscribe(params => {
+        this.homeParam = params.get("lang");
 
-        const pageName = params.get('page');
-        const expLessonID = params.get('explesson');
-        const lessonID = params.get('lesson');
+        const pageName = params.get("page");
+        const expLessonID = params.get("explesson");
+        const lessonID = params.get("lesson");
         if (pageName != null) {
-          if ( pageName === 'option') {
-            this.data.nameChange('OptionsComponent');
-          } else if (pageName === 'experience') {
-            this.data.nameChange('ExperienceComponent');
+          if (pageName === "option") {
+            this.data.nameChange("OptionsComponent");
+          } else if (pageName === "experience") {
+            this.data.nameChange("ExperienceComponent");
           }
         } else if (expLessonID != null) {
-          this.data.nameChange('ExperienceLessonComponent');
+          this.data.nameChange("ExperienceLessonComponent");
         } else if (lessonID != null) {
-          this.data.nameChange('LessonComponent');
+          this.data.nameChange("LessonComponent");
         } else {
-          this.data.nameChange('HomeComponent');
+          this.data.nameChange("HomeComponent");
         }
       });
     });
   }
 
   updateNextStartLesson(lastEndedPostLessons) {
-    let LessonArray = JSON.parse(localStorage.getItem('Lesson'));
+    let LessonArray = JSON.parse(localStorage.getItem("Lesson"));
     if (LessonArray === null) {
       LessonArray = [];
     }
 
     for (const lesson of lastEndedPostLessons) {
-      if ( !LessonArray.includes(lesson.lesson_id)) {
+      if (!LessonArray.includes(lesson.lesson_id)) {
         this.nextStartLesson = lesson;
         break;
       }
@@ -166,17 +174,16 @@ export class HomeComponent implements OnInit {
 
   loadSignInStatus() {
     this.wp.login().subscribe((user: any) => {
-      
-      if (user.mvuser_id !== undefined && user.mvuser_id !== '') {
-        localStorage.setItem('UserID', user.mvuser_id);
+      if (user.mvuser_id !== undefined && user.mvuser_id !== "") {
+        localStorage.setItem("UserID", user.mvuser_id);
         const value = JSON.parse(user.user_learn_data);
         // localStorage.setItem('Index', JSON.stringify(value.indexArray));
         // localStorage.setItem('Lesson', JSON.stringify(value.lessonArray));
         this.userLoggedIn = true;
         this.userName = user.mvuser_name;
-        localStorage.setItem('signInStatus', JSON.stringify(true));
+        localStorage.setItem("signInStatus", JSON.stringify(true));
       } else {
-        localStorage.removeItem('UserID');
+        localStorage.removeItem("UserID");
       }
     });
     this.wp.setUserLogin().subscribe((res: any) => {
@@ -186,11 +193,10 @@ export class HomeComponent implements OnInit {
   }
 
   greetingUser() {
-
-    if (this.userName !== '') {
-      return 'Keep going, ' + this.userName + '!';
+    if (this.userName !== "") {
+      return "Keep going, " + this.userName + "!";
     } else {
-      return 'Keep going!';
+      return "Keep going!";
     }
   }
 
@@ -199,7 +205,7 @@ export class HomeComponent implements OnInit {
       (data: any) => {
         this.posts = JSON.parse(data);
         this.data.dataChange(this.posts);
-        const tempIndex = JSON.parse(localStorage.getItem('LastLesson'));
+        const tempIndex = JSON.parse(localStorage.getItem("LastLesson"));
 
         let mainIndex: number;
         if (tempIndex === null) {
@@ -213,17 +219,17 @@ export class HomeComponent implements OnInit {
             }
           }
         }
-        this.completedLesson = JSON.parse(localStorage.getItem('Lesson'));
-        this.completedIndex = JSON.parse(localStorage.getItem('Index'));
+        this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
+        this.completedIndex = JSON.parse(localStorage.getItem("Index"));
         this.spinner = false;
       },
       err => {},
       () => {
         this.allComplete();
         this.route.queryParamMap.subscribe(params => {
-          const lessonID = params.get('lesson');
+          const lessonID = params.get("lesson");
           if (lessonID != null) {
-            this.data.nameChange('LessonComponent');
+            this.data.nameChange("LessonComponent");
           }
         });
       }
@@ -231,15 +237,14 @@ export class HomeComponent implements OnInit {
   }
 
   completedLessonNo(learnList: any) {
-
-    let CompletedLesson = JSON.parse(localStorage.getItem('Lesson'));
+    let CompletedLesson = JSON.parse(localStorage.getItem("Lesson"));
     let lessonNo = 0;
     if (CompletedLesson === null) {
       CompletedLesson = [];
     }
 
     for (const lesson of learnList.lesson) {
-      if ( CompletedLesson.includes(lesson.lesson_id)) {
+      if (CompletedLesson.includes(lesson.lesson_id)) {
         lessonNo++;
       }
     }
@@ -258,13 +263,13 @@ export class HomeComponent implements OnInit {
   }
 
   onClickIcon() {
-    this.data.nameChange('OptionsComponent');
+    this.data.nameChange("OptionsComponent");
   }
 
   onClickLesson(index: any, lesson: any, lessonTitle: any) {
-    this.data.eventEmitter('Lesson title', 'click', lessonTitle);
+    this.data.eventEmitter("Lesson title", "click", lessonTitle);
     this.data.lessonChange(index, lesson);
-    this.data.nameChange('LessonComponent');
+    this.data.nameChange("LessonComponent");
   }
 
   prerequisiteComplete(post: any) {
@@ -317,14 +322,14 @@ export class HomeComponent implements OnInit {
   }
 
   onClickSignIn(postID: any) {
-    localStorage.setItem('LastLesson', JSON.stringify(postID));
+    localStorage.setItem("LastLesson", JSON.stringify(postID));
   }
 
   onClickSignOut() {
-    localStorage.removeItem('signInStatus');
-    localStorage.removeItem('Index');
-    localStorage.removeItem('Lesson');
-    localStorage.removeItem('UserID');
+    localStorage.removeItem("signInStatus");
+    localStorage.removeItem("Index");
+    localStorage.removeItem("Lesson");
+    localStorage.removeItem("UserID");
     this.wp.logout().subscribe((data: any) => {
       // this.data.nameChange('AppComponent');
       window.location.href = this.logoutTo;
@@ -332,7 +337,7 @@ export class HomeComponent implements OnInit {
   }
 
   allComplete() {
-    CompletedTools = JSON.parse(localStorage.getItem('CompletedTools'));
+    CompletedTools = JSON.parse(localStorage.getItem("CompletedTools"));
     if (CompletedTools === null) {
       CompletedTools = [];
     }
@@ -361,7 +366,7 @@ export class HomeComponent implements OnInit {
         trueCount = 0;
       }
     }
-    localStorage.setItem('CompletedTools', JSON.stringify(CompletedTools));
+    localStorage.setItem("CompletedTools", JSON.stringify(CompletedTools));
   }
 
   slickInit(e) {
@@ -371,13 +376,15 @@ export class HomeComponent implements OnInit {
   breakpoint(e) {}
 
   afterChange(e) {
-    const dataValue = document.querySelector('.slick-center').getAttribute('data-learn-id');
+    const dataValue = document
+      .querySelector(".slick-center")
+      .getAttribute("data-learn-id");
     this.indexPost = dataValue;
   }
 
   beforeChange(e) {}
 
-  mouseWheelUpFunc(e)  {
+  mouseWheelUpFunc(e) {
     // console.log('up', e);
     e.slickGoTo(e.currentIndex - 1);
   }
@@ -403,7 +410,7 @@ export class HomeComponent implements OnInit {
   }
   */
 
- openSidebar() {
+  openSidebar() {
     this.isOpen = Math.floor(Math.random() * (999 - 100)) + 1;
     console.log(this.isOpen);
   }
@@ -411,5 +418,4 @@ export class HomeComponent implements OnInit {
   toggleSidebar() {
     this.menuOpened = !this.menuOpened;
   }
-
 }
