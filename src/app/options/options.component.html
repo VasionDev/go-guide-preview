@@ -1,4 +1,3 @@
-
 <!-- <header>
 
   <div class="challenge__member">
@@ -25,18 +24,18 @@
   </div>
 
   <div class="challenge__member--mobile">
-    <nav class="navbar navbar-default challenge__member--mobile--bg"> 
-      <div class="container-fluid"> 
-        <div class="navbar-header"> 
-          <button (click)="toggleSidebar()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+    <nav class="navbar navbar-default challenge__member--mobile--bg">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button (click)="toggleSidebar()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
             <img class="challenge__member--mobile--button-icon" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png" alt="menu">
           </button>
 
           <a class="navbar-brand challenge__member--mobile--brand">
             <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
-          </a> 
-        </div> 
-      </div> 
+          </a>
+        </div>
+      </div>
     </nav>
   </div>
 
@@ -44,13 +43,13 @@
 
 
 <!-- <ng-sidebar #sidebar [(opened)]="menuOpened" [(showBackdrop)]="menuOpened"> -->
-  <!-- <ng-sidebar #sidebar [(opened)]="openedIn">
+<!-- <ng-sidebar #sidebar [(opened)]="openedIn">
   <section class="side__menu">
     <div class="side__menu-container">
       <div class="side__menu-container--top">
         <ul class="side__menu-list">
           <li class="side__menu-items side__menu--colse"><a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a>
-           
+
           </li>
           <li class="side__menu-items" [class.active]="currentPage === 'experience'"><a (click)="onExperiencePage()" class="side__menu--links pointer">MY EXPERIENCE</a></li>
           <li class="side__menu-items" [class.active]="currentPage === ''"><a (click)="onHomePage()" class="side__menu--links pointer">TRAINING</a></li>
@@ -69,19 +68,72 @@
 </ng-sidebar> -->
 
 
-<section class="side__menu">
+<!-- <section class="side__menu">
   <div class="side__menu-container">
     <div class="side__menu-container--top">
       <ul class="side__menu-list">
-        <li class="side__menu-items side__menu--colse"><a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a></li>
+        <li class="side__menu-items side__menu--colse">
+          <a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a>
+        </li>
         <li class="side__menu-items" [class.active]="currentPage === ''"><a (click)="onHomePage()" class="side__menu--links pointer">Go Guide</a></li>
-        <!-- <li class="side__menu-items"><a (click)="onHomePage()" class="side__menu--links pointer">Better Ü</a></li> -->
+
         <li class="side__menu-items challenge_active"><a (click)="onInvite()" class="side__menu--links pointer">Challenge Friends</a></li>
         <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>
         <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log in</a></li>
         <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()" class="side__menu--links pointer">log out</a></li>
       </ul>
     </div>
+  </div>
+</section> -->
+
+
+<section class="side__menu">
+  <div class="side__menu-container">
+    <div class="side__menu-container--top">
+      <ul class="side__menu-list">
+        <li class="side__menu-items side__menu--colse">
+          <a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a>
+          <div class="btn-group" role="group">
+            <a href="#" class="dropdown-toggle member__lenguage-btn" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <span
+                [ngClass]=" (selectedLanguage === 'zh-hant' || selectedLanguage === 'zh-hans') ? 'flag-icon-chinese' : 'flag-icon-us' "
+                class="flag-icon">&nbsp;</span><i class="fal fa-angle-down member__lenguage-arrow"></i>
+            </a>
+            <ul class="dropdown-menu custom__dropdown-menu">
+              <li *ngFor="let language of languages">
+                <a (click)="onClickLanguage(language)"><img src="{{ getLanguageIcon(language) }}" alt="{{ language }}"
+                    class="member__language--icon">{{ getLanguageName(language) }}</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="side__menu-items side__menu-challenge-cat" [class.active]="currentPage === ''">
+          <a class="side__menu--links collapse-menu" role="button" data-toggle="collapse" data-parent="#accordion"
+            href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Go Guide</a>
+        </li>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body side__menu--collapse-body">
+            <ul class="side__menu--collapse-list">
+              <div *ngFor="let category of categories">
+                <li class="side__menu--collapse-item" [class.active]="isCategoryItemActive(category.catSlug)"><a
+                    class="side__menu--collapse-link"
+                    (click)="onCLickCategory(category.catSlug)">{{ category.catName }}</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <li class="side__menu-items challenge_active"><a (click)="onInvite()"
+            class="side__menu--links pointer">Challenge Friends</a></li>
+        <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>
+        <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log
+            in</a></li>
+        <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()"
+            class="side__menu--links pointer">log out</a></li>
+      </ul>
+    </div>
+
     <!-- <div class="side__menu-container--bottom">
       <ul class="side__menu-list">
         <li class="side__menu-items"><a (click)="onInvite()" class="side__menu--links pointer">Challenge Friends</a></li>
