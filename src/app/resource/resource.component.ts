@@ -79,4 +79,31 @@ export class ResourceComponent implements OnInit {
     this.router.navigate(['/']);
     this.data.nameChange('HomeComponent');
   }
+  
+  shareNavigatorAPI() {
+    let newVariable: any;
+
+    newVariable = window.navigator;
+    console.log(window.location.href);
+
+    if (newVariable && newVariable.share) {
+      // Web Share API is supported
+      console.log("Web Share API is supported");
+      newVariable
+        .share({
+          title: "Challenge Member",
+          text: "",
+          url: window.location.href
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+        })
+        .catch(err => {
+          console.log(`Couldn't share because of`, err.message);
+        });
+    } else {
+      // Fallback
+      console.log("Fallback");
+    }
+  }
 }

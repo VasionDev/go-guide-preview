@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   isOpen: any = true;
   logoutTo: any = "";
   homeParam = "";
+  currentAllLessonID = [];
 
   slideConfig = {
     slidesToShow: 1,
@@ -78,6 +79,8 @@ export class HomeComponent implements OnInit {
       let allLength = data.length;
       let totalLesson = 0;
       let lastEndedPostLessons = [];
+      this.currentAllLessonID = [];
+      let intersection = [];
       while (allLength > 0) {
         totalLesson = totalLesson + data[--allLength].lesson.length;
       }
@@ -85,6 +88,18 @@ export class HomeComponent implements OnInit {
       const tempIndex = JSON.parse(localStorage.getItem("LastLesson"));
       this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
       let mainIndex: number;
+
+      this.posts.forEach(element => {
+        let arrayCopy = element.lesson;
+        arrayCopy.forEach(element => {
+          // console.log(element.lesson_id);
+          if(!this.currentAllLessonID.includes(element.lesson_id)) {
+            this.currentAllLessonID.push(element.lesson_id);
+          }
+        });
+      });
+
+      intersection = this.completedLesson.filter(value => this.currentAllLessonID.includes(value));
 
       if (tempIndex === null) {
         /*this.indexPost = this.posts[0].learnID;
@@ -128,7 +143,7 @@ export class HomeComponent implements OnInit {
       // console.log(this.completedLesson.length, totalLesson);
       if (this.completedLesson !== null) {
         this.completePercent = (
-          (100 * this.completedLesson.length) /
+          (100 * intersection.length) /
           totalLesson
         ).toFixed();
       } else {

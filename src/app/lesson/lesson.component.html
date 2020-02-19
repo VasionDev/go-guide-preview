@@ -19,13 +19,13 @@
 <header>
   <!-- Desktop Menu -->
   <div class="challenge__member">
-    <nav class="navbar navbar-default challenge__member--custom-navbar">
+    <!-- <nav class="navbar navbar-default challenge__member--custom-navbar">
       <div class="container">
         <div class="container-fluid challenge__member--nav-container">
           <div class="navbar-header">
             <a style="cursor: pointer;" class="navbar-brand challenge__member--custom-navbar-brand" (click)="onClickLeft()">
               <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
-              <!-- <i class="fal fa-arrow-left"></i> -->
+              
             </a>
           </div>
           <div class="back__icon__desktop">
@@ -42,6 +42,29 @@
             </ul>
           </div>
         </div>
+      </div>
+    </nav> -->
+    <nav class="navbar navbar-default challenge__member--custom-navbar">
+      <div class="container challenge__member--custom-nav">
+
+        <div class="challenge__member--menu">
+          <button style="border: none;" (click)="onClickLeft()" type="button" class="challenge__member--mobile--button"> 
+            <i style="color: #000" class="fal fa-home"></i>
+          </button>
+        </div>
+
+        <div class="navbar-brand-logo text-center">
+          <a class=" challenge__member--custom-navbar-brand pointer">
+            <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+          </a>
+        </div>
+
+        <div class="challenge__member--share">
+          <button style="border: none;" (click)="shareNavigatorAPI()" type="button" class="challenge__member--mobile--button share-btn"> 
+            <i style="color: #000" class="fal fa-upload"></i>
+          </button>
+        </div>
+
       </div>
     </nav>
   </div>

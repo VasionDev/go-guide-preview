@@ -1,13 +1,13 @@
 <ng-sidebar-container style="height: 100vh;">
   <!-- <app-options [openedIn]="isOpen"></app-options> -->
-  <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened">
+  <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened" [closeOnClickOutside]=true>
     <app-options></app-options>
   </ng-sidebar>
   <div ng-sidebar-content>
 
     <header>
       <div class="challenge__member">
-        <nav class="navbar navbar-default challenge__member--custom-navbar">
+        <!-- <nav class="navbar navbar-default challenge__member--custom-navbar">
           <div class="container">
             <div class="container-fluid challenge__member--nav-container">
               <div class="navbar-header">
@@ -27,6 +27,22 @@
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </nav> -->
+        <nav class="navbar navbar-default challenge__member--custom-navbar">
+          <div class="container challenge__member--custom-nav">
+    
+            <div class="challenge__member--menu">
+              <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+                <img class="challenge__member--desktop--button-icon" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png" alt="menu">
+              </button> 
+            </div>
+    
+            <div class="navbar-brand-logo text-center">
+              <a class=" challenge__member--custom-navbar-brand pointer">
+                <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+              </a>
             </div>
           </div>
         </nav>
@@ -77,13 +93,13 @@
                     <span class="compleate__text--sub-text pointer"
                       (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
                       routerLink='/'
-                      [queryParams]="{module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">{{nextStartLesson.ques}}</span>
+                      [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">{{nextStartLesson.ques}}</span>
                   </h3>
 
                   <button class="ch-btn-primary-journey compleate__text--continue"
                     (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
                     routerLink='/'
-                    [queryParams]="{module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">CONTINUE
+                    [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">CONTINUE
                     Journey</button>
                 </div>
               </ng-template>
