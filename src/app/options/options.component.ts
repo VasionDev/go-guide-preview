@@ -37,6 +37,7 @@ export class OptionsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // console.log(this.languages);
     this.logoutTo = apiUrl;
     this.openedIn = false;
     if (JSON.parse(localStorage.getItem("signInStatus")) !== null) {
@@ -65,6 +66,7 @@ export class OptionsComponent implements OnInit {
     });
 
     this.data.currentLanguages.subscribe((data: any) => {
+      console.log(data);
       if (data) {
         this.languages = data;
       }
@@ -154,6 +156,9 @@ export class OptionsComponent implements OnInit {
     if (language === "zh-hans") {
       languageName = "Chinese (Simplified)";
     }
+    if (language === "es") {
+      languageName = "Spanish";
+    }
     return languageName;
   }
 
@@ -184,7 +189,8 @@ export class OptionsComponent implements OnInit {
     });
 
     this.data.dataChange(day10Guide);
-    if (language === "zh-hant" || language === "zh-hans") {
+    console.log(language);
+    if (language === "zh-hant" || language === "zh-hans" || language === "es") {
       this.router.navigate(["/"], { queryParams: { lang: language } });
     } else {
       this.router.navigate(["/"]);

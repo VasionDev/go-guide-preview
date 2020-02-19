@@ -101,7 +101,7 @@
                 class="flag-icon">&nbsp;</span><i class="fal fa-angle-down member__lenguage-arrow"></i>
             </a>
             <ul class="dropdown-menu custom__dropdown-menu">
-              <li *ngFor="let language of languages">
+              <li closeSidebar class="pointer" *ngFor="let language of languages">
                 <a (click)="onClickLanguage(language)"><img src="{{ getLanguageIcon(language) }}" alt="{{ language }}"
                     class="member__language--icon">{{ getLanguageName(language) }}</a>
               </li>
@@ -116,7 +116,7 @@
           <div class="panel-body side__menu--collapse-body">
             <ul class="side__menu--collapse-list">
               <div *ngFor="let category of categories">
-                <li class="side__menu--collapse-item" [class.active]="isCategoryItemActive(category.catSlug)"><a
+                <li closeSidebar class="side__menu--collapse-item pointer" [class.active]="isCategoryItemActive(category.catSlug)"><a
                     class="side__menu--collapse-link"
                     (click)="onCLickCategory(category.catSlug)">{{ category.catName }}</a>
                 </li>

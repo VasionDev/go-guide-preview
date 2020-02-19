@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
       });
 
       intersection = this.completedLesson.filter(value => this.currentAllLessonID.includes(value));
-
+      this.completedLesson = intersection;
       if (tempIndex === null) {
         /*this.indexPost = this.posts[0].learnID;
         lastEndedPostLessons = this.posts[0].lesson;

@@ -1687,6 +1687,7 @@ a:hover {
   background-color: #131313;
   height: 100vh;
   /* position: relative; */
+  overflow: hidden;
 }
 
 .side__menu-list {
@@ -2131,4 +2132,13 @@ collapse-menu {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.challenge__member--mobile--button {
+  background-color: transparent;
+}
+
+.member__lenguage-arrow {
+  font-size: 16px;
+  margin-top: 5px;
 }
