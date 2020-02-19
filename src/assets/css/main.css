@@ -41,7 +41,8 @@ section {
   height: 50%;
 }
 
-.ch-jumbo-acu1, h1 {
+.ch-jumbo-acu1,
+h1 {
   font-family: acumin-pro, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -50,7 +51,8 @@ section {
   letter-spacing: -0.05em;
 }
 
-.ch-jumbo-acu2, h2 {
+.ch-jumbo-acu2,
+h2 {
   font-family: acumin-pro, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -59,7 +61,8 @@ section {
   letter-spacing: -0.05em;
 }
 
-.ch-jumbo-acu3, h3 {
+.ch-jumbo-acu3,
+h3 {
   font-family: acumin-pro, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -68,7 +71,8 @@ section {
   letter-spacing: -0.05em;
 }
 
-.ch-jumbo-acu4, h4 {
+.ch-jumbo-acu4,
+h4 {
   font-family: acumin-pro, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -77,7 +81,8 @@ section {
   letter-spacing: -0.05em;
 }
 
-.ch-jumbo-rift1, h5 {
+.ch-jumbo-rift1,
+h5 {
   font-family: rift, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -86,7 +91,8 @@ section {
   letter-spacing: -0.05em;
 }
 
-.ch-jumbo-rift2, h6 {
+.ch-jumbo-rift2,
+h6 {
   font-family: rift, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -393,10 +399,12 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
 .ch-btn-invite:hover {
   color: #fff;
   text-decoration: none;
 }
+
 .ch-btn-success:hover {
   cursor: pointer;
   background-color: #3aba4f;
@@ -660,14 +668,17 @@ section {
   .challenge__member {
     display: none;
   }
+
   .challenge__member--mobile {
     display: block;
   }
+
   .challenge__member--mobile--bg {
     background-color: #131313;
     border: none;
     margin-bottom: -1px;
   }
+
   .challenge__member--mobile--button {
     position: absolute;
     border: none;
@@ -685,16 +696,20 @@ section {
     height: 24px;
     width: 24px;
   }
-  .challenge__member--mobile--button:hover, .challenge__member--mobile--button:focus {
+
+  .challenge__member--mobile--button:hover,
+  .challenge__member--mobile--button:focus {
     background-color: transparent !important;
     cursor: pointer;
   }
+
   .challenge__member--mobile--brand {
     float: unset;
     display: block;
     text-align: center;
     padding: 13px 10px;
   }
+
   .challenge__member--mobile--brand--img {
     display: inline-block !important;
     height: 28px;
@@ -753,7 +768,7 @@ section {
   border-radius: 5px;
   padding: 14px 16px;
   margin: 0 10px;
-  box-shadow: 0 12px 24px rgba(0,0,0,.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .1);
 }
 
 .challenge__stage-content--title {
@@ -865,7 +880,9 @@ section {
   padding: 5px 0;
 }
 
-.chellenge__compleate--details-nav ul li a:hover, .chellenge__compleate--details-nav ul li a:active, .chellenge__compleate--details-nav ul li a:focus {
+.chellenge__compleate--details-nav ul li a:hover,
+.chellenge__compleate--details-nav ul li a:active,
+.chellenge__compleate--details-nav ul li a:focus {
   text-decoration: none;
 }
 
@@ -923,9 +940,11 @@ section {
   .chellenge__compleate--details-nav ul li {
     width: 30%;
   }
+
   .chellenge__compleate--details-resourcea {
     min-height: 50vh;
   }
+
   .chellenge__compleate--details-resourcea ul li {
     background-position: 97%;
     background-size: 5%;
@@ -1006,9 +1025,11 @@ section {
     margin: 0 10px;
     width: auto;
   }
+
   .challenge__c__modal--content .popup-body {
     padding: 30px 20px;
   }
+
   .challenge__c__modal--content .popup-footer {
     padding-top: 40px;
   }
@@ -1032,7 +1053,7 @@ section {
 
 @media (max-width: 767px) {
 
-  .section__challenge__compleate .slick-list.draggable{
+  .section__challenge__compleate .slick-list.draggable {
 
     max-width: 100%;
   }
@@ -1047,7 +1068,7 @@ p.ch-details-text-color p:last-child {
   display: none;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
@@ -1123,10 +1144,11 @@ p.ch-details-text-color p:last-child {
     padding: 56.25% 0 0 0 !important;
     max-width: 100%;
   }
+
   .chellenge__compleate--video-content {
     width: 100%;
   }
-  
+
   .chellenge__compleate--video-content.for-video-only .w-bottom-bar {
     bottom: 0;
   }
@@ -1134,8 +1156,8 @@ p.ch-details-text-color p:last-child {
 
 
 .chellenge__videobox__container {
-	max-width: 620px;
-	margin: 0 auto;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 
@@ -1170,11 +1192,11 @@ p.ch-details-text-color p:last-child {
   }
 
   .slick-track .challenge__stage-content.slick-slide {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .section__challenge__compleate .slick-list.draggable {
-      padding: 0 25px !important;
+    padding: 0 25px !important;
   }
 }
 
@@ -1187,7 +1209,7 @@ p.ch-details-text-color p:last-child {
 .slick-next-round.slick-arrow,
 .slick-prev-round.slick-arrow {
   border-radius: 50%;
-  
+
   background-color: #FFF;
   color: #2152FF;
   border: none;
@@ -1195,44 +1217,43 @@ p.ch-details-text-color p:last-child {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  
-  box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -o-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
+
   /*box-shadow:  0 0 5px 2px rgba(0,0,0,.1);
   -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
   -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
   -o-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);*/
-  
+
   width: 34px;
   height: 34px;
-  
+
   position: absolute;
   top: 50%;
   display: block;
   -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 
-    cursor: pointer;
-    outline: none;
-  
+  cursor: pointer;
+  outline: none;
+
   font-size: 24px;
-    line-height: 0;
-    opacity: 1;
-  
-  
+  line-height: 0;
+  opacity: 1;
+
+
 }
 
 
 .slick-prev-round:hover,
 .slick-prev-round:focus,
 .slick-next-round:hover,
-.slick-next-round:focus
-{
-    outline: none;
+.slick-next-round:focus {
+  outline: none;
 }
 
 
@@ -1240,6 +1261,7 @@ p.ch-details-text-color p:last-child {
   left: 5px;
   z-index: 111111;
 }
+
 .slick-next-round {
   right: 5px;
 }
@@ -1250,7 +1272,7 @@ p.ch-details-text-color p:last-child {
   opacity: .50;
   color: #ccc;
   display: none !important;
-  
+
 }
 
 
@@ -1280,7 +1302,7 @@ p.ch-details-text-color p:last-child {
   width: 90%;
 }
 
-a{
+a {
   color: #2152FF;
 }
 
@@ -1293,7 +1315,8 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
-.chellenge__compleate--details--text ol, .chellenge__compleate--details--text ul {
+.chellenge__compleate--details--text ol,
+.chellenge__compleate--details--text ul {
   padding-left: 15px;
 }
 
@@ -1302,14 +1325,14 @@ a:hover {
   margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 1600px) and (min-width: 1250px)  {
+@media only screen and (max-width: 1600px) and (min-width: 1250px) {
 
   .section__challenge__compleate .slick-list.draggable {
     min-width: 35%;
   }
 }
 
-@media only screen and (max-width: 1250px) and (min-width: 767px)  {
+@media only screen and (max-width: 1250px) and (min-width: 767px) {
 
   .section__challenge__compleate .slick-list.draggable {
     min-width: 60%;
@@ -1378,9 +1401,9 @@ a:hover {
   position: relative;
   line-height: 3;
   overflow: hidden;
-  }
-  
-  .select::after {
+}
+
+.select::after {
   content: url(https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/chevron-down.svg);
   position: absolute;
   top: 0;
@@ -1391,14 +1414,14 @@ a:hover {
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
   transition: .25s all ease;
+}
+
+@-moz-document url-prefix() {
+  .select::after {
+    top: 0;
+    right: 15px;
   }
-  
-  @-moz-document url-prefix() {
-    .select::after {
-      top: 0;
-      right: 15px;
-    }
-  }
+}
 
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
 .form__radio {
@@ -1456,7 +1479,7 @@ a:hover {
   opacity: 0;
 }
 
-.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+.form__radio-input:checked~.form__radio-label .form__radio-button::after {
   opacity: 1;
 }
 
@@ -1648,7 +1671,7 @@ a:hover {
   padding-top: 10px;
   color: #000;
 }
-  
+
 .challenge__member-textarea:focus {
   outline: unset;
   border: unset;
@@ -1707,7 +1730,8 @@ a:hover {
   display: block;
 }
 
-.side__menu--links:hover, .side__menu--links:focus {
+.side__menu--links:hover,
+.side__menu--links:focus {
   text-decoration: none;
   color: #ffffff;
 }
@@ -1717,7 +1741,8 @@ a:hover {
   text-decoration: none;
 }
 
-.side__menu--colse-icon:hover, .side__menu--colse-icon:focus {
+.side__menu--colse-icon:hover,
+.side__menu--colse-icon:focus {
   text-decoration: none;
   color: #ffffff;
   cursor: pointer;
@@ -1726,12 +1751,15 @@ a:hover {
 .flag-icon-us {
   background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/us.svg);
 }
+
 .flag-icon-ca {
   background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/ca.svg);
 }
+
 .flag-icon-au {
   background-image: url(https://challenge.com/wp-content/themes/pruvit-challenge/flags/4x3/au.svg);
 }
+
 .flag-icon {
   background-size: contain;
   background-position: 50%;
@@ -1759,7 +1787,9 @@ a:hover {
   padding: 30px 0;
 }
 
-.invite__friend-btn, .invite__friend-btn:link, .invite__friend-btn:visited {
+.invite__friend-btn,
+.invite__friend-btn:link,
+.invite__friend-btn:visited {
   /* max-width: 335px; */
   width: 100%;
   font-family: rift, sans-serif;
@@ -1777,7 +1807,12 @@ a:hover {
   display: inline-block;
 }
 
-.invite__friend-btn:hover, .invite__friend-btn:focus, .invite__friend-btn:link:hover, .invite__friend-btn:link:focus, .invite__friend-btn:visited:hover, .invite__friend-btn:visited:focus {
+.invite__friend-btn:hover,
+.invite__friend-btn:focus,
+.invite__friend-btn:link:hover,
+.invite__friend-btn:link:focus,
+.invite__friend-btn:visited:hover,
+.invite__friend-btn:visited:focus {
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -1834,11 +1869,13 @@ a:hover {
 }
 
 @media (max-width: 440px) {
+
   .ch-btn-success,
   .ch-btn-nextlesson,
   .ch-btn-invite {
     max-width: unset;
   }
+
   .lesson-banner-img {
     height: 250px;
   }
@@ -1852,22 +1889,23 @@ a:hover {
 .side__menu--colse {
   padding: 11px 20px;
 }
- 
-.side__menu-items:hover, .side__menu-items.active {
+
+.side__menu-items:hover,
+.side__menu-items.active {
   background: rgba(250, 250, 250, 0.1);
 }
-  
+
 .challenge__member--mobile--brand--img {
   transform: translateY(-2px);
 }
-  
+
 .ch-member-alert {
   padding-top: 8px;
   max-width: 300px;
   width: 100%;
   margin: 0 auto -7px;
 }
-  
+
 .ch-member-alert .alert {
   font-size: 16px;
   font-family: acumin-pro, sans-serif;
@@ -1877,13 +1915,13 @@ a:hover {
   border-radius: 43px;
   padding: 7px 0;
 }
-  
+
 .ch-member-panding {
   color: #AF8C73;
   background-color: #FFDCC4;
   border: 1px solid #FCC197;
 }
-  
+
 .ch-member-approved {
   color: #1CB522;
   background: rgba(191, 237, 210, 0.5);
@@ -1895,7 +1933,7 @@ a:hover {
   background: -o-linear-gradient(left, #FF6580 -12.86%, #FC9C7A 129.29%);
   background: linear-gradient(90deg, #FF6580 -12.86%, #FC9C7A 129.29%);
 }
-  
+
 .challenge_active:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1))), -webkit-gradient(linear, left top, right top, color-stop(-12.86%, #FF6580), color-stop(129.29%, #FC9C7A));
   background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), -o-linear-gradient(left, #FF6580 -12.86%, #FC9C7A 129.29%);
@@ -1912,3 +1950,142 @@ a:hover {
   padding: 10px;
 }
 
+/*  ------------------ language -------------------------- */
+
+.side__menu--colse {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flag-icon-us {
+  background-image: url(https://image.flaticon.com/icons/svg/330/330425.svg);
+  background-repeat: no-repeat;
+}
+
+.flag-icon-chinese {
+  background-image: url(https://image.flaticon.com/icons/svg/2151/2151303.svg);
+  background-repeat: no-repeat;
+}
+
+.member__lenguage-btn {
+  border: none;
+  color: #fff;
+  padding-right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.member__lenguage-btn:active,
+.member__lenguage-btn:hover,
+.member__lenguage-btn:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.custom__dropdown-menu {
+  right: -25px;
+  min-width: 120px;
+  left: unset;
+  background-color: #131313;
+  min-height: 300px;
+  text-align: right;
+}
+
+.custom__dropdown-menu>li {
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+  text-align: left;
+}
+
+
+.custom__dropdown-menu>li>a {
+  color: #ffffff;
+  font-family: rift, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 35px;
+  padding: 5.5px 25px;
+}
+
+.member__language--icon {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.member__lenguage-arrow {
+  font-size: 27px;
+}
+
+
+/*---------------- sidemenu ------------*/
+
+collapse-menu {
+  position: relative;
+}
+
+.collapse-menu::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 15px;
+  background-color: #ffffff;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin-right: 15px;
+  -webkit-mask-image: url(../img/chevron-down.svg);
+  -webkit-mask-size: cover;
+  mask-image: url(../img/chevron-down.svg);
+  mask-size: cover;
+  transition: all .1s;
+}
+
+.collapse-menu[aria-expanded="false"]::after {
+  transform: rotate(0deg);
+}
+
+.collapse-menu[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.side__menu--collapse-body {
+  padding: 0;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+}
+
+.side__menu--collapse-list {
+  list-style: none;
+}
+
+.side__menu--collapse-item {
+  padding: 5px 0 5px 30px;
+  position: relative;
+}
+
+.side__menu--collapse-item:hover,
+.side__menu--collapse-item.active {
+  background: rgba(250, 250, 250, 0.1);
+}
+
+.side__menu--collapse-link {
+  color: #ffffff;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 35px;
+  text-decoration: none;
+  display: block;
+}
+
+.side__menu--collapse-link:hover,
+.side__menu--collapse-link:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+
+.side__menu-challenge-cat {
+  position: relative;
+}
