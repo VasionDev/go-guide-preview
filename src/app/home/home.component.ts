@@ -93,13 +93,15 @@ export class HomeComponent implements OnInit {
         let arrayCopy = element.lesson;
         arrayCopy.forEach(element => {
           // console.log(element.lesson_id);
-          if(!this.currentAllLessonID.includes(element.lesson_id)) {
+          if (!this.currentAllLessonID.includes(element.lesson_id)) {
             this.currentAllLessonID.push(element.lesson_id);
           }
         });
       });
 
-      intersection = this.completedLesson.filter(value => this.currentAllLessonID.includes(value));
+      intersection = this.completedLesson.filter(value =>
+        this.currentAllLessonID.includes(value)
+      );
       this.completedLesson = intersection;
       if (tempIndex === null) {
         /*this.indexPost = this.posts[0].learnID;

@@ -32,16 +32,20 @@
         </nav> -->
         <nav class="navbar navbar-default challenge__member--custom-navbar">
           <div class="container challenge__member--custom-nav">
-    
+
             <div class="challenge__member--menu">
-              <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
-                <img class="challenge__member--desktop--button-icon" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png" alt="menu">
-              </button> 
+              <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button"
+                data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                <img class="challenge__member--desktop--button-icon"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png"
+                  alt="menu">
+              </button>
             </div>
-    
+
             <div class="navbar-brand-logo text-center">
               <a class=" challenge__member--custom-navbar-brand pointer">
-                <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+                <img class="product-page-logo" alt="Brand"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
               </a>
             </div>
           </div>
@@ -141,9 +145,16 @@
 
                 <div style="text-align: center;" class="challenge__stage-details-info"
                   (click)="slickModal.slickGoTo(slNo)"
-                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post)">
+                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post) && post.active_smartship !== 'on' ">
                   <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">Tool is not available for
                     current user</h1>
+                </div>
+
+                <div style="text-align: center;" class="challenge__stage-details-info"
+                  (click)="slickModal.slickGoTo(slNo)"
+                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post) && post.active_smartship === 'on'">
+                  <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">This guide requires:
+                    Active Smartship</h1>
                 </div>
 
                 <!-- <ng-template #lessonStage> -->
