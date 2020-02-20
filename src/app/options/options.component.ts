@@ -169,7 +169,7 @@ export class OptionsComponent implements OnInit {
     if (language === "zh-hant" || language === "zh-hans") {
       languageFlag = "https://image.flaticon.com/icons/svg/2151/2151303.svg";
     } else if (language === "es") {
-      languageFlag = "https://image.flaticon.com/icons/svg/940/940226.svg";
+      languageFlag = "https://image.flaticon.com/icons/svg/206/206600.svg";
     } else {
       languageFlag = "https://image.flaticon.com/icons/svg/330/330425.svg";
     }
