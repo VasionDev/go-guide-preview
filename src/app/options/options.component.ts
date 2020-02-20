@@ -66,7 +66,6 @@ export class OptionsComponent implements OnInit {
     });
 
     this.data.currentLanguages.subscribe((data: any) => {
-      console.log(data);
       if (data) {
         this.languages = data;
       }
@@ -85,18 +84,21 @@ export class OptionsComponent implements OnInit {
 
   makeCategoryWithLanguages(postData: any) {
     this.categories = [];
-    postData.forEach((post: any) => {
-      if (post.hasOwnProperty("category")) {
-        post.category.forEach((category: any) => {
-          if (!this.categories.some(item => item.catSlug === category.slug)) {
-            this.categories.push({
-              catName: category.name,
-              catSlug: category.slug
-            });
-          }
-        });
-      }
-    });
+
+    if (postData !== null) {
+      postData.forEach((post: any) => {
+        if (post.hasOwnProperty("category")) {
+          post.category.forEach((category: any) => {
+            if (!this.categories.some(item => item.catSlug === category.slug)) {
+              this.categories.push({
+                catName: category.name,
+                catSlug: category.slug
+              });
+            }
+          });
+        }
+      });
+    }
     this.categories.forEach((category: any) => {
       if (category.catSlug.startsWith("10-day-guide")) {
         this.selectedCategory = category.catSlug;
@@ -166,10 +168,24 @@ export class OptionsComponent implements OnInit {
     let languageFlag = "";
     if (language === "zh-hant" || language === "zh-hans") {
       languageFlag = "https://image.flaticon.com/icons/svg/2151/2151303.svg";
+    } else if (language === "es") {
+      languageFlag = "https://image.flaticon.com/icons/svg/940/940226.svg";
     } else {
       languageFlag = "https://image.flaticon.com/icons/svg/330/330425.svg";
     }
     return languageFlag;
+  }
+
+  getFlagIcon(language: any) {
+    let iconName = "";
+    if (language === "zh-hant" || language === "zh-hans") {
+      iconName = "flag-icon-chinese";
+    } else if (language === "es") {
+      iconName = "flag-icon-spanish";
+    } else {
+      iconName = "flag-icon-us";
+    }
+    return iconName;
   }
 
   onClickLanguage(language: any) {
@@ -178,15 +194,17 @@ export class OptionsComponent implements OnInit {
     this.makeCategoryWithLanguages(postData);
 
     const day10Guide = [];
-    postData.forEach((post: any) => {
-      if (post.hasOwnProperty("category")) {
-        post.category.forEach((category: any) => {
-          if (category.slug.startsWith("10-day-guide")) {
-            day10Guide.push(post);
-          }
-        });
-      }
-    });
+    if (postData !== null) {
+      postData.forEach((post: any) => {
+        if (post.hasOwnProperty("category")) {
+          post.category.forEach((category: any) => {
+            if (category.slug.startsWith("10-day-guide")) {
+              day10Guide.push(post);
+            }
+          });
+        }
+      });
+    }
 
     this.data.dataChange(day10Guide);
     console.log(language);

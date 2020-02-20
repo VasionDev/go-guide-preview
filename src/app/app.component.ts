@@ -92,8 +92,8 @@ export class AppComponent implements OnInit {
 
         this.subscribeLessons();
       } else {
-        // window.location.href = this.redirectUrl;
-        this.subscribeLessons();
+        window.location.href = this.redirectUrl;
+        // this.subscribeLessons();
       }
     });
   }

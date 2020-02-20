@@ -1968,6 +1968,11 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.flag-icon-spanish {
+  background-image: url(https://image.flaticon.com/icons/svg/206/206600.svg);
+  background-repeat: no-repeat;
+}
+
 .member__lenguage-btn {
   border: none;
   color: #fff;
