@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   logoutTo: any = "";
   homeParam = "";
   currentAllLessonID = [];
+  currentAllLearnID = [];
 
   slideConfig = {
     slidesToShow: 1,
@@ -80,17 +81,27 @@ export class HomeComponent implements OnInit {
       let totalLesson = 0;
       let lastEndedPostLessons = [];
       this.currentAllLessonID = [];
+      this.currentAllLearnID = [];
+      let intersectionLessonID = [];
+      let intersectionLearnID = [];
       let intersection = [];
       while (allLength > 0) {
         totalLesson = totalLesson + data[--allLength].lesson.length;
       }
 
+      localStorage.removeItem("LastLesson");
       const tempIndex = JSON.parse(localStorage.getItem("LastLesson"));
+      this.completedIndex = JSON.parse(localStorage.getItem("Index"));
       this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
       let mainIndex: number;
 
       this.posts.forEach(element => {
         let arrayCopy = element.lesson;
+
+        if (!this.currentAllLearnID.includes(element.learnID)) {
+          this.currentAllLearnID.push(element.learnID);
+        }
+
         arrayCopy.forEach(element => {
           // console.log(element.lesson_id);
           if (!this.currentAllLessonID.includes(element.lesson_id)) {
@@ -99,10 +110,16 @@ export class HomeComponent implements OnInit {
         });
       });
 
-      intersection = this.completedLesson.filter(value =>
+      intersectionLessonID = this.completedLesson.filter(value =>
         this.currentAllLessonID.includes(value)
       );
-      this.completedLesson = intersection;
+      intersectionLearnID = this.completedIndex.filter(value =>
+        this.currentAllLearnID.includes(value)
+      );
+
+      this.completedIndex = intersectionLearnID;
+      this.completedLesson = intersectionLessonID;
+
       if (tempIndex === null) {
         /*this.indexPost = this.posts[0].learnID;
         lastEndedPostLessons = this.posts[0].lesson;
@@ -141,7 +158,7 @@ export class HomeComponent implements OnInit {
 
       this.updateNextStartLesson(lastEndedPostLessons);
       // this.completedLesson = JSON.parse(localStorage.getItem('Lesson'));
-      this.completedIndex = JSON.parse(localStorage.getItem("Index"));
+
       // console.log(this.completedLesson.length, totalLesson);
       if (this.completedLesson !== null) {
         this.completePercent = (
