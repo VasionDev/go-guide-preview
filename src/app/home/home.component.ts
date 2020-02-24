@@ -162,7 +162,7 @@ export class HomeComponent implements OnInit {
       // console.log(this.completedLesson.length, totalLesson);
       if (this.completedLesson !== null) {
         this.completePercent = (
-          (100 * intersection.length) /
+          (100 * this.completedLesson.length) /
           totalLesson
         ).toFixed();
       } else {
