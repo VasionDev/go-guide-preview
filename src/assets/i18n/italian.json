@@ -1,0 +1,22 @@
+{
+  "home": {
+    "stepsCompleted": "Passaggi completati",
+    "completed": "Completato",
+    "nextUpIs": "Il seguente è",
+    "continueJourney": "Continuare il viaggio",
+    "keepGoing": "Continuare"
+  },
+  "category": {
+    "logOut": "Logout",
+    "completed": "Completato"
+  },
+  "lesson": {
+    "continueJourney": "Continuare il viaggio",
+    "overview": "Panoramica",
+    "resources": "Risorse",
+    "stepsCompleted": "Tutti i passaggi sono completi"
+  },
+  "options": {
+    "logOut": "Logout"
+  }
+}

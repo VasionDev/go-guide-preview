@@ -2,6 +2,7 @@ import { DataService } from "./../services/data.service";
 import { Component, OnInit } from "@angular/core";
 import { WordpressService } from "../services/wordpress.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 
 let CompletedTools = [];
 let prerequisites = [];
@@ -62,7 +63,8 @@ export class HomeComponent implements OnInit {
     private data: DataService,
     private wp: WordpressService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -171,6 +173,11 @@ export class HomeComponent implements OnInit {
       this.allComplete();
       this.route.queryParamMap.subscribe(params => {
         this.homeParam = params.get("lang");
+        if (this.homeParam === null) {
+          this.translate.use("en");
+        } else {
+          this.translate.use(this.homeParam);
+        }
 
         const pageName = params.get("page");
         const expLessonID = params.get("explesson");
@@ -227,10 +234,11 @@ export class HomeComponent implements OnInit {
   }
 
   greetingUser() {
+    const translation = this.translate.instant("home");
     if (this.userName !== "") {
-      return "Keep going, " + this.userName + "!";
+      return "" + translation.keepGoing + ", " + this.userName + "!";
     } else {
-      return "Keep going!";
+      return "" + translation.keepGoing + "!";
     }
   }
 

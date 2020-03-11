@@ -1,14 +1,14 @@
 <!-- Complete Modal -->
 <jw-modal id="lesson-modal" class="challenge__c__modal">
   <div class="challenge__c__modal--content">
-    <header class="popup-container popup-teal"> 
+    <header class="popup-container popup-teal">
       <span class="popup-button popup-display-topright">
         <span (click)="onClickLeft()" class="popup-display-topright-text">&times;</span>
       </span>
       <h2>&nbsp;</h2>
     </header>
     <div class="popup-container popup-body">
-      <h3 class="ch-jumbo-acu3 primary-color">Congratulations, you just finished {{completedToolName}}.  🎉 </h3>
+      <h3 class="ch-jumbo-acu3 primary-color">Congratulations, you just finished {{completedToolName}}. 🎉 </h3>
     </div>
     <footer class="popup-container popup-footer">
       <button class="ch-btn-success-journey" (click)="onClickLeft()">CONTINUE Journey</button>
@@ -25,13 +25,13 @@
           <div class="navbar-header">
             <a style="cursor: pointer;" class="navbar-brand challenge__member--custom-navbar-brand" (click)="onClickLeft()">
               <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
-              
+
             </a>
           </div>
           <div class="back__icon__desktop">
-            <a (click)="onClickLeft()" class="back__icon pointer"> 
+            <a (click)="onClickLeft()" class="back__icon pointer">
               <i style="color: #000;" class="fal fa-arrow-left"></i>
-            </a> 
+            </a>
           </div>
           <div class="navbar-links">
             <ul class="product-page-links">
@@ -48,19 +48,21 @@
       <div class="container challenge__member--custom-nav">
 
         <div class="challenge__member--menu">
-          <button style="border: none;" (click)="onClickLeft()" type="button" class="challenge__member--mobile--button"> 
+          <button style="border: none;" (click)="onClickLeft()" type="button" class="challenge__member--mobile--button">
             <i style="color: #000" class="fal fa-home"></i>
           </button>
         </div>
 
         <div class="navbar-brand-logo text-center">
           <a class=" challenge__member--custom-navbar-brand pointer">
-            <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+            <img class="product-page-logo" alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
           </a>
         </div>
 
         <div class="challenge__member--share">
-          <button style="border: none;" (click)="shareNavigatorAPI()" type="button" class="challenge__member--mobile--button share-btn"> 
+          <button style="border: none;" (click)="shareNavigatorAPI()" type="button"
+            class="challenge__member--mobile--button share-btn">
             <i style="color: #000" class="fal fa-upload"></i>
           </button>
         </div>
@@ -72,21 +74,22 @@
 
   <!-- Mobile Menu -->
   <div class="challenge__member--mobile">
-    <nav class="navbar navbar-default challenge__member--mobile--bg"> 
-      <div class="container-fluid"> 
-        <div class="navbar-header"> 
-          <button (click)="onClickLeft()" type="button" class="challenge__member--mobile--button"> 
+    <nav class="navbar navbar-default challenge__member--mobile--bg">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button (click)="onClickLeft()" type="button" class="challenge__member--mobile--button">
             <i style="color: #fff" class="fal fa-home"></i>
-          </button> 
+          </button>
           <a class="navbar-brand challenge__member--mobile--brand">
-            <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+            <img class="challenge__member--mobile--brand--img" alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
           </a>
-         
-          <button (click)="shareNavigatorAPI()" type="button" class="challenge__member--mobile--button share-btn"> 
+
+          <button (click)="shareNavigatorAPI()" type="button" class="challenge__member--mobile--button share-btn">
             <i style="color: #fff" class="fal fa-upload"></i>
           </button>
-        </div> 
-      </div> 
+        </div>
+      </div>
     </nav>
   </div>
   <!-- Mobile Menu End -->
@@ -103,10 +106,14 @@
             <div class="container-fluid chellenge__compleate--details-custom-container">
               <figure class="chellenge__compleate--video">
                 <div class="chellenge__videobox__container">
-                <div *ngIf="lesson.id != ''; else lessonBanner" class="wistia_responsive_padding chellenge__compleate--video-content for-video-only" style="padding:56.25% 0 0 0;position:relative;">
-                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <div class="wistia_embed wistia_async_{{lesson.id}} autoPlay=false seo=false videoFoam=true" style="height:100%;width:100%">
-                      <div class="sk-circle">
+                  <div *ngIf="lesson.id != ''; else lessonBanner"
+                    class="wistia_responsive_padding chellenge__compleate--video-content for-video-only"
+                    style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper"
+                      style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                      <div class="wistia_embed wistia_async_{{lesson.id}} autoPlay=false seo=false videoFoam=true"
+                        style="height:100%;width:100%">
+                        <div class="sk-circle">
                           <div class="sk-circle1 sk-child"></div>
                           <div class="sk-circle2 sk-child"></div>
                           <div class="sk-circle3 sk-child"></div>
@@ -120,21 +127,24 @@
                           <div class="sk-circle11 sk-child"></div>
                           <div class="sk-circle12 sk-child"></div>
                         </div>
+                      </div>
                     </div>
                   </div>
+                  <ng-template #lessonBanner>
+                    <!-- <img class="chellenge__compleate--video-content" *ngIf="lesson.lesson_image != ''" src="{{ lesson.lesson_image }}" alt="img" /> -->
+
+                    <div *ngIf="lesson.lesson_image != ''" class="chellenge__compleate--video-content lesson-banner-img"
+                      [ngStyle]="{'background-image':'url(' + lesson.lesson_image + ')'}"></div>
+                  </ng-template>
                 </div>
-                <ng-template #lessonBanner>
-                  <!-- <img class="chellenge__compleate--video-content" *ngIf="lesson.lesson_image != ''" src="{{ lesson.lesson_image }}" alt="img" /> -->
-                  
-                  <div *ngIf="lesson.lesson_image != ''" class="chellenge__compleate--video-content lesson-banner-img" [ngStyle]="{'background-image':'url(' + lesson.lesson_image + ')'}"></div>
-                </ng-template>
-              </div>
               </figure>
 
               <div class="chellenge__compleate--details-nav">
                 <ul>
-                  <li class="active"><a class="ch-member-rift-16-19 pointer">OVERVIEW</a></li>
-                  <li><a class="ch-member-rift-16-19 pointer" (click)="onClickResource()">RESOURCES</a></li>
+                  <li class="active"><a class="ch-member-rift-16-19 pointer">{{ 'lesson.overview' | translate }}</a>
+                  </li>
+                  <li><a class="ch-member-rift-16-19 pointer"
+                      (click)="onClickResource()">{{ 'lesson.resources' | translate }}</a></li>
                 </ul>
               </div>
             </div>
@@ -144,12 +154,16 @@
             <!-- Body Section -->
             <div class="container" [@slideInOut]>
               <div class="chellenge__compleate--details--text challenge-img-responsive">
-                <h1 class="ch-member-acu-24-29 ch-black-color chellenge__compleate--details--title" [innerHTML]="lesson.ques"></h1>
+                <h1 class="ch-member-acu-24-29 ch-black-color chellenge__compleate--details--title"
+                  [innerHTML]="lesson.ques"></h1>
                 <p class="ch-member-acu-16-21 ch-details-text-color" [innerHTML]="lesson.ans"></p>
                 <div *ngIf="lesson.cta_action != ''" style="margin-top: 30px;">
-                  <button *ngIf="lesson.cta_action == 'invite_friend'" (click)="onInviteLesson()" class="ch-btn-invite">{{lesson.cta_label}}</button>
-                  <a *ngIf="lesson.cta_action == 'download_app'"  href="{{systemOS}}" class="ch-btn-invite pointer" target="_blank">{{lesson.cta_label}}</a>
-                  <a *ngIf="lesson.cta_action == 'ext_url' && lesson.cta_link != ''" href="{{lesson.cta_link}}" target="_blank" class="ch-btn-invite pointer">{{lesson.cta_label}}</a>
+                  <button *ngIf="lesson.cta_action == 'invite_friend'" (click)="onInviteLesson()"
+                    class="ch-btn-invite">{{lesson.cta_label}}</button>
+                  <a *ngIf="lesson.cta_action == 'download_app'" href="{{systemOS}}" class="ch-btn-invite pointer"
+                    target="_blank">{{lesson.cta_label}}</a>
+                  <a *ngIf="lesson.cta_action == 'ext_url' && lesson.cta_link != ''" href="{{lesson.cta_link}}"
+                    target="_blank" class="ch-btn-invite pointer">{{lesson.cta_label}}</a>
                 </div>
                 <!-- <div  style="margin-top: 30px;">
                   <button (click)="openInviteModal()" class="ch-btn-invite">{{lesson.cta_label}}</button>
@@ -160,31 +174,39 @@
               </div>
               <div class="text-center">
                 <span *ngIf="lesson.next_lesson != null; else completeSection">
-                  <button *ngIf="getNextLesson(post.learnID, lesson.next_lesson, post.lesson);else nextSection" class="ch-btn-nextlesson">
+                  <button *ngIf="getNextLesson(post.learnID, lesson.next_lesson, post.lesson);else nextSection"
+                    class="ch-btn-nextlesson">
                     <p (click)="onClickNewComplete(post.learnID, lesson.next_lesson.lesson_id, post.lesson)">
-                      <span class="ch-btn-nextlesson--top">Next up</span> 
+                      <span class="ch-btn-nextlesson--top">Next up</span>
                       <!-- <span class="ch-btn-nextlesson--bottom">{{lessonTitleShortener(lesson.next_lesson.ques)}}</span> -->
-                      <span class="ch-btn-nextlesson--bottom">{{getNextLesson(post.learnID, lesson.next_lesson, post.lesson)}}</span>
+                      <span
+                        class="ch-btn-nextlesson--bottom">{{getNextLesson(post.learnID, lesson.next_lesson, post.lesson)}}</span>
                     </p>
                   </button>
                   <ng-template #nextSection>
-                    <button *ngIf="remainSingleLesson != ''" (click)="onClickCompleteLastLesson(postIndex, post.learnID)" class="ch-btn-success">Complete section</button>
+                    <button *ngIf="remainSingleLesson != ''"
+                      (click)="onClickCompleteLastLesson(postIndex, post.learnID)" class="ch-btn-success">Complete
+                      section</button>
                     <button *ngIf="remainSingleLesson == ''" (click)="onClickLeft()" class="ch-btn-nextlesson">
                       <p>
-                        <span class="ch-btn-nextlesson--top">All steps are completed</span> 
-                        <span class="ch-btn-nextlesson--bottom">Continue journey</span>
+                        <span class="ch-btn-nextlesson--top">{{ 'lesson.stepsCompleted' | translate }}</span>
+                        <span class="ch-btn-nextlesson--bottom">{{ 'lesson.continueJourney' | translate }}</span>
                       </p>
                     </button>
                   </ng-template>
                 </span>
                 <ng-template #completeSection>
-                  <button *ngIf="incompleteLesson == ''" (click)="onClickCompleteAll(postIndex, post.learnID)" class="ch-btn-success">Complete section</button>
+                  <button *ngIf="incompleteLesson == ''" (click)="onClickCompleteAll(postIndex, post.learnID)"
+                    class="ch-btn-success">Complete section</button>
                 </ng-template>
                 <!-- <button style="margin-top: 10px;" class="ch-btn-success">Invite Friends</button> -->
 
                 <div *ngIf="incompleteLesson != ''">
                   <p><b>You need to complete the following item/s:</b></p>
-                  <p (click)="getTheLesson(post.learnID, incompleteEl.lesson_id)" style="cursor: pointer;color: #0080ff;" *ngFor="let incompleteEl of incompleteLesson; let lessonNo = index;"> {{lessonNo + 1}}. {{incompleteEl.ques}}</p>
+                  <p (click)="getTheLesson(post.learnID, incompleteEl.lesson_id)"
+                    style="cursor: pointer;color: #0080ff;"
+                    *ngFor="let incompleteEl of incompleteLesson; let lessonNo = index;"> {{lessonNo + 1}}.
+                    {{incompleteEl.ques}}</p>
                 </div>
 
               </div>

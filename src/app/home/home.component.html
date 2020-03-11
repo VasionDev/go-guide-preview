@@ -81,7 +81,7 @@
           <div class="compleate text-center">
             <circle-progress [percent]="completePercent" [radius]=70 [unitsColor]="'#131313'" [titleColor]="'#131313'"
               [outerStrokeWidth]=4 [innerStrokeWidth]=2 [outerStrokeColor]="'#2152FF'" [innerStrokeColor]="'#ccc'"
-              [animation]="true" [showSubtitle]="true" subtitle="COMPLETED" subtitleColor="#131313"
+              [animation]="true" [showSubtitle]="true" [subtitle]="'home.completed' | translate" subtitleColor="#131313"
               [animationDuration]="400" [space]=-3 [titleFontSize]=30 subtitleFontSize=14 titleFontWeight=600
               subtitleFontWeight=700 unitsFontSize=30 unitsFontWeight=700 class="lesson-progress"></circle-progress>
 
@@ -93,7 +93,7 @@
                   <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">{{greetingUser()}}</h2>
 
                   <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
-                    <span class="compleate__text--sub-text">Next up is </span>
+                    <span class="compleate__text--sub-text">{{ 'home.nextUpIs' | translate }} </span>
                     <span class="compleate__text--sub-text pointer"
                       (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
                       routerLink='/'
@@ -103,8 +103,7 @@
                   <button class="ch-btn-primary-journey compleate__text--continue"
                     (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
                     routerLink='/'
-                    [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">CONTINUE
-                    Journey</button>
+                    [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">{{ 'home.continueJourney' | translate }}</button>
                 </div>
               </ng-template>
             </div>
@@ -164,7 +163,7 @@
                   <h1 class="ch-member-acu-24-29 ch-black-color challenge__stage-content--title">{{ post.learnTitle }}
                   </h1>
                   <p class="ch-brand-gray ch-member-rift-14-17 challenge__stage-content--sub">
-                    {{ completedLessonNo(post) }}/{{ post.lesson?.length }} Steps complete</p>
+                    {{ completedLessonNo(post) }}/{{ post.lesson?.length }} {{ 'home.stepsCompleted' | translate }}</p>
 
                   <ul>
                     <li *ngFor="let lesson of post.lesson"

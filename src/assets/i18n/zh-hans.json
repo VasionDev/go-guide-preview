@@ -1,0 +1,22 @@
+{
+  "home": {
+    "stepsCompleted": "已完成步骤",
+    "completed": "完成",
+    "nextUpIs": "接下来是",
+    "continueJourney": "继续旅程",
+    "keepGoing": "继续"
+  },
+  "category": {
+    "logOut": "登出",
+    "completed": "完成"
+  },
+  "lesson": {
+    "continueJourney": "继续旅程",
+    "overview": "概览",
+    "resources": "资源",
+    "stepsCompleted": "所有步骤已完成"
+  },
+  "options": {
+    "logOut": "登出"
+  }
+}
