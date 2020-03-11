@@ -3,6 +3,7 @@ import { DataService } from "./../services/data.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalService } from "./../services/modal.service";
+import { TranslateService } from "@ngx-translate/core";
 
 declare let apiUrl: any;
 
@@ -33,7 +34,8 @@ export class OptionsComponent implements OnInit {
     private wp: WordpressService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -48,7 +50,8 @@ export class OptionsComponent implements OnInit {
       if (this.selectedLanguage === undefined) {
         this.selectedLanguage = "en";
       }
-      // console.log(res.page);
+      this.translate.use(this.selectedLanguage);
+
       if (res.page) {
         this.currentPage = res.page;
       } else {

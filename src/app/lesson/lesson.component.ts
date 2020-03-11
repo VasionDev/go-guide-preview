@@ -4,6 +4,7 @@ import { ModalService } from "./../services/modal.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { trigger, transition, animate, style } from "@angular/animations";
+import { TranslateService } from "@ngx-translate/core";
 
 let IndexArray = [];
 let LessonArray = [];
@@ -47,7 +48,8 @@ export class LessonComponent implements OnInit {
     private wp: WordpressService,
     private route: ActivatedRoute,
     private router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -62,6 +64,11 @@ export class LessonComponent implements OnInit {
       this.indexPost = +params.get("module");
       this.indexLesson = params.get("lesson");
       this.homeParam = params.get("lang");
+      if (this.homeParam === null) {
+        this.translate.use("en");
+      } else {
+        this.translate.use(this.homeParam);
+      }
     });
 
     this.wp.setUserLogin().subscribe((res: any) => {

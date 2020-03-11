@@ -129,7 +129,7 @@
         <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log
             in</a></li>
         <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()"
-            class="side__menu--links pointer">log out</a></li>
+            class="side__menu--links pointer">{{ 'options.logOut' | translate }}</a></li>
       </ul>
     </div>
 
