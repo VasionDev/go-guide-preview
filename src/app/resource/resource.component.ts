@@ -1,14 +1,15 @@
-import { DataService } from './../services/data.service';
-import { WordpressService } from './../services/wordpress.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from "./../services/data.service";
+import { WordpressService } from "./../services/wordpress.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 
-declare let apiUrl:any
+declare let apiUrl: any;
 
 @Component({
-  selector: 'app-resource',
-  templateUrl: './resource.component.html',
-  styleUrls: ['./resource.component.css']
+  selector: "app-resource",
+  templateUrl: "./resource.component.html",
+  styleUrls: ["./resource.component.css"]
 })
 export class ResourceComponent implements OnInit {
   posts: any;
@@ -16,20 +17,32 @@ export class ResourceComponent implements OnInit {
   indexPost: any;
   redirectUrl: any;
   userLoggedIn: any;
-  logoutTo: any = '';
+  logoutTo: any = "";
+  homeParam = "";
 
-  constructor(private data: DataService, private route: ActivatedRoute, private router: Router, private wp: WordpressService) {}
+  constructor(
+    private data: DataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private wp: WordpressService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
-
     this.logoutTo = apiUrl;
     this.data.currentData.subscribe((data: any) => {
       this.posts = data;
     });
 
     this.route.queryParamMap.subscribe(params => {
-      this.indexPost = params.get('module');
-      this.indexLesson = params.get('lesson');
+      this.indexPost = params.get("module");
+      this.indexLesson = params.get("lesson");
+      this.homeParam = params.get("lang");
+      if (this.homeParam === null) {
+        this.translate.use("en");
+      } else {
+        this.translate.use(this.homeParam);
+      }
     });
 
     this.wp.setUserLogin().subscribe((res: any) => {
@@ -37,8 +50,8 @@ export class ResourceComponent implements OnInit {
       this.redirectUrl = url.url;
     });
 
-    const user = JSON.parse(localStorage.getItem('signInStatus'));
-    if (user === null || user === '') {
+    const user = JSON.parse(localStorage.getItem("signInStatus"));
+    if (user === null || user === "") {
       this.userLoggedIn = false;
     } else {
       this.userLoggedIn = true;
@@ -46,23 +59,23 @@ export class ResourceComponent implements OnInit {
   }
 
   onClickLeft() {
-    this.router.navigate(['/']);
-    this.data.nameChange('HomeComponent');
+    this.router.navigate(["/"]);
+    this.data.nameChange("HomeComponent");
   }
 
   onClickLesson() {
-    this.data.nameChange('LessonComponent');
+    this.data.nameChange("LessonComponent");
   }
 
   onNavigate(link: any) {
-    window.open(link, '_blank');
+    window.open(link, "_blank");
   }
 
   onClickSignOut() {
-    localStorage.removeItem('signInStatus');
-    localStorage.removeItem('Index');
-    localStorage.removeItem('Lesson');
-    localStorage.removeItem('UserID');
+    localStorage.removeItem("signInStatus");
+    localStorage.removeItem("Index");
+    localStorage.removeItem("Lesson");
+    localStorage.removeItem("UserID");
     // this.router.navigate(['/']);
     this.wp.logout().subscribe((data: any) => {
       // this.data.nameChange('AppComponent');
@@ -76,10 +89,10 @@ export class ResourceComponent implements OnInit {
   }
 
   onClickHome() {
-    this.router.navigate(['/']);
-    this.data.nameChange('HomeComponent');
+    this.router.navigate(["/"]);
+    this.data.nameChange("HomeComponent");
   }
-  
+
   shareNavigatorAPI() {
     let newVariable: any;
 

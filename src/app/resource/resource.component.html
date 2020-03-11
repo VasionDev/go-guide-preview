@@ -7,13 +7,13 @@
           <div class="navbar-header">
             <a style="cursor: pointer;" class="navbar-brand challenge__member--custom-navbar-brand" (click)="onClickLeft()">
               <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
-              
+
             </a>
           </div>
           <div class="back__icon__desktop">
-            <a (click)="onClickLeft()" class="back__icon pointer"> 
+            <a (click)="onClickLeft()" class="back__icon pointer">
               <i style="color: #000;" class="fal fa-arrow-left"></i>
-            </a> 
+            </a>
           </div>
           <div class="navbar-links">
             <ul class="product-page-links">
@@ -30,19 +30,21 @@
       <div class="container challenge__member--custom-nav">
 
         <div class="challenge__member--menu">
-          <button style="border: none;" (click)="onClickLeft()" type="button" class="challenge__member--mobile--button"> 
+          <button style="border: none;" (click)="onClickLeft()" type="button" class="challenge__member--mobile--button">
             <i style="color: #000" class="fal fa-home"></i>
           </button>
         </div>
 
         <div class="navbar-brand-logo text-center">
           <a class=" challenge__member--custom-navbar-brand pointer">
-            <img class="product-page-logo" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+            <img class="product-page-logo" alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
           </a>
         </div>
 
         <div class="challenge__member--share">
-          <button style="border: none;" (click)="shareNavigatorAPI()" type="button" class="challenge__member--mobile--button share-btn"> 
+          <button style="border: none;" (click)="shareNavigatorAPI()" type="button"
+            class="challenge__member--mobile--button share-btn">
             <i style="color: #000" class="fal fa-upload"></i>
           </button>
         </div>
@@ -54,18 +56,21 @@
 
   <!-- Mobile Menu -->
   <div class="challenge__member--mobile">
-    <nav class="navbar navbar-default challenge__member--mobile--bg"> 
-      <div class="container-fluid"> 
-        <div class="navbar-header"> 
-          <button (click)="onClickLeft()" type="button" class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false"> 
+    <nav class="navbar navbar-default challenge__member--mobile--bg">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button (click)="onClickLeft()" type="button"
+            class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
             <!-- <img class="challenge__member--mobile--button-icon" src="assets/img/chevron-left.svg" alt="menu"> -->
             <i style="color: #fff" class="fal fa-home"></i>
-          </button> 
+          </button>
           <a class="navbar-brand challenge__member--mobile--brand pointer">
-            <img class="challenge__member--mobile--brand--img" alt="Brand" src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
-          </a> 
-        </div> 
-      </div> 
+            <img class="challenge__member--mobile--brand--img" alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+          </a>
+        </div>
+      </div>
     </nav>
   </div>
   <!-- Mobile Menu End -->
@@ -82,30 +87,35 @@
             <div *ngIf="lesson.lesson_id == indexLesson">
               <figure class="chellenge__compleate--video">
                 <div class="chellenge__videobox__container">
-                <div *ngIf="lesson.id != ''; else lessonBanner" class="wistia_responsive_padding chellenge__compleate--video-content for-video-only" style="padding:56.25% 0 0 0;position:relative;">
-                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <div class="wistia_embed wistia_async_{{ lesson.id }} autoPlay=false seo=false videoFoam=true" style="height:100%;width:100%">
-                      <div class="sk-circle">
-                        <div class="sk-circle1 sk-child"></div>
-                        <div class="sk-circle2 sk-child"></div>
-                        <div class="sk-circle3 sk-child"></div>
-                        <div class="sk-circle4 sk-child"></div>
-                        <div class="sk-circle5 sk-child"></div>
-                        <div class="sk-circle6 sk-child"></div>
-                        <div class="sk-circle7 sk-child"></div>
-                        <div class="sk-circle8 sk-child"></div>
-                        <div class="sk-circle9 sk-child"></div>
-                        <div class="sk-circle10 sk-child"></div>
-                        <div class="sk-circle11 sk-child"></div>
-                        <div class="sk-circle12 sk-child"></div>
+                  <div *ngIf="lesson.id != ''; else lessonBanner"
+                    class="wistia_responsive_padding chellenge__compleate--video-content for-video-only"
+                    style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper"
+                      style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                      <div class="wistia_embed wistia_async_{{ lesson.id }} autoPlay=false seo=false videoFoam=true"
+                        style="height:100%;width:100%">
+                        <div class="sk-circle">
+                          <div class="sk-circle1 sk-child"></div>
+                          <div class="sk-circle2 sk-child"></div>
+                          <div class="sk-circle3 sk-child"></div>
+                          <div class="sk-circle4 sk-child"></div>
+                          <div class="sk-circle5 sk-child"></div>
+                          <div class="sk-circle6 sk-child"></div>
+                          <div class="sk-circle7 sk-child"></div>
+                          <div class="sk-circle8 sk-child"></div>
+                          <div class="sk-circle9 sk-child"></div>
+                          <div class="sk-circle10 sk-child"></div>
+                          <div class="sk-circle11 sk-child"></div>
+                          <div class="sk-circle12 sk-child"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <ng-template #lessonBanner>
-                  <!-- <img class="chellenge__compleate--video-content" *ngIf="lesson.lesson_image != ''" src="{{ lesson.lesson_image }}" alt="img" /> -->
-                  <div *ngIf="lesson.lesson_image != ''" class="chellenge__compleate--video-content lesson-banner-img" [ngStyle]="{'background-image':'url(' + lesson.lesson_image + ')'}"></div>
-                </ng-template>
+                  <ng-template #lessonBanner>
+                    <!-- <img class="chellenge__compleate--video-content" *ngIf="lesson.lesson_image != ''" src="{{ lesson.lesson_image }}" alt="img" /> -->
+                    <div *ngIf="lesson.lesson_image != ''" class="chellenge__compleate--video-content lesson-banner-img"
+                      [ngStyle]="{'background-image':'url(' + lesson.lesson_image + ')'}"></div>
+                  </ng-template>
                 </div>
               </figure>
             </div>
@@ -115,8 +125,9 @@
 
       <div class="chellenge__compleate--details-nav">
         <ul>
-          <li><a class="ch-member-rift-16-19 pointer" (click)="onClickLesson()">OVERVIEW</a></li>
-          <li class="active"><a class="ch-member-rift-16-19 pointer">RESOURCES</a></li>
+          <li><a class="ch-member-rift-16-19 pointer" (click)="onClickLesson()">{{ 'lesson.overview' | translate }}</a>
+          </li>
+          <li class="active"><a class="ch-member-rift-16-19 pointer">{{ 'lesson.resources' | translate }}</a></li>
         </ul>
       </div>
     </div>
@@ -129,7 +140,8 @@
         <div *ngIf="post.learnID == indexPost">
           <div class="chellenge__compleate--details-resourcea">
             <ul *ngFor="let resource of post.resource">
-              <li style="cursor: pointer;"><a (click)="onNavigate(resource.external_link)" class="">{{ resource.title }}</a></li>
+              <li style="cursor: pointer;"><a (click)="onNavigate(resource.external_link)"
+                  class="">{{ resource.title }}</a></li>
             </ul>
           </div>
         </div>
