@@ -1,0 +1,157 @@
+<ng-sidebar-container style="height: 100vh;">
+  <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened">
+    <app-options></app-options>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+
+
+    <header>
+      <div class="challenge__member">
+        <!-- <nav class="navbar navbar-default challenge__member--custom-navbar">
+          <div class="container">
+            <div class="container-fluid challenge__member--nav-container">
+              <div class="navbar-header">
+                <a class="navbar-brand challenge__member--custom-navbar-brand pointer">
+                  <img class="product-page-logo" alt="Brand"
+                    src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-desktop-logo.png">
+                </a>
+              </div>
+
+              <div class="navbar-links">
+                <ul class="product-page-links">
+                  <li>
+                    <a *ngIf="userLoggedIn" (click)="onClickSignOut()" class="ch-jumbo-rift2 ch-black-color pointer">LOG
+                      OUT</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav> -->
+        <nav class="navbar navbar-default challenge__member--custom-navbar">
+          <div class="container challenge__member--custom-nav">
+
+            <div class="challenge__member--menu">
+              <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button"
+                data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                <img class="challenge__member--desktop--button-icon"
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png"
+                  alt="menu">
+              </button>
+            </div>
+
+            <div class="navbar-brand-logo text-center">
+              <a class=" challenge__member--custom-navbar-brand pointer">
+                <img class="product-page-logo" alt="Brand"
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="challenge__member--mobile">
+        <nav class="navbar navbar-default challenge__member--mobile--bg">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button (click)="toggleSidebar()" type="button"
+                class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                <img class="challenge__member--mobile--button-icon"
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png"
+                  alt="menu">
+              </button>
+
+              <a class="navbar-brand challenge__member--mobile--brand">
+                <img class="challenge__member--mobile--brand--img" alt="Brand"
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section__challenge__compleate chellenge__compleate--details">
+        <div class="container">
+          <div class="chellenge__compleate--details--text">
+            <h3 class="ch-jumbo-acu3 ch-black-color">Challenges</h3>
+
+            <figure class="challenge__member--body challenge__discover">
+              <div class="row">
+
+                <div *ngFor="let cat of categories; let i = index">
+                  <div class="col-sm-6 col-xs-6 challenge__discover--custom-col"
+                    [ngClass]="{'left': (i+1)%2 === 0, 'right':  (i+1)%2 !== 0}">
+
+                    <div class="challenge__discover--content pointer" *ngIf="getActiveUser(cat)"
+                      (click)="getCategoryPosts(cat.catSlug)">
+                      <div class="challenge__discover--ketons challenge__discover--item"
+                        [style.background]="getCatStyle(cat.catColor1, cat.catColor2)">
+                        <div class="challenge__discover--item-img">
+                          <img src="{{ cat.catImage }}" alt="" class="img-responsive ketone-img">
+                        </div>
+                        <div class="challenge__discover--details">
+                          <p class="challenge__discover--title">
+                            {{ categoryTitleShortener(cat.catName) }}
+                          </p>
+                          <div class="challenge__discover--progress" *ngIf="getCompletePercentage(cat.posts) !== '0'">
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                aria-valuemax="100" [style.width.%]="getCompletePercentage(cat.posts)">
+                              </div>
+                            </div>
+                            <p class="text-left challenge__discover--complete challenge__discover--running">
+                              <span
+                                *ngIf="getCompletePercentage(cat.posts) !== '100'">{{ getCompletePercentage(cat.posts) }}%</span>
+                              <span class="span2" *ngIf="getCompletePercentage(cat.posts) === '100'">✅ </span>
+                              {{ 'category.completed' | translate }}</p>
+                          </div>
+                          <p class="challenge__discover--ready" *ngIf="getCompletePercentage(cat.posts) === '0'">Ready
+                            to
+                            begin!</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="challenge__discover--content" *ngIf="!getActiveUser(cat)">
+                      <div class="challenge__discover--locked-item challenge__discover--item">
+
+                        <div class="text-center challenge__discover--locked-content">
+                          <img
+                            src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/lock-icon.png"
+                            alt="link-icon" class="img-responsive lock-icon">
+                          <p class="text-lock">
+                            Locked
+                          </p>
+                          <p class="smartShip">
+                            Requires: <br>
+                            <span *ngFor="let item of getRequiredAvailability(cat)">
+                              {{ item }}<br>
+                            </span>
+                          </p>
+                        </div>
+
+                        <div class="challenge__discover--item-img lock-img text-center">&nbsp;</div>
+                        <div class="challenge__discover--details smartShip-details">
+                          <p class="challenge__discover--title">
+                            {{ categoryTitleShortener(cat.catName) }}
+                          </p>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </figure>
+
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</ng-sidebar-container>

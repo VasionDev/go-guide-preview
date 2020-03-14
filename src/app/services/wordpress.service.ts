@@ -35,6 +35,16 @@ export class WordpressService {
     );
   }
 
+  getCategories(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiBaseURL + "/get-categories/v2/");
+  }
+
+  /*getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(
+      this.apiBaseURL+'/getLearningtools/v2/'
+    );
+  }*/
+
   login(): Observable<any[]> {
     return this.http.get<any[]>(this.apiBaseURL + "/userAuth/v2/");
   }
