@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { WordpressService } from "../services/wordpress.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
+import { Location } from "@angular/common";
 
 let CompletedTools = [];
 let prerequisites = [];
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
   isOpen: any = true;
   logoutTo: any = "";
   homeParam = "";
+  catParam = "";
   currentAllLessonID = [];
   currentAllLearnID = [];
 
@@ -64,7 +66,8 @@ export class HomeComponent implements OnInit {
     private wp: WordpressService,
     private route: ActivatedRoute,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -178,6 +181,7 @@ export class HomeComponent implements OnInit {
         } else {
           this.translate.use(this.homeParam);
         }
+        this.catParam = params.get("category");
 
         const pageName = params.get("page");
         const expLessonID = params.get("explesson");
@@ -193,10 +197,27 @@ export class HomeComponent implements OnInit {
         } else if (lessonID != null) {
           this.data.nameChange("LessonComponent");
         } else {
-          this.data.nameChange("HomeComponent");
+          // this.data.nameChange("HomeComponent");
         }
       });
     });
+    if (this.catParam !== "") {
+      this.getCategoryPosts(this.catParam);
+    }
+  }
+
+  getCategoryPosts(catSlug: string) {
+    const currentGuide = [];
+    this.posts.forEach((post: any) => {
+      if (post.hasOwnProperty("category")) {
+        post.category.forEach((category: any) => {
+          if (category.slug.startsWith(catSlug)) {
+            currentGuide.push(post);
+          }
+        });
+      }
+    });
+    this.data.dataChange(currentGuide);
   }
 
   updateNextStartLesson(lastEndedPostLessons) {
@@ -309,7 +330,7 @@ export class HomeComponent implements OnInit {
   }
 
   onClickLesson(index: any, lesson: any, lessonTitle: any) {
-    this.data.eventEmitter("Lesson title", "click", lessonTitle);
+    // this.data.eventEmitter("Lesson title", "click", lessonTitle);
     this.data.lessonChange(index, lesson);
     this.data.nameChange("LessonComponent");
   }
@@ -459,5 +480,20 @@ export class HomeComponent implements OnInit {
 
   toggleSidebar() {
     this.menuOpened = !this.menuOpened;
+  }
+
+  onClickHome() {
+    if (this.homeParam !== null) {
+      if (this.homeParam !== "en") {
+        this.router.navigate(["/"], {
+          queryParams: { lang: this.homeParam }
+        });
+      } else {
+        this.router.navigate(["/"]);
+      }
+    } else {
+      this.router.navigate(["/"]);
+    }
+    this.data.nameChange("CategoryComponent");
   }
 }

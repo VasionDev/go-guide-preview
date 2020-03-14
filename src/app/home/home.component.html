@@ -34,18 +34,22 @@
           <div class="container challenge__member--custom-nav">
 
             <div class="challenge__member--menu">
-              <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button"
-                data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
-                <img class="challenge__member--desktop--button-icon"
-                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png"
-                  alt="menu">
+              <!-- <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                <img class="challenge__member--desktop--button-icon" src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png" alt="menu">
+              </button>
+              <button (click)="onClickHome()" type="button" class="challenge__member--mobile--button">
+                <i style="color: #000" class="fal fa-home"></i>
+              </button> -->
+              <button style="border: none;" (click)="onClickHome()" type="button"
+                class="challenge__member--mobile--button">
+                <i style="color: #000" class="fal fa-home"></i>
               </button>
             </div>
 
             <div class="navbar-brand-logo text-center">
               <a class=" challenge__member--custom-navbar-brand pointer">
                 <img class="product-page-logo" alt="Brand"
-                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
               </a>
             </div>
           </div>
@@ -56,12 +60,15 @@
         <nav class="navbar navbar-default challenge__member--mobile--bg">
           <div class="container-fluid">
             <div class="navbar-header">
-              <button (click)="toggleSidebar()" type="button"
-                class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
-                <img class="challenge__member--mobile--button-icon"
-                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png"
-                  alt="menu">
+              <!-- <button (click)="toggleSidebar()" type="button"
+	                class="navbar-toggle collapsed challenge__member--mobile--button" data-toggle="collapse"
+	                data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+	                <img class="challenge__member--mobile--button-icon"
+	                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png"
+	                  alt="menu">
+	              </button> -->
+              <button (click)="onClickHome()" type="button" class="challenge__member--mobile--button">
+                <i style="color: #fff" class="fal fa-home"></i>
               </button>
 
               <a class="navbar-brand challenge__member--mobile--brand">
@@ -144,17 +151,17 @@
 
                 <div style="text-align: center;" class="challenge__stage-details-info"
                   (click)="slickModal.slickGoTo(slNo)"
-                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post) && post.active_smartship !== 'on' ">
+                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post)">
                   <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">Tool is not available for
                     current user</h1>
                 </div>
 
-                <div style="text-align: center;" class="challenge__stage-details-info"
+                <!-- <div style="text-align: center;" class="challenge__stage-details-info"
                   (click)="slickModal.slickGoTo(slNo)"
                   *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post) && post.active_smartship === 'on'">
                   <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">This guide requires:
                     Active Smartship</h1>
-                </div>
+                </div> -->
 
                 <!-- <ng-template #lessonStage> -->
                 <!-- </ng-template> -->
@@ -168,7 +175,8 @@
                   <ul>
                     <li *ngFor="let lesson of post.lesson"
                       (click)="onClickLesson(post.learnID,lesson.lesson_id, lesson.ques)" routerLink='/'
-                      [queryParams]="{lang: homeParam, module: post.learnID, lesson: lesson.lesson_id}" class="pointer">
+                      [queryParams]="{lang: homeParam, category: catParam, module: post.learnID, lesson: lesson.lesson_id}"
+                      class="pointer">
                       <div class="lesson-list-wrap"
                         [class.compleate__done]="completedTask(post.learnID,lesson.lesson_id)">
                         <a [innerHTML]="lesson.ques"></a>
