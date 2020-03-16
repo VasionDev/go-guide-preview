@@ -100,18 +100,17 @@
                 class="fal fa-angle-down member__lenguage-arrow"></i>
             </a>
             <ul class="dropdown-menu custom__dropdown-menu">
-              <li closeSidebar class="pointer" *ngFor="let language of languages">
-                <a (click)="onClickLanguage(language)"><img src="{{ getLanguageIcon(language) }}" alt="{{ language }}"
-                    class="member__language--icon">{{ getLanguageName(language) }}</a>
+              <li *ngFor="let language of languages">
+                <a closeSidebar (click)="onClickLanguage(language)"><img src="{{ getLanguageIcon(language) }}"
+                    alt="{{ language }}" class="member__language--icon">{{ getLanguageName(language) }}</a>
               </li>
             </ul>
           </div>
         </li>
-        <li class="side__menu-items side__menu-challenge-cat" [class.active]="currentPage === ''">
-          <a class="side__menu--links collapse-menu" role="button" data-toggle="collapse" data-parent="#accordion"
-            href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Go Guide</a>
+        <li closeSidebar class="side__menu-items side__menu-challenge-cat" [class.active]="currentPage === ''">
+          <a class="side__menu--links" role="button" (click)="onClickOption()">Challenges</a>
         </li>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <!-- <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body side__menu--collapse-body">
             <ul class="side__menu--collapse-list">
               <div *ngFor="let category of categories">
@@ -122,7 +121,7 @@
               </div>
             </ul>
           </div>
-        </div>
+        </div> -->
         <li class="side__menu-items challenge_active"><a (click)="onInvite()"
             class="side__menu--links pointer">Challenge Friends</a></li>
         <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>

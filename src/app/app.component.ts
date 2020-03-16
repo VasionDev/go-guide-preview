@@ -1,3 +1,4 @@
+import { CategoryComponent } from "./category/category.component";
 import { WordpressService } from "./services/wordpress.service";
 import { DataService } from "./services/data.service";
 import { LessonComponent } from "./lesson/lesson.component";
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem("LastLesson");
-    localStorage.removeItem("CompletedTools");
+    // localStorage.removeItem("CompletedTools");
     this.wp.setUserLogin().subscribe(
       (res: any) => {
         const url = JSON.parse(res);
@@ -58,6 +59,8 @@ export class AppComponent implements OnInit {
             this.myComponent = ExperienceLessonComponent;
           } else if (name === "InviteComponent") {
             this.myComponent = InviteComponent;
+          } else if (name === "CategoryComponent") {
+            this.myComponent = CategoryComponent;
           } else {
             this.myComponent = AppComponent;
           }
@@ -72,6 +75,7 @@ export class AppComponent implements OnInit {
     this.wp.login().subscribe((user: any) => {
       if (user.mvuser_id !== undefined && user.mvuser_id !== "") {
         localStorage.setItem("UserID", user.mvuser_id);
+        localStorage.setItem("UserStatus", user.mvuser_status);
         // console.log(user.mvuser_refCode);
         this.data.saveRefCode(user.mvuser_refCode);
         const value = JSON.parse(user.user_learn_data);
@@ -235,6 +239,7 @@ export class AppComponent implements OnInit {
     // console.log('checking callback');
     this.spinner = false;
     this.route.queryParamMap.subscribe(params => {
+      const catName = params.get("category");
       const pageName = params.get("page");
       const expLessonID = params.get("explesson");
       const lessonID = params.get("lesson");
@@ -253,8 +258,10 @@ export class AppComponent implements OnInit {
         this.data.nameChange("ExperienceLessonComponent");
       } else if (lessonID != null) {
         this.data.nameChange("LessonComponent");
+      } else if (catName !== null) {
+        this.data.nameChange("HomeComponent");
       } else {
-        this.myComponent = HomeComponent;
+        this.myComponent = CategoryComponent;
       }
     });
 

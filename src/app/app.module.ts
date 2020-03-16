@@ -29,6 +29,7 @@ import { AlertModule } from "ngx-bootstrap/alert";
 import { ClipboardModule } from "ngx-clipboard";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { CategoryComponent } from "./category/category.component";
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
@@ -44,7 +45,8 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     MouseWheelDirective,
     ExperienceComponent,
     ExperienceLessonComponent,
-    InviteComponent
+    InviteComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     ResourceComponent,
     ExperienceComponent,
     ExperienceLessonComponent,
-    InviteComponent
+    InviteComponent,
+    CategoryComponent
   ],
   providers: [ModalService],
   bootstrap: [AppComponent]
