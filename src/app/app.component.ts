@@ -177,7 +177,7 @@ export class AppComponent implements OnInit {
           } else if (pageName === 'experience') {
             if (!this.experienceLogin) {
               window.location.href = `
-              https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/preview/member/`;
+              https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/preview/member/https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
             } else {
               this.data.nameChange('ExperienceComponent');
             }
@@ -249,7 +249,7 @@ export class AppComponent implements OnInit {
         } else if (pageName === "experience") {
           if (!this.experienceLogin) {
             window.location.href = `
-            https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/preview/member/`;
+            https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/preview/member/https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
           } else {
             this.data.nameChange("ExperienceComponent");
           }
