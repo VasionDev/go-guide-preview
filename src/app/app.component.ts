@@ -247,9 +247,10 @@ export class AppComponent implements OnInit {
         if (pageName === "option") {
           this.data.nameChange("OptionsComponent");
         } else if (pageName === "experience") {
+          console.log(this.experienceLogin);
           if (!this.experienceLogin) {
             window.location.href = `
-            https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/preview/member/`;
+            https://pg-app-4sn1wg84isf5h18lb2d73ydf2zhxgr.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
           } else {
             this.data.nameChange("ExperienceComponent");
           }

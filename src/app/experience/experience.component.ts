@@ -81,14 +81,18 @@ export class ExperienceComponent implements OnInit {
       this.spinner = true;
     } else {
       this.wp.getUserExperience().subscribe((res: any) => {
-        // console.log(res);
-        let status = JSON.parse(res);
-        if(status.error || status.exp_token_error) {
-          window.location.href = `
-              https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
-        } else {
-          // this.data.saveExperienceDataTemp(JSON.parse(res));
+        console.log('user experience', res);
+        if(res === null) {
           this.spinner = false;
+        } else {
+          let status = JSON.parse(res);
+          if(status.error || status.exp_token_error) {
+            window.location.href = `
+                https://pg-app-4sn1wg84isf5h18lb2d73ydf2zhxgr.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
+          } else {
+            // this.data.saveExperienceDataTemp(JSON.parse(res));
+            this.spinner = false;
+          }
         }
       },
       (err) => {},
