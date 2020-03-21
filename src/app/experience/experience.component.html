@@ -86,6 +86,15 @@
                 <section class="section__challenge__compleate">
                     <div class="container">
                         <div class="compleate text-center">
+
+                            <div *ngIf="expStatus == 1" class="ch-member-alert">
+                                <div class="alert alert-warning ch-member-panding" role="alert">Your Story is <strong>pending</strong> approval ⏱</div>
+                            </div>
+
+                            <div *ngIf="expStatus == 2" class="ch-member-alert">
+                                <div class="alert alert-success ch-member-approved" role="alert">Your Story is <strong>approved</strong> 🎉</div>
+                            </div>
+
                             <circle-progress
                             [percent]="completePercent"
                             [radius]= 70
@@ -109,7 +118,24 @@
                             unitsFontWeight = 700
                             class = "lesson-progress"
                             ></circle-progress>
-                            <div class="compleate__text">
+
+                            <div *ngIf="expStatus" class="compleate__text">
+                                <div *ngIf="expStatus == 1">
+                                    <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">Almost there!</h2>
+                                    <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub compleate__text--continue">
+                                        <span>We’ll let you know once Prüvit HQ has given you the tick of approval.</span>
+                                    </h3>
+                                </div>
+                                <div *ngIf="expStatus == 2">
+                                    <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">Time to share!</h2>
+                                    <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
+                                        <span>You can continue adding to or editing your story however any edits will require approval.</span>
+                                    </h3>
+                                    <button (click)="onShareStory()" class="ch-btn-primary-journey compleate__text--continue">Share story</button>
+                                </div>
+                            </div>
+
+                            <div *ngIf="!expStatus" class="compleate__text">
                                 <div *ngIf="!completePercent">
                                     <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">Earn 10 Prüvit Bucks</h2>
                                     <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
