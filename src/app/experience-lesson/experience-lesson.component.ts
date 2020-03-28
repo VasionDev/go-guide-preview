@@ -93,6 +93,7 @@ export class ExperienceLessonComponent implements OnInit, AfterContentChecked, A
 
       if(Object.keys(res).length) {
         this.newUserData = res;
+        this.spinner = false;
       }else {
         this.wp.getUserExperience().subscribe((data: any) => {
           let status = JSON.parse(data);
@@ -100,6 +101,7 @@ export class ExperienceLessonComponent implements OnInit, AfterContentChecked, A
 
           } else {
             this.newUserData = JSON.parse(data);
+            this.spinner = false;
             this.selectedExpVideoAndImage();
           }
         },
@@ -175,6 +177,9 @@ export class ExperienceLessonComponent implements OnInit, AfterContentChecked, A
     if(this.videoData != undefined) {
       if(Object.keys(this.videoData).length) {
         this.videoURL = this.videoData.videoURL;
+        if (this.videoURL == undefined) {
+          this.videoURL = "";
+        }
         if(this.videoURL.match(/youtube/g) != null) {
           this.userData.videoURL = this.videoURL;
           this.videoURL = '';
