@@ -1,10 +1,13 @@
 <ng-sidebar-container style="height: 100vh;">
   <!-- <app-options [openedIn]="isOpen"></app-options> -->
-  <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened" [closeOnClickOutside]=true>
+  <ng-sidebar
+    [(opened)]="menuOpened"
+    [showBackdrop]="menuOpened"
+    [closeOnClickOutside]="true"
+  >
     <app-options></app-options>
   </ng-sidebar>
   <div ng-sidebar-content>
-
     <header>
       <div class="challenge__member">
         <!-- <nav class="navbar navbar-default challenge__member--custom-navbar">
@@ -32,7 +35,6 @@
         </nav> -->
         <nav class="navbar navbar-default challenge__member--custom-navbar">
           <div class="container challenge__member--custom-nav">
-
             <div class="challenge__member--menu">
               <!-- <button (click)="toggleSidebar()" type="button" class="challenge__member--desktop--button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
                 <img class="challenge__member--desktop--button-icon" src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png" alt="menu">
@@ -40,16 +42,23 @@
               <button (click)="onClickHome()" type="button" class="challenge__member--mobile--button">
                 <i style="color: #000" class="fal fa-home"></i>
               </button> -->
-              <button style="border: none;" (click)="onClickHome()" type="button"
-                class="challenge__member--mobile--button">
-                <i style="color: #000" class="fal fa-home"></i>
+              <button
+                style="border: none;"
+                (click)="onClickHome()"
+                type="button"
+                class="challenge__member--mobile--button"
+              >
+                <i style="color: #000;" class="fal fa-home"></i>
               </button>
             </div>
 
             <div class="navbar-brand-logo text-center">
-              <a class=" challenge__member--custom-navbar-brand pointer">
-                <img class="product-page-logo" alt="Brand"
-                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png">
+              <a class="challenge__member--custom-navbar-brand pointer">
+                <img
+                  class="product-page-logo"
+                  alt="Brand"
+                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png"
+                />
               </a>
             </div>
           </div>
@@ -67,13 +76,20 @@
 	                  src="https://challenge.com/preview/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png"
 	                  alt="menu">
 	              </button> -->
-              <button (click)="onClickHome()" type="button" class="challenge__member--mobile--button">
-                <i style="color: #fff" class="fal fa-home"></i>
+              <button
+                (click)="onClickHome()"
+                type="button"
+                class="challenge__member--mobile--button"
+              >
+                <i style="color: #fff;" class="fal fa-home"></i>
               </button>
 
               <a class="navbar-brand challenge__member--mobile--brand">
-                <img class="challenge__member--mobile--brand--img" alt="Brand"
-                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png">
+                <img
+                  class="challenge__member--mobile--brand--img"
+                  alt="Brand"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png"
+                />
               </a>
             </div>
           </div>
@@ -82,78 +98,186 @@
     </header>
 
     <main>
-
       <section class="section__challenge__compleate">
         <div class="container">
           <div class="compleate text-center">
-            <circle-progress [percent]="completePercent" [radius]=70 [unitsColor]="'#131313'" [titleColor]="'#131313'"
-              [outerStrokeWidth]=4 [innerStrokeWidth]=2 [outerStrokeColor]="'#2152FF'" [innerStrokeColor]="'#ccc'"
-              [animation]="true" [showSubtitle]="true" [subtitle]="'home.completed' | translate" subtitleColor="#131313"
-              [animationDuration]="400" [space]=-3 [titleFontSize]=30 subtitleFontSize=14 titleFontWeight=600
-              subtitleFontWeight=700 unitsFontSize=30 unitsFontWeight=700 class="lesson-progress"></circle-progress>
+            <circle-progress
+              [percent]="completePercent"
+              [radius]="70"
+              [unitsColor]="'#131313'"
+              [titleColor]="'#131313'"
+              [outerStrokeWidth]="4"
+              [innerStrokeWidth]="2"
+              [outerStrokeColor]="'#2152FF'"
+              [innerStrokeColor]="'#ccc'"
+              [animation]="true"
+              [showSubtitle]="true"
+              [subtitle]="'home.completed' | translate"
+              subtitleColor="#131313"
+              [animationDuration]="400"
+              [space]="-3"
+              [titleFontSize]="30"
+              subtitleFontSize="14"
+              titleFontWeight="600"
+              subtitleFontWeight="700"
+              unitsFontSize="30"
+              unitsFontWeight="700"
+              class="lesson-progress"
+            ></circle-progress>
 
             <!-- Next Lesson Section -->
-            <div *ngIf="completedLesson.length && nextStartLesson.lesson_id !==''">
-              <span *ngIf="lastEndedPostIndex.for_user && !userLoggedIn; else nextProgress;"></span>
+            <div
+              *ngIf="completedLesson.length && nextStartLesson.lesson_id !== ''"
+            >
+              <span
+                *ngIf="
+                  lastEndedPostIndex.for_user && !userLoggedIn;
+                  else nextProgress
+                "
+              ></span>
               <ng-template #nextProgress>
                 <div class="compleate__text">
-                  <h2 class="ch-black-color ch-member-acu-18-23 compleate__text--main">{{greetingUser()}}</h2>
+                  <h2
+                    class="ch-black-color ch-member-acu-18-23 compleate__text--main"
+                  >
+                    {{ greetingUser() }}
+                  </h2>
 
-                  <h3 class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub">
-                    <span class="compleate__text--sub-text">{{ 'home.nextUpIs' | translate }} </span>
-                    <span class="compleate__text--sub-text pointer"
-                      (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
-                      routerLink='/'
-                      [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">{{nextStartLesson.ques}}</span>
+                  <h3
+                    class="ch-brand-gray ch-member-acu-14-18 compleate__text--sub"
+                  >
+                    <span class="compleate__text--sub-text"
+                      >{{ "home.nextUpIs" | translate }}
+                    </span>
+                    <span
+                      class="compleate__text--sub-text pointer"
+                      (click)="
+                        onClickLesson(
+                          lastEndedPostIndex.learnID,
+                          nextStartLesson.lesson_id,
+                          nextStartLesson.ques
+                        )
+                      "
+                      routerLink="/"
+                      [queryParams]="{
+                        lang: homeParam,
+                        module: lastEndedPostIndex.learnID,
+                        lesson: nextStartLesson.lesson_id
+                      }"
+                      >{{ nextStartLesson.ques }}</span
+                    >
                   </h3>
 
-                  <button class="ch-btn-primary-journey compleate__text--continue"
-                    (click)="onClickLesson(lastEndedPostIndex.learnID,nextStartLesson.lesson_id, nextStartLesson.ques)"
-                    routerLink='/'
-                    [queryParams]="{lang: homeParam, module: lastEndedPostIndex.learnID, lesson: nextStartLesson.lesson_id}">{{ 'home.continueJourney' | translate }}</button>
+                  <button
+                    class="ch-btn-primary-journey compleate__text--continue"
+                    (click)="
+                      onClickLesson(
+                        lastEndedPostIndex.learnID,
+                        nextStartLesson.lesson_id,
+                        nextStartLesson.ques
+                      )
+                    "
+                    routerLink="/"
+                    [queryParams]="{
+                      lang: homeParam,
+                      module: lastEndedPostIndex.learnID,
+                      lesson: nextStartLesson.lesson_id
+                    }"
+                  >
+                    {{ "home.continueJourney" | translate }}
+                  </button>
                 </div>
               </ng-template>
             </div>
+            <div *ngIf="completePercent === '100'">
+              <div class="compleate__text">
+                <h2
+                  class="ch-black-color ch-member-acu-18-23 compleate__text--main"
+                >
+                  {{ greetingUser() }}
+                </h2>
+
+                <button
+                  class="ch-btn-primary-journey compleate__text--continue"
+                  (click)="onClickRedo()"
+                >
+                  REDO CHALLENGE
+                </button>
+              </div>
+            </div>
             <!-- Next Lesson Section End -->
-
-
-
           </div>
-
         </div>
         <!-- Progress Bar Section End -->
 
         <div class="container-fluid challenge__stage">
-
           <!-- Learning List Section -->
           <!-- <div class="challenge__stage-item" appMouseWheel (mouseWheelUp)="mouseWheelUpFunc(slickModal)" (mouseWheelDown)="mouseWheelDownFunc(slickModal)"> -->
           <div class="challenge__stage-item">
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-              (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-              (beforeChange)="beforeChange($event)">
-
-              <div ngxSlickItem *ngFor="let post of posts; let slNo = index" class="challenge__stage-content"
-                [class.challenge__stage--disable]="post.for_user || !prerequisiteComplete(post)">
-
-                <div style="text-align: center;" class="challenge__stage-details-info"
-                  (click)="slickModal.slickGoTo(slNo)" *ngIf="!prerequisiteComplete(post)">
-                  <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">Please complete following
-                    module/s to unlock</h1>
-                  <p *ngFor="let prereq of post.prerequisites; let i = index">{{i+1}}. {{ prereqText(prereq) }}</p>
+            <ngx-slick-carousel
+              class="carousel"
+              #slickModal="slick-carousel"
+              [config]="slideConfig"
+              (init)="slickInit($event)"
+              (breakpoint)="breakpoint($event)"
+              (afterChange)="afterChange($event)"
+              (beforeChange)="beforeChange($event)"
+            >
+              <div
+                ngxSlickItem
+                *ngFor="let post of posts; let slNo = index"
+                class="challenge__stage-content"
+                [class.challenge__stage--disable]="
+                  post.for_user || !prerequisiteComplete(post)
+                "
+              >
+                <div
+                  style="text-align: center;"
+                  class="challenge__stage-details-info"
+                  (click)="slickModal.slickGoTo(slNo)"
+                  *ngIf="!prerequisiteComplete(post)"
+                >
+                  <h1
+                    style="padding-bottom: 10px;"
+                    class="ch-member-acu-24-29 ch-black-color"
+                  >
+                    Please complete following module/s to unlock
+                  </h1>
+                  <p *ngFor="let prereq of post.prerequisites; let i = index">
+                    {{ i + 1 }}. {{ prereqText(prereq) }}
+                  </p>
                 </div>
 
-                <div style="text-align: center;" class="challenge__stage-details-info"
+                <div
+                  style="text-align: center;"
+                  class="challenge__stage-details-info"
                   (click)="slickModal.slickGoTo(slNo)"
-                  *ngIf="post.for_user && !userLoggedIn && prerequisiteComplete(post)">
-                  <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">Please log In to continue
-                    learn</h1>
+                  *ngIf="
+                    post.for_user && !userLoggedIn && prerequisiteComplete(post)
+                  "
+                >
+                  <h1
+                    style="padding-bottom: 10px;"
+                    class="ch-member-acu-24-29 ch-black-color"
+                  >
+                    Please log In to continue learn
+                  </h1>
                 </div>
 
-                <div style="text-align: center;" class="challenge__stage-details-info"
+                <div
+                  style="text-align: center;"
+                  class="challenge__stage-details-info"
                   (click)="slickModal.slickGoTo(slNo)"
-                  *ngIf="post.for_user && userLoggedIn && prerequisiteComplete(post)">
-                  <h1 style="padding-bottom: 10px;" class="ch-member-acu-24-29 ch-black-color">Tool is not available for
-                    current user</h1>
+                  *ngIf="
+                    post.for_user && userLoggedIn && prerequisiteComplete(post)
+                  "
+                >
+                  <h1
+                    style="padding-bottom: 10px;"
+                    class="ch-member-acu-24-29 ch-black-color"
+                  >
+                    Tool is not available for current user
+                  </h1>
                 </div>
 
                 <!-- <div style="text-align: center;" class="challenge__stage-details-info"
@@ -166,19 +290,47 @@
                 <!-- <ng-template #lessonStage> -->
                 <!-- </ng-template> -->
 
-                <div class="challenge__stage-details" (click)="slickModal.slickGoTo(slNo)">
-                  <h1 class="ch-member-acu-24-29 ch-black-color challenge__stage-content--title">{{ post.learnTitle }}
+                <div
+                  class="challenge__stage-details"
+                  (click)="slickModal.slickGoTo(slNo)"
+                >
+                  <h1
+                    class="ch-member-acu-24-29 ch-black-color challenge__stage-content--title"
+                  >
+                    {{ post.learnTitle }}
                   </h1>
-                  <p class="ch-brand-gray ch-member-rift-14-17 challenge__stage-content--sub">
-                    {{ completedLessonNo(post) }}/{{ post.lesson?.length }} {{ 'home.stepsCompleted' | translate }}</p>
+                  <p
+                    class="ch-brand-gray ch-member-rift-14-17 challenge__stage-content--sub"
+                  >
+                    {{ completedLessonNo(post) }}/{{ post.lesson?.length }}
+                    {{ "home.stepsCompleted" | translate }}
+                  </p>
 
                   <ul>
-                    <li *ngFor="let lesson of post.lesson"
-                      (click)="onClickLesson(post.learnID,lesson.lesson_id, lesson.ques)" routerLink='/'
-                      [queryParams]="{lang: homeParam, category: catParam, module: post.learnID, lesson: lesson.lesson_id}"
-                      class="pointer">
-                      <div class="lesson-list-wrap"
-                        [class.compleate__done]="completedTask(post.learnID,lesson.lesson_id)">
+                    <li
+                      *ngFor="let lesson of post.lesson"
+                      (click)="
+                        onClickLesson(
+                          post.learnID,
+                          lesson.lesson_id,
+                          lesson.ques
+                        )
+                      "
+                      routerLink="/"
+                      [queryParams]="{
+                        lang: homeParam,
+                        category: catParam,
+                        module: post.learnID,
+                        lesson: lesson.lesson_id
+                      }"
+                      class="pointer"
+                    >
+                      <div
+                        class="lesson-list-wrap"
+                        [class.compleate__done]="
+                          completedTask(post.learnID, lesson.lesson_id)
+                        "
+                      >
                         <a [innerHTML]="lesson.ques"></a>
                       </div>
                     </li>
@@ -188,11 +340,8 @@
             </ngx-slick-carousel>
           </div>
           <!-- Learning List Section End -->
-
         </div>
-
       </section>
-
     </main>
   </div>
 </ng-sidebar-container>

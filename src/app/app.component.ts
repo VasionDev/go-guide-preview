@@ -15,7 +15,7 @@ import { InviteComponent } from "./invite/invite.component";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
   myComponent: any;
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
         const url = JSON.parse(res);
         this.redirectUrl = url.url;
       },
-      err => {},
+      (err) => {},
       () => {
         this.checkUserAuthentication();
         this.data.$componentName.subscribe((name: any) => {
@@ -76,6 +76,12 @@ export class AppComponent implements OnInit {
       if (user.mvuser_id !== undefined && user.mvuser_id !== "") {
         localStorage.setItem("UserID", user.mvuser_id);
         localStorage.setItem("UserStatus", user.mvuser_status);
+        if (!user.hasOwnProperty("active_smartship")) {
+          localStorage.setItem("ActiveSmartship", "");
+        } else {
+          localStorage.setItem("ActiveSmartship", user.active_smartship);
+        }
+        console.log(user);
         // console.log(user.mvuser_refCode);
         this.data.saveRefCode(user.mvuser_refCode);
         const value = JSON.parse(user.user_learn_data);
@@ -83,6 +89,10 @@ export class AppComponent implements OnInit {
         localStorage.setItem("Index", JSON.stringify(value.indexArray));
         localStorage.setItem("Lesson", JSON.stringify(value.lessonArray));
         localStorage.setItem("signInStatus", JSON.stringify(true));
+        localStorage.setItem(
+          "completedCategory",
+          JSON.stringify(value.categoryCompleted)
+        );
 
         if (
           user.Experience_Session_Token !== undefined &&
@@ -108,7 +118,7 @@ export class AppComponent implements OnInit {
       (data: any) => {
         this.data.dataWithLanguagesChange(data);
         this.data.languagesChange(Object.keys(data));
-        this.route.queryParamMap.subscribe(params => {
+        this.route.queryParamMap.subscribe((params) => {
           const langParam = params.get("lang");
           if (langParam !== null) {
             this.currentLanguage = params.get("lang");
@@ -135,7 +145,7 @@ export class AppComponent implements OnInit {
 
         this.data.dataChange(day10Guide);
       },
-      err => {},
+      (err) => {},
       () => {
         this.loadComponent();
       }
@@ -238,7 +248,7 @@ export class AppComponent implements OnInit {
   loadComponent() {
     // console.log('checking callback');
     this.spinner = false;
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       const catName = params.get("category");
       const pageName = params.get("page");
       const expLessonID = params.get("explesson");
@@ -273,7 +283,7 @@ export class AppComponent implements OnInit {
       CompletedPost = [];
     }
 
-    CompletedLesson.forEach(lessonID => {
+    CompletedLesson.forEach((lessonID) => {
       if (!this.allLessonID.includes(lessonID)) {
         const removeIndex = CompletedLesson.indexOf(lessonID);
         CompletedLesson.splice(removeIndex, 1);
