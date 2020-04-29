@@ -46,7 +46,7 @@ export class CategoryComponent implements OnInit {
       this.translate.use(this.currentLanguage);
       this.loadCategoryData();
       this.getCategoriesWithPosts();
-      // this.saveCategoryCompletedData();
+      this.saveCategoryCompletedData();
     });
   }
 
@@ -149,6 +149,10 @@ export class CategoryComponent implements OnInit {
               const successValue = JSON.parse(res);
               if (successValue.success === true) {
                 console.log("cateogry saved");
+                localStorage.setItem(
+                  "completedCategory",
+                  JSON.stringify(tempCategoryCount)
+                );
               } else {
                 console.log("not saved");
               }

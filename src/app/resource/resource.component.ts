@@ -9,7 +9,7 @@ declare let apiUrl: any;
 @Component({
   selector: "app-resource",
   templateUrl: "./resource.component.html",
-  styleUrls: ["./resource.component.css"]
+  styleUrls: ["./resource.component.css"],
 })
 export class ResourceComponent implements OnInit {
   posts: any;
@@ -19,6 +19,7 @@ export class ResourceComponent implements OnInit {
   userLoggedIn: any;
   logoutTo: any = "";
   homeParam = "";
+  catParam = "";
 
   constructor(
     private data: DataService,
@@ -34,10 +35,12 @@ export class ResourceComponent implements OnInit {
       this.posts = data;
     });
 
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       this.indexPost = params.get("module");
       this.indexLesson = params.get("lesson");
       this.homeParam = params.get("lang");
+      this.catParam = params.get("category");
+
       if (this.homeParam === null) {
         this.translate.use("en");
       } else {
@@ -59,8 +62,15 @@ export class ResourceComponent implements OnInit {
   }
 
   onClickLeft() {
-    this.router.navigate(["/"]);
-    this.data.nameChange("HomeComponent");
+    if (this.homeParam !== "") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.homeParam, category: this.catParam },
+      });
+      this.data.nameChange("HomeComponent");
+    } else {
+      this.router.navigate(["/"]);
+      this.data.nameChange("HomeComponent");
+    }
   }
 
   onClickLesson() {
@@ -106,12 +116,12 @@ export class ResourceComponent implements OnInit {
         .share({
           title: "Challenge Member",
           text: "",
-          url: window.location.href
+          url: window.location.href,
         })
         .then(() => {
           console.log("Thanks for sharing!");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(`Couldn't share because of`, err.message);
         });
     } else {

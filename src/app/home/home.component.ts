@@ -521,6 +521,13 @@ export class HomeComponent implements OnInit {
       }
     });
 
+    const found = redoCountArray.some(
+      (el: any) => el.categorySlug === this.catParam
+    );
+    if (!found) {
+      redoCountArray.push({ categorySlug: this.catParam, completedCount: 0 });
+    }
+
     const UserId = localStorage.getItem("UserID");
 
     if (
@@ -534,6 +541,7 @@ export class HomeComponent implements OnInit {
             userId: UserId,
             indexArray: IndexArray,
             lessonArray: LessonArray,
+            categoryCompleted: redoCountArray,
           })
           .subscribe(
             (res: any) => {
