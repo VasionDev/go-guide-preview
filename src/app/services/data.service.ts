@@ -5,7 +5,7 @@ import { BehaviorSubject } from "rxjs";
 declare let ga: Function;
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class DataService {
   constructor(private wp: WordpressService) {}
@@ -26,6 +26,12 @@ export class DataService {
 
   private dataWithLanguages = new BehaviorSubject({});
   currentDataWithLanguages = this.dataWithLanguages.asObservable();
+
+  private libraryData = new BehaviorSubject({});
+  currentLibraryData = this.libraryData.asObservable();
+  libraryDataChange(data: any) {
+    this.libraryData.next(data);
+  }
 
   languagesChange(data: any) {
     this.languagesList.next(data);
@@ -74,7 +80,7 @@ export class DataService {
       eventAction: eventAction,
       hitCallback: () => {
         console.log(eventLabel);
-      }
+      },
     });
   }
 }

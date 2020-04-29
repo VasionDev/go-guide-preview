@@ -11,6 +11,12 @@ import { ActivatedRoute } from "@angular/router";
 import { ExperienceComponent } from "./experience/experience.component";
 import { ExperienceLessonComponent } from "./experience-lesson/experience-lesson.component";
 import { InviteComponent } from "./invite/invite.component";
+import { LibraryComponent } from "./library/library.component";
+import { LibraryCategoryComponent } from "./library-category/library-category.component";
+import { LibraryItemComponent } from "./library-item/library-item.component";
+import { LibrarySearchComponent } from "./library-search/library-search.component";
+import { LibraryFavoritesComponent } from "./library-favorites/library-favorites.component";
+import { forkJoin } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -61,6 +67,16 @@ export class AppComponent implements OnInit {
             this.myComponent = InviteComponent;
           } else if (name === "CategoryComponent") {
             this.myComponent = CategoryComponent;
+          } else if (name === "LibraryComponent") {
+            this.myComponent = LibraryComponent;
+          } else if (name === "LibraryCategoryComponent") {
+            this.myComponent = LibraryCategoryComponent;
+          } else if (name === "LibraryItemComponent") {
+            this.myComponent = LibraryItemComponent;
+          } else if (name === "LibrarySearchComponent") {
+            this.myComponent = LibrarySearchComponent;
+          } else if (name === "LibraryFavoritesComponent") {
+            this.myComponent = LibraryFavoritesComponent;
           } else {
             this.myComponent = AppComponent;
           }
@@ -93,6 +109,7 @@ export class AppComponent implements OnInit {
           "completedCategory",
           JSON.stringify(value.categoryCompleted)
         );
+        localStorage.setItem("Favorites", JSON.stringify(value.favorites));
 
         if (
           user.Experience_Session_Token !== undefined &&
@@ -114,42 +131,81 @@ export class AppComponent implements OnInit {
 
   subscribeLessons() {
     // console.log('after checking');
-    this.wp.getPostsWithLanguages().subscribe(
-      (data: any) => {
-        this.data.dataWithLanguagesChange(data);
-        this.data.languagesChange(Object.keys(data));
-        this.route.queryParamMap.subscribe((params) => {
-          const langParam = params.get("lang");
-          if (langParam !== null) {
-            this.currentLanguage = params.get("lang");
-          }
-        });
-        const postData = JSON.parse(data[this.currentLanguage]);
+    // this.wp.getCategories().subscribe((data: any) => {
+    //    console.log(data);
+    // });
+    forkJoin(
+      this.wp.getDownloadModule(),
+      this.wp.getPostsWithLanguages()
+    ).subscribe(([libraryData, postsData]) => {
+      this.data.libraryDataChange(libraryData);
 
-        for (const post of postData) {
-          for (const lesson of post.lesson) {
-            this.allLessonID.push(lesson.lesson_id);
-          }
+      this.data.dataWithLanguagesChange(postsData);
+      this.data.languagesChange(Object.keys(postsData));
+      this.route.queryParamMap.subscribe((params) => {
+        const langParam = params.get("lang");
+        if (langParam !== null) {
+          this.currentLanguage = params.get("lang");
         }
+      });
+      const postData = JSON.parse(postsData[this.currentLanguage]);
 
-        const day10Guide = [];
-        postData.forEach((post: any) => {
-          if (post.hasOwnProperty("category")) {
-            post.category.forEach((category: any) => {
-              if (category.slug.startsWith("10-day-guide")) {
-                day10Guide.push(post);
-              }
-            });
-          }
-        });
-
-        this.data.dataChange(day10Guide);
-      },
-      (err) => {},
-      () => {
-        this.loadComponent();
+      for (const post of postData) {
+        for (const lesson of post.lesson) {
+          this.allLessonID.push(lesson.lesson_id);
+        }
       }
-    );
+
+      const day10Guide = [];
+      postData.forEach((post: any) => {
+        if (post.hasOwnProperty("category")) {
+          post.category.forEach((category: any) => {
+            if (category.slug.startsWith("10-day-guide")) {
+              day10Guide.push(post);
+            }
+          });
+        }
+      });
+
+      this.data.dataChange(day10Guide);
+      this.loadComponent();
+    });
+    // this.wp.getPostsWithLanguages().subscribe(
+    //   (data: any) => {
+    //     this.data.dataWithLanguagesChange(data);
+    //     this.data.languagesChange(Object.keys(data));
+    //     this.route.queryParamMap.subscribe((params) => {
+    //       const langParam = params.get("lang");
+    //       if (langParam !== null) {
+    //         this.currentLanguage = params.get("lang");
+    //       }
+    //     });
+    //     const postData = JSON.parse(data[this.currentLanguage]);
+
+    //     for (const post of postData) {
+    //       for (const lesson of post.lesson) {
+    //         this.allLessonID.push(lesson.lesson_id);
+    //       }
+    //     }
+
+    //     const day10Guide = [];
+    //     postData.forEach((post: any) => {
+    //       if (post.hasOwnProperty("category")) {
+    //         post.category.forEach((category: any) => {
+    //           if (category.slug.startsWith("10-day-guide")) {
+    //             day10Guide.push(post);
+    //           }
+    //         });
+    //       }
+    //     });
+
+    //     this.data.dataChange(day10Guide);
+    //   },
+    //   (err) => {},
+    //   () => {
+    //     this.loadComponent();
+    //   }
+    // );
   }
 
   /*loadComponent() {
@@ -253,6 +309,12 @@ export class AppComponent implements OnInit {
       const pageName = params.get("page");
       const expLessonID = params.get("explesson");
       const lessonID = params.get("lesson");
+      const topicName = params.get("topic");
+      const item = params.get("item");
+      const module = params.get("module");
+      const search = params.get("search");
+      const preference = params.get("preference");
+
       if (pageName != null) {
         if (pageName === "option") {
           this.data.nameChange("OptionsComponent");
@@ -271,6 +333,21 @@ export class AppComponent implements OnInit {
         this.data.nameChange("LessonComponent");
       } else if (catName !== null) {
         this.data.nameChange("HomeComponent");
+      } else if (item !== null) {
+        this.data.nameChange("LibraryItemComponent");
+      } else if (topicName !== null) {
+        this.data.nameChange("LibraryCategoryComponent");
+      } else if (search !== null) {
+        this.data.nameChange("LibrarySearchComponent");
+      } else if (preference !== null) {
+        this.data.nameChange("LibraryFavoritesComponent");
+      } else if (module !== null) {
+        if (module === "invite") {
+          this.data.nameChange("InviteComponent");
+        }
+        if (module === "library") {
+          this.data.nameChange("LibraryComponent");
+        }
       } else {
         this.myComponent = CategoryComponent;
       }

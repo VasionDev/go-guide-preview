@@ -126,6 +126,7 @@ export class CategoryComponent implements OnInit {
     const tempIndex = JSON.parse(localStorage.getItem("Index"));
     const tempLesson = JSON.parse(localStorage.getItem("Lesson"));
     const tempUserID = localStorage.getItem("UserID");
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
 
     const tempCategoryCount = [];
     this.categories.forEach((category: any) => {
@@ -143,6 +144,7 @@ export class CategoryComponent implements OnInit {
             indexArray: tempIndex,
             lessonArray: tempLesson,
             categoryCompleted: tempCategoryCount,
+            favorites: Favorites,
           })
           .subscribe(
             (res: any) => {

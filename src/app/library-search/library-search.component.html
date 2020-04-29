@@ -1,0 +1,105 @@
+<header>
+  <div class="challenge__member">
+    <nav class="navbar navbar-default challenge__member--custom-navbar">
+      <div class="container challenge__member--custom-nav">
+        <div class="challenge__member--menu">
+          <button
+            class="collapsed challenge__member--go-back"
+            type="button"
+            (click)="onClickBack()"
+          >
+            <i class="fas fa-arrow-left color-black"></i>
+          </button>
+        </div>
+
+        <div class="navbar-brand-logo text-center">
+          <a class="challenge__member--custom-navbar-brand">
+            <img
+              class="product-page-logo"
+              alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="challenge__member--mobile">
+    <nav class="navbar navbar-default challenge__member--mobile--bg">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed challenge__member--mobile--button"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-5"
+            aria-expanded="false"
+            (click)="onClickBack()"
+          >
+            <i class="far fa-arrow-left" style="color: #fff;"></i>
+          </button>
+          <a class="navbar-brand challenge__member--mobile--brand">
+            <img
+              class="challenge__member--mobile--brand--img"
+              alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ----------------------------- ----------------------------- -->
+
+<main>
+  <section class="cg-library">
+    <div class="container">
+      <div class="cg-library__content">
+        <h3 class="ch-jumbo-acu3 ch-black-color">
+          {{ searchParam }} ({{ categoriesPosts?.length }})
+        </h3>
+
+        <div class="cg-library__category">
+          <ul
+            class="cg-library__search_results"
+            *ngIf="categoriesPosts.length !== 0"
+          >
+            <li *ngFor="let item of filteredTopicArray">
+              <p
+                class="cg-library__search-item"
+                *ngIf="item.count !== 0"
+                (click)="onClickTopic(item)"
+                [ngClass]="{ selected: item.module === itemSelected }"
+              >
+                {{ item.module }} ({{ item.count }})
+              </p>
+            </li>
+          </ul>
+
+          <ul
+            class="cg-library__category-list"
+            *ngIf="categoriesPosts.length !== 0"
+          >
+            <li *ngFor="let post of categoriesPosts">
+              <p
+                class="cg-library__category-link ch-jumbo-acu4"
+                (click)="onClickPost(post)"
+              >
+                {{ post.post_title }}
+              </p>
+            </li>
+          </ul>
+          <ul
+            class="cg-library__search_results"
+            *ngIf="categoriesPosts.length === 0"
+          >
+            No Posts Found.
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

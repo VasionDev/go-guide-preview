@@ -266,6 +266,7 @@ export class LessonComponent implements OnInit {
   completeChange(completedIndex: any, completedLesson: any) {
     LessonArray = JSON.parse(localStorage.getItem("Lesson"));
     IndexArray = JSON.parse(localStorage.getItem("Index"));
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
 
     const redoCountArray = JSON.parse(
       localStorage.getItem("completedCategory")
@@ -291,6 +292,7 @@ export class LessonComponent implements OnInit {
           indexArray: IndexArray,
           lessonArray: LessonArray,
           categoryCompleted: redoCountArray,
+          favorites: Favorites,
         })
         .subscribe(
           (res: any) => {

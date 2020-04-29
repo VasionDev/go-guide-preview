@@ -500,6 +500,7 @@ export class HomeComponent implements OnInit {
   onClickRedo() {
     let LessonArray = JSON.parse(localStorage.getItem("Lesson"));
     let IndexArray = JSON.parse(localStorage.getItem("Index"));
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
     const redoCountArray = JSON.parse(
       localStorage.getItem("completedCategory")
     );
@@ -542,6 +543,7 @@ export class HomeComponent implements OnInit {
             indexArray: IndexArray,
             lessonArray: LessonArray,
             categoryCompleted: redoCountArray,
+            favorites: Favorites,
           })
           .subscribe(
             (res: any) => {
