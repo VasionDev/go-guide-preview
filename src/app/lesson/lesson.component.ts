@@ -18,10 +18,10 @@ declare let apiUrl: any;
     trigger("slideInOut", [
       transition(":enter", [
         style({ transform: "translateX(-100%)" }),
-        animate("200ms ease-in", style({ transform: "translateX(0%)" }))
-      ])
-    ])
-  ]
+        animate("200ms ease-in", style({ transform: "translateX(0%)" })),
+      ]),
+    ]),
+  ],
 })
 export class LessonComponent implements OnInit {
   indexLesson: any;
@@ -61,7 +61,7 @@ export class LessonComponent implements OnInit {
       this.posts = data;
     });
 
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       this.indexPost = +params.get("module");
       this.indexLesson = params.get("lesson");
       this.homeParam = params.get("lang");
@@ -120,16 +120,16 @@ export class LessonComponent implements OnInit {
                 lang: this.homeParam,
                 category: this.catParam,
                 module: postID,
-                lesson: lesson.lesson_id
-              }
+                lesson: lesson.lesson_id,
+              },
             });
           } else {
             this.router.navigate(["/"], {
               queryParams: {
                 category: this.catParam,
                 module: postID,
-                lesson: lesson.lesson_id
-              }
+                lesson: lesson.lesson_id,
+              },
             });
           }
           break;
@@ -142,16 +142,16 @@ export class LessonComponent implements OnInit {
             lang: this.homeParam,
             category: this.catParam,
             module: postID,
-            lesson: lessonID
-          }
+            lesson: lessonID,
+          },
         });
       } else {
         this.router.navigate(["/"], {
           queryParams: {
             category: this.catParam,
             module: postID,
-            lesson: lessonID
-          }
+            lesson: lessonID,
+          },
         });
       }
     }
@@ -222,14 +222,14 @@ export class LessonComponent implements OnInit {
   getTheLesson(learnID: any, lessonID: any) {
     this.incompleteLesson = [];
     this.router.navigate(["/"], {
-      queryParams: { module: learnID, lesson: lessonID }
+      queryParams: { module: learnID, lesson: lessonID },
     });
   }
 
   onClickLeft() {
     if (this.homeParam !== "") {
       this.router.navigate(["/"], {
-        queryParams: { lang: this.homeParam, category: this.catParam }
+        queryParams: { lang: this.homeParam, category: this.catParam },
       });
       this.data.nameChange("HomeComponent");
     } else {
@@ -266,6 +266,12 @@ export class LessonComponent implements OnInit {
   completeChange(completedIndex: any, completedLesson: any) {
     LessonArray = JSON.parse(localStorage.getItem("Lesson"));
     IndexArray = JSON.parse(localStorage.getItem("Index"));
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
+
+    const redoCountArray = JSON.parse(
+      localStorage.getItem("completedCategory")
+    );
+
     if (LessonArray === null && IndexArray === null) {
       IndexArray = [];
       LessonArray = [];
@@ -284,7 +290,9 @@ export class LessonComponent implements OnInit {
         .saveData({
           userId: UserId,
           indexArray: IndexArray,
-          lessonArray: LessonArray
+          lessonArray: LessonArray,
+          categoryCompleted: redoCountArray,
+          favorites: Favorites,
         })
         .subscribe(
           (res: any) => {
@@ -331,7 +339,7 @@ export class LessonComponent implements OnInit {
         .saveData({
           userId: UserId,
           indexArray: IndexArray,
-          lessonArray: LessonArray
+          lessonArray: LessonArray,
         })
         .subscribe(
           (res: any) => {
@@ -425,12 +433,12 @@ export class LessonComponent implements OnInit {
         .share({
           title: "Challenge Member",
           text: "",
-          url: window.location.href
+          url: window.location.href,
         })
         .then(() => {
           console.log("Thanks for sharing!");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(`Couldn't share because of`, err.message);
         });
     } else {

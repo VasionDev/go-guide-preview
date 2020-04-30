@@ -1,0 +1,144 @@
+<header>
+  <div class="challenge__member">
+    <nav class="navbar navbar-default challenge__member--custom-navbar">
+      <div class="container challenge__member--custom-nav">
+        <div class="challenge__member--menu">
+          <button
+            class="collapsed challenge__member--go-back"
+            type="button"
+            (click)="onClickBack()"
+          >
+            <i class="fas fa-arrow-left color-black"></i>
+          </button>
+        </div>
+
+        <div class="navbar-brand-logo text-center">
+          <a class="challenge__member--custom-navbar-brand">
+            <img
+              class="product-page-logo"
+              alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png"
+            />
+          </a>
+        </div>
+
+        <div class="clallenge__member-fevorit">
+          <button
+            class="challenge__member-fevorit-icon share-btn"
+            type="button"
+            (click)="onClickFavorite()"
+            *ngIf="!spinnerDesktop"
+          >
+            <i
+              [ngClass]="favorited ? 'fas fa-heart' : 'far fa-heart'"
+              style="color: #ff5757;"
+            ></i>
+          </button>
+          <button
+            class="challenge__member-fevorit-icon share-btn"
+            type="button"
+            *ngIf="spinnerDesktop"
+          >
+            <div class="desk-sk-circle">
+              <div class="desk-sk-circle1 desk-sk-child"></div>
+              <div class="desk-sk-circle2 desk-sk-child"></div>
+              <div class="desk-sk-circle3 desk-sk-child"></div>
+              <div class="desk-sk-circle4 desk-sk-child"></div>
+              <div class="desk-sk-circle5 desk-sk-child"></div>
+              <div class="desk-sk-circle6 desk-sk-child"></div>
+              <div class="desk-sk-circle7 desk-sk-child"></div>
+              <div class="desk-sk-circle8 desk-sk-child"></div>
+              <div class="desk-sk-circle9 desk-sk-child"></div>
+              <div class="desk-sk-circle10 desk-sk-child"></div>
+              <div class="desk-sk-circle11 desk-sk-child"></div>
+              <div class="desk-sk-circle12 desk-sk-child"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="challenge__member--mobile">
+    <nav class="navbar navbar-default challenge__member--mobile--bg">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed challenge__member--mobile--button"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-5"
+            aria-expanded="false"
+            (click)="onClickBack()"
+          >
+            <i class="far fa-arrow-left" style="color: #fff;"></i>
+          </button>
+          <a class="navbar-brand challenge__member--mobile--brand">
+            <img
+              class="challenge__member--mobile--brand--img"
+              alt="Brand"
+              src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png"
+            />
+          </a>
+
+          <button
+            class="challenge__member--mobile--button share-btn"
+            type="button"
+            (click)="onClickFavorite()"
+            *ngIf="!spinner"
+          >
+            <i
+              [ngClass]="favorited ? 'fas fa-heart' : 'far fa-heart'"
+              style="color: #ff5757;"
+            ></i>
+          </button>
+          <button
+            class="challenge__member--mobile--button share-btn"
+            *ngIf="spinner"
+          >
+            <div class="sk-circle">
+              <div class="sk-circle1 sk-child"></div>
+              <div class="sk-circle2 sk-child"></div>
+              <div class="sk-circle3 sk-child"></div>
+              <div class="sk-circle4 sk-child"></div>
+              <div class="sk-circle5 sk-child"></div>
+              <div class="sk-circle6 sk-child"></div>
+              <div class="sk-circle7 sk-child"></div>
+              <div class="sk-circle8 sk-child"></div>
+              <div class="sk-circle9 sk-child"></div>
+              <div class="sk-circle10 sk-child"></div>
+              <div class="sk-circle11 sk-child"></div>
+              <div class="sk-circle12 sk-child"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ----------------------------- ----------------------------- -->
+
+<main>
+  <section class="cg-library">
+    <div class="container">
+      <div class="cg-library__content">
+        <h3 class="ch-jumbo-acu3 ch-black-color">{{ itemPost.post_title }}</h3>
+
+        <div class="cg-library__category">
+          <p>
+            {{ itemPost.post_content }}
+          </p>
+          <div style="margin-top: 30px;">
+            <a
+              href="{{ itemPost.download_url }}"
+              target="_blank"
+              class="ch-btn-invite pointer"
+              >Download URL</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

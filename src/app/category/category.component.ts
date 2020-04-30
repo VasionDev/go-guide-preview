@@ -9,7 +9,7 @@ declare let apiUrl: any;
 @Component({
   selector: "app-category",
   templateUrl: "./category.component.html",
-  styleUrls: ["./category.component.css"]
+  styleUrls: ["./category.component.css"],
 })
 export class CategoryComponent implements OnInit {
   postsData: any;
@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   menuOpened = false;
   userLoggedIn = true;
   logoutTo: any = "";
+  activeSmartship = "";
 
   constructor(
     private data: DataService,
@@ -34,7 +35,7 @@ export class CategoryComponent implements OnInit {
   }
 
   loadLanguageStatus() {
-    this.route.queryParamMap.subscribe(params => {
+    this.route.queryParamMap.subscribe((params) => {
       const langParam = params.get("lang");
       if (langParam !== null) {
         this.currentLanguage = langParam;
@@ -45,15 +46,20 @@ export class CategoryComponent implements OnInit {
       this.translate.use(this.currentLanguage);
       this.loadCategoryData();
       this.getCategoriesWithPosts();
+      this.saveCategoryCompletedData();
     });
   }
 
   loadSignInStatus() {
     this.logoutTo = apiUrl;
     const tempUserStatus = localStorage.getItem("UserStatus");
+    const tempActiveSmartship = localStorage.getItem("ActiveSmartship");
     if (tempUserStatus !== null) {
       this.userStatus = tempUserStatus;
       this.userLoggedIn = true;
+    }
+    if (tempActiveSmartship !== null) {
+      this.activeSmartship = tempActiveSmartship;
     }
   }
 
@@ -65,7 +71,9 @@ export class CategoryComponent implements OnInit {
       this.postsData.forEach((post: any) => {
         if (post.hasOwnProperty("category")) {
           post.category.forEach((category: any) => {
-            if (!this.categories.some(item => item.catSlug === category.slug)) {
+            if (
+              !this.categories.some((item) => item.catSlug === category.slug)
+            ) {
               this.categories.push({
                 catName: category.name,
                 catSlug: category.slug,
@@ -77,7 +85,7 @@ export class CategoryComponent implements OnInit {
                 champion: category.champion,
                 champion_rank_7: category.champion_rank_7,
                 champion_rank_8: category.champion_rank_8,
-                active_smartship: category.active_smartship
+                active_smartship: category.active_smartship,
               });
             }
           });
@@ -101,16 +109,62 @@ export class CategoryComponent implements OnInit {
       });
       categoriesWithPosts.push({
         category: mainCategory.catSlug,
-        posts: tempPosts
+        posts: tempPosts,
       });
     });
-    this.categories.forEach(category => {
-      categoriesWithPosts.forEach(tempCategory => {
+    this.categories.forEach((category) => {
+      categoriesWithPosts.forEach((tempCategory) => {
         if (tempCategory.category === category.catSlug) {
           category.posts = tempCategory.posts;
         }
       });
     });
+  }
+
+  saveCategoryCompletedData() {
+    const tempCompletedCategory = localStorage.getItem("completedCategory");
+    const tempIndex = JSON.parse(localStorage.getItem("Index"));
+    const tempLesson = JSON.parse(localStorage.getItem("Lesson"));
+    const tempUserID = localStorage.getItem("UserID");
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
+
+    const tempCategoryCount = [];
+    this.categories.forEach((category: any) => {
+      tempCategoryCount.push({
+        categorySlug: category.catSlug,
+        completedCount: 0,
+      });
+    });
+
+    if (tempCompletedCategory === "undefined") {
+      if (tempUserID !== null) {
+        this.wp
+          .saveData({
+            userId: tempUserID,
+            indexArray: tempIndex,
+            lessonArray: tempLesson,
+            categoryCompleted: tempCategoryCount,
+            favorites: Favorites,
+          })
+          .subscribe(
+            (res: any) => {
+              const successValue = JSON.parse(res);
+              if (successValue.success === true) {
+                console.log("cateogry saved");
+                localStorage.setItem(
+                  "completedCategory",
+                  JSON.stringify(tempCategoryCount)
+                );
+              } else {
+                console.log("not saved");
+              }
+            },
+            (err: any) => {
+              console.log("add", err);
+            }
+          );
+      }
+    }
   }
 
   getCategoryPosts(catSlug: string) {
@@ -130,7 +184,7 @@ export class CategoryComponent implements OnInit {
 
     if (this.currentLanguage !== "en") {
       this.router.navigate(["/"], {
-        queryParams: { lang: this.currentLanguage, category: catSlug }
+        queryParams: { lang: this.currentLanguage, category: catSlug },
       });
     } else {
       this.router.navigate(["/"], { queryParams: { category: catSlug } });
@@ -156,7 +210,7 @@ export class CategoryComponent implements OnInit {
       totalLesson = totalLesson + posts[--allLength].lesson.length;
     }
 
-    posts.forEach(post => {
+    posts.forEach((post) => {
       post.lesson.forEach((element: any) => {
         if (!currentAllLessonID.includes(element.lesson_id)) {
           currentAllLessonID.push(element.lesson_id);
@@ -183,15 +237,27 @@ export class CategoryComponent implements OnInit {
   }
 
   getActiveUser(cat: any) {
-    let catAvailability = false;
+    let tempUser = false;
+    let tempSmartship = false;
     Object.entries(cat).forEach(([key, value]) => {
       if (key === this.userStatus) {
         if (value === "on") {
-          catAvailability = true;
+          tempUser = true;
+        }
+      }
+      if (key === "active_smartship") {
+        if (value === "on") {
+          if (this.activeSmartship === "1") {
+            tempSmartship = true;
+          }
         }
       }
     });
-    return catAvailability;
+    if (tempUser || tempSmartship) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getRequiredAvailability(cat: any) {
@@ -215,10 +281,14 @@ export class CategoryComponent implements OnInit {
           if (key === "champion_rank_8") {
             availableCatName = "Prime Time Prüvers (Rank 8+)";
           }
-          if (key === "active_smartship") {
-            availableCatName = "Active SmartShip";
-          }
           requiredAvailability.push(availableCatName);
+        }
+      }
+      if (key === "active_smartship") {
+        if (value === "on") {
+          if (this.activeSmartship === "") {
+            requiredAvailability.push("Active SmartShip");
+          }
         }
       }
     });

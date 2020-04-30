@@ -13,7 +13,7 @@ declare let apiUrl: any;
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
   menuOpened: boolean = false;
@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
             '<button type="button" class="slick-prev-round"><i class="far fa-angle-left"></i></button>',
           nextArrow:
             '<button type="button" class="slick-next-round"><i class="far fa-angle-right"></i></button>',
-          slidesToShow: 1
-        }
-      }
-    ]
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   constructor(
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
     this.logoutTo = apiUrl;
 
     this.nextStartLesson = {
-      lesson_id: ""
+      lesson_id: "",
     };
 
     this.loadSignInStatus();
@@ -100,14 +100,14 @@ export class HomeComponent implements OnInit {
       this.completedLesson = JSON.parse(localStorage.getItem("Lesson"));
       let mainIndex: number;
 
-      this.posts.forEach(element => {
+      this.posts.forEach((element) => {
         let arrayCopy = element.lesson;
 
         if (!this.currentAllLearnID.includes(element.learnID)) {
           this.currentAllLearnID.push(element.learnID);
         }
 
-        arrayCopy.forEach(element => {
+        arrayCopy.forEach((element) => {
           // console.log(element.lesson_id);
           if (!this.currentAllLessonID.includes(element.lesson_id)) {
             this.currentAllLessonID.push(element.lesson_id);
@@ -115,10 +115,10 @@ export class HomeComponent implements OnInit {
         });
       });
 
-      intersectionLessonID = this.completedLesson.filter(value =>
+      intersectionLessonID = this.completedLesson.filter((value) =>
         this.currentAllLessonID.includes(value)
       );
-      intersectionLearnID = this.completedIndex.filter(value =>
+      intersectionLearnID = this.completedIndex.filter((value) =>
         this.currentAllLearnID.includes(value)
       );
 
@@ -174,7 +174,7 @@ export class HomeComponent implements OnInit {
         this.completedLesson = [];
       }
       this.allComplete();
-      this.route.queryParamMap.subscribe(params => {
+      this.route.queryParamMap.subscribe((params) => {
         this.homeParam = params.get("lang");
         if (this.homeParam === null) {
           this.translate.use("en");
@@ -286,10 +286,10 @@ export class HomeComponent implements OnInit {
         this.completedIndex = JSON.parse(localStorage.getItem("Index"));
         this.spinner = false;
       },
-      err => {},
+      (err) => {},
       () => {
         this.allComplete();
-        this.route.queryParamMap.subscribe(params => {
+        this.route.queryParamMap.subscribe((params) => {
           const lessonID = params.get("lesson");
           if (lessonID != null) {
             this.data.nameChange("LessonComponent");
@@ -486,7 +486,7 @@ export class HomeComponent implements OnInit {
     if (this.homeParam !== null) {
       if (this.homeParam !== "en") {
         this.router.navigate(["/"], {
-          queryParams: { lang: this.homeParam }
+          queryParams: { lang: this.homeParam },
         });
       } else {
         this.router.navigate(["/"]);
@@ -495,5 +495,81 @@ export class HomeComponent implements OnInit {
       this.router.navigate(["/"]);
     }
     this.data.nameChange("CategoryComponent");
+  }
+
+  onClickRedo() {
+    let LessonArray = JSON.parse(localStorage.getItem("Lesson"));
+    let IndexArray = JSON.parse(localStorage.getItem("Index"));
+    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
+    const redoCountArray = JSON.parse(
+      localStorage.getItem("completedCategory")
+    );
+
+    if (LessonArray === null && IndexArray === null) {
+      IndexArray = [];
+      LessonArray = [];
+    }
+    LessonArray = LessonArray.filter((item: any) => {
+      return !this.currentAllLessonID.includes(item);
+    });
+    IndexArray = IndexArray.filter((item: any) => {
+      return !this.currentAllLearnID.includes(item);
+    });
+
+    redoCountArray.forEach((element: any) => {
+      if (element.categorySlug === this.catParam) {
+        element.completedCount++;
+      }
+    });
+
+    const found = redoCountArray.some(
+      (el: any) => el.categorySlug === this.catParam
+    );
+    if (!found) {
+      redoCountArray.push({ categorySlug: this.catParam, completedCount: 0 });
+    }
+
+    const UserId = localStorage.getItem("UserID");
+
+    if (
+      confirm(
+        "This will reset all current progress for this Challenge. It cannot be undone. Are you sure you want to proceed?"
+      )
+    ) {
+      if (UserId !== null) {
+        this.wp
+          .saveData({
+            userId: UserId,
+            indexArray: IndexArray,
+            lessonArray: LessonArray,
+            categoryCompleted: redoCountArray,
+            favorites: Favorites,
+          })
+          .subscribe(
+            (res: any) => {
+              // console.log(res);
+              const value = JSON.parse(res);
+              if (value.success === true) {
+                console.log("saved");
+                localStorage.setItem("Lesson", JSON.stringify(LessonArray));
+                localStorage.setItem("Index", JSON.stringify(IndexArray));
+                localStorage.setItem(
+                  "completedCategory",
+                  JSON.stringify(redoCountArray)
+                );
+                this.router.navigate(["/"]);
+              } else {
+                console.log("not saved");
+                this.router.navigate(["/"]);
+              }
+            },
+            (err: any) => {
+              console.log("add", err);
+            }
+          );
+      } else {
+        console.log("userID not found");
+      }
+    }
   }
 }

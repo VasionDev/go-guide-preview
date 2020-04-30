@@ -1,0 +1,153 @@
+<ng-sidebar-container style="height: 100vh;">
+  <ng-sidebar [(opened)]="menuOpened" [showBackdrop]="menuOpened">
+    <app-options></app-options>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <header>
+      <div class="challenge__member">
+        <nav class="navbar navbar-default challenge__member--custom-navbar">
+          <div class="container challenge__member--custom-nav">
+            <div class="challenge__member--menu">
+              <button
+                type="button"
+                class="challenge__member--desktop--button"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-5"
+                aria-expanded="false"
+                (click)="toggleSidebar()"
+              >
+                <img
+                  class="challenge__member--desktop--button-icon"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challene-menu-desktop.png"
+                  alt="menu"
+                />
+              </button>
+            </div>
+
+            <div class="navbar-brand-logo text-center">
+              <a class="challenge__member--custom-navbar-brand">
+                <img
+                  class="product-page-logo"
+                  alt="Brand"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/pruvit-logo-new-b.png"
+                />
+              </a>
+            </div>
+
+            <div class="clallenge__member-fevorit">
+              <button
+                class="challenge__member-fevorit-icon share-btn"
+                type="button"
+                (click)="onCLickFavorite()"
+              >
+                <i style="color: #000;" class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="challenge__member--mobile">
+        <nav class="navbar navbar-default challenge__member--mobile--bg">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button
+                type="button"
+                class="navbar-toggle collapsed challenge__member--mobile--button"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-5"
+                aria-expanded="false"
+                (click)="toggleSidebar()"
+              >
+                <img
+                  _ngcontent-xwy-c1=""
+                  alt="menu"
+                  class="challenge__member--mobile--button-icon"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/menu 1.png"
+                />
+              </button>
+              <a class="navbar-brand challenge__member--mobile--brand">
+                <img
+                  class="challenge__member--mobile--brand--img"
+                  alt="Brand"
+                  src="https://challenge.com/wp-content/themes/pruvit-challenge/learning-member/assets/img/challenge-member-logo.png"
+                />
+              </a>
+
+              <button
+                class="challenge__member--mobile--button share-btn"
+                type="button"
+                (click)="onCLickFavorite()"
+              >
+                <i class="far fa-heart" style="color: #fff;"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ----------------------------- ----------------------------- -->
+
+    <main>
+      <section class="cg-library">
+        <div class="container">
+          <div class="cg-library__content">
+            <h3 class="ch-jumbo-acu3 ch-black-color">Library</h3>
+            <form class="cg-library__search">
+              <div class="cg-library__input-group">
+                <div class="input-group-addon cg-library__search-icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <input
+                  type="text"
+                  class="cg-library__form-control form-control"
+                  name="search"
+                  placeholder="Search"
+                  [(ngModel)]="searchQuery"
+                  (keydown.enter)="onSearch(searchQuery)"
+                />
+              </div>
+            </form>
+
+            <div class="cg-library__topics">
+              <h4 class="cg-library__subtitle ch-black-color">Topics</h4>
+              <ul class="cg-library__topics-list">
+                <li *ngFor="let category of categories">
+                  <p
+                    (click)="onClickLibraryItem(category)"
+                    class="cg-library__topics-link"
+                  >
+                    {{ category.cat_name }}
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cg-library__newtopic">
+              <h4
+                class="cg-library__subtitle ch-black-color cg-library__border-b"
+              >
+                new
+              </h4>
+
+              <ul class="cg-library__newtopic-list">
+                <li *ngFor="let post of recentPosts">
+                  <p
+                    class="cg-library__newtopic-link"
+                    (click)="onClickRecentPost(post)"
+                  >
+                    <span class="ch-disclaimer cg-library__newtopic-date">{{
+                      getPostDate(post.post_date)
+                    }}</span>
+                    {{ post.post_title }}
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</ng-sidebar-container>

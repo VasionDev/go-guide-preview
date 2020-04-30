@@ -6,7 +6,7 @@ declare let apiUrl: any;
 declare let langCode: any;
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class WordpressService {
   private apiBaseURL = "";
@@ -37,6 +37,10 @@ export class WordpressService {
 
   getCategories(): Observable<any[]> {
     return this.http.get<any[]>(this.apiBaseURL + "/get-categories/v2/");
+  }
+
+  getDownloadModule(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiBaseURL + "/get-download-module/v2/");
   }
 
   /*getPosts(): Observable<any[]> {

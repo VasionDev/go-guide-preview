@@ -30,6 +30,12 @@ import { ClipboardModule } from "ngx-clipboard";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { CategoryComponent } from "./category/category.component";
+import { LibraryComponent } from "./library/library.component";
+import { LibraryCategoryComponent } from "./library-category/library-category.component";
+import { LibraryItemComponent } from "./library-item/library-item.component";
+import { SearchPipe } from "./search.pipe";
+import { LibrarySearchComponent } from "./library-search/library-search.component";
+import { LibraryFavoritesComponent } from "./library-favorites/library-favorites.component";
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
@@ -46,7 +52,13 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     ExperienceComponent,
     ExperienceLessonComponent,
     InviteComponent,
-    CategoryComponent
+    CategoryComponent,
+    LibraryComponent,
+    LibraryCategoryComponent,
+    LibraryItemComponent,
+    SearchPipe,
+    LibrarySearchComponent,
+    LibraryFavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,9 +79,9 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   entryComponents: [
     HomeComponent,
@@ -80,10 +92,15 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     ExperienceComponent,
     ExperienceLessonComponent,
     InviteComponent,
-    CategoryComponent
+    CategoryComponent,
+    LibraryComponent,
+    LibraryCategoryComponent,
+    LibraryItemComponent,
+    LibrarySearchComponent,
+    LibraryFavoritesComponent,
   ],
   providers: [ModalService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 
