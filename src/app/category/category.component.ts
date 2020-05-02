@@ -46,7 +46,7 @@ export class CategoryComponent implements OnInit {
       this.translate.use(this.currentLanguage);
       this.loadCategoryData();
       this.getCategoriesWithPosts();
-      this.saveCategoryCompletedData();
+      this.saveInitialCategoryAndFavoritesData();
     });
   }
 
@@ -121,12 +121,14 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  saveCategoryCompletedData() {
+  saveInitialCategoryAndFavoritesData() {
     const tempCompletedCategory = localStorage.getItem("completedCategory");
     const tempIndex = JSON.parse(localStorage.getItem("Index"));
     const tempLesson = JSON.parse(localStorage.getItem("Lesson"));
     const tempUserID = localStorage.getItem("UserID");
-    const Favorites = JSON.parse(localStorage.getItem("Favorites"));
+    const tempFavorites = localStorage.getItem("Favorites");
+
+    const initialFavorites = [];
 
     const tempCategoryCount = [];
     this.categories.forEach((category: any) => {
@@ -136,7 +138,10 @@ export class CategoryComponent implements OnInit {
       });
     });
 
-    if (tempCompletedCategory === "undefined") {
+    if (
+      tempCompletedCategory === "undefined" &&
+      tempFavorites === "undefined"
+    ) {
       if (tempUserID !== null) {
         this.wp
           .saveData({
@@ -144,17 +149,22 @@ export class CategoryComponent implements OnInit {
             indexArray: tempIndex,
             lessonArray: tempLesson,
             categoryCompleted: tempCategoryCount,
-            favorites: Favorites,
+            favorites: initialFavorites,
           })
           .subscribe(
             (res: any) => {
               const successValue = JSON.parse(res);
               if (successValue.success === true) {
-                console.log("cateogry saved");
                 localStorage.setItem(
                   "completedCategory",
                   JSON.stringify(tempCategoryCount)
                 );
+                console.log("initial cateogry saved");
+                localStorage.setItem(
+                  "Favorites",
+                  JSON.stringify(initialFavorites)
+                );
+                console.log("initial favorites saved");
               } else {
                 console.log("not saved");
               }

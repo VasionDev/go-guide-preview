@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../services/data.service";
 import { Router } from "@angular/router";
-import { WordpressService } from "../services/wordpress.service";
 
 @Component({
   selector: "app-library",
@@ -14,15 +13,10 @@ export class LibraryComponent implements OnInit {
   searchQuery = "";
   menuOpened = false;
 
-  constructor(
-    private data: DataService,
-    private router: Router,
-    private wp: WordpressService
-  ) {}
+  constructor(private data: DataService, private router: Router) {}
 
   ngOnInit() {
     this.loadLibraryData();
-    this.saveFavoritesData();
   }
 
   loadLibraryData() {
@@ -85,47 +79,5 @@ export class LibraryComponent implements OnInit {
     this.router.navigate(["/"], {
       queryParams: { module: "library", preference: "favorites" },
     });
-  }
-
-  saveFavoritesData() {
-    const tempFavorites = localStorage.getItem("Favorites");
-    const tempIndex = JSON.parse(localStorage.getItem("Index"));
-    const tempLesson = JSON.parse(localStorage.getItem("Lesson"));
-    const tempUserID = localStorage.getItem("UserID");
-    const redoCountArray = JSON.parse(
-      localStorage.getItem("completedCategory")
-    );
-
-    const initialFavorites = [];
-
-    if (tempFavorites === "undefined") {
-      if (tempUserID !== null) {
-        this.wp
-          .saveData({
-            userId: tempUserID,
-            indexArray: tempIndex,
-            lessonArray: tempLesson,
-            categoryCompleted: redoCountArray,
-            favorites: initialFavorites,
-          })
-          .subscribe(
-            (res: any) => {
-              const successValue = JSON.parse(res);
-              if (successValue.success === true) {
-                console.log("initial favorite saved");
-                localStorage.setItem(
-                  "Favorites",
-                  JSON.stringify(initialFavorites)
-                );
-              } else {
-                console.log("not saved");
-              }
-            },
-            (err: any) => {
-              console.log("add", err);
-            }
-          );
-      }
-    }
   }
 }
