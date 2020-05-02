@@ -126,9 +126,7 @@
         <h3 class="ch-jumbo-acu3 ch-black-color">{{ itemPost.post_title }}</h3>
 
         <div class="cg-library__category">
-          <p>
-            {{ itemPost.post_content }}
-          </p>
+          <p [innerHTML]="itemPost.post_content"></p>
           <div style="margin-top: 30px;">
             <a
               href="{{ itemPost.download_url }}"
