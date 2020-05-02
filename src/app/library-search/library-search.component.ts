@@ -44,6 +44,9 @@ export class LibrarySearchComponent implements OnInit {
           x.post_title.toLowerCase().includes(this.searchParam.toLowerCase()) ||
           x.post_content.toLowerCase().includes(this.searchParam.toLowerCase())
       );
+
+      this.categoriesPosts.sort((a, b) => (a.post_title > b.post_title) ? 1 : -1)
+      // console.log('after sorting', this.categoriesPosts);
       this.getTopicItems();
     });
   }
