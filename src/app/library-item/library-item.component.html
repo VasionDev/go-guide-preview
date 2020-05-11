@@ -122,11 +122,11 @@
 <main>
   <section class="cg-library">
     <div class="container">
-      <div class="cg-library__content">
+      <div class="cg-library__content library-li challenge-img-responsive">
         <h3 class="ch-jumbo-acu3 ch-black-color">{{ itemPost.post_title }}</h3>
 
         <div class="cg-library__category">
-          <p [innerHTML]="itemPost.post_content"></p>
+          <p [innerHTML]="renderDynamicHtml(this.itemPost.post_content)"></p>
           <div style="margin-top: 30px;">
             <a
               href="{{ itemPost.download_url }}"

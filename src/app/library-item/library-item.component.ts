@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../services/data.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { WordpressService } from "../services/wordpress.service";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-library-item",
@@ -21,7 +22,8 @@ export class LibraryItemComponent implements OnInit {
     private data: DataService,
     private route: ActivatedRoute,
     private router: Router,
-    private wp: WordpressService
+    private wp: WordpressService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -48,6 +50,10 @@ export class LibraryItemComponent implements OnInit {
         });
       }
     });
+  }
+
+  renderDynamicHtml(dynamicHtml) {
+    return this.sanitizer.bypassSecurityTrustHtml(dynamicHtml);
   }
 
   loadFavoriteStatus() {

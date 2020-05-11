@@ -1932,7 +1932,8 @@ a:hover {
   cursor: default;
 }
 
-.chellenge__compleate--details--text.challenge-img-responsive img {
+.chellenge__compleate--details--text.challenge-img-responsive img,
+.cg-library__content.challenge-img-responsive img {
   width: 100%;
   padding: 10px;
 }
@@ -2673,4 +2674,9 @@ collapse-menu {
 .challenge__member--go-back {
   background-color: transparent;
   border: none;
+}
+
+.cg-library__content.library-li ul,
+.cg-library__content.library-li ol {
+  padding-left: 15px;
 }
