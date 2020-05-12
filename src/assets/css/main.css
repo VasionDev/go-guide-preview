@@ -1936,6 +1936,7 @@ a:hover {
 .cg-library__content.challenge-img-responsive img {
   width: 100%;
   padding: 10px;
+  height: auto;
 }
 
 /*  ------------------ language -------------------------- */
