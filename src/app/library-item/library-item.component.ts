@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../services/data.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { WordpressService } from "../services/wordpress.service";
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-library-item",
@@ -17,6 +17,7 @@ export class LibraryItemComponent implements OnInit {
   favorited = false;
   spinner = false;
   spinnerDesktop = false;
+  currentLanguage = "";
 
   constructor(
     private data: DataService,
@@ -49,6 +50,12 @@ export class LibraryItemComponent implements OnInit {
           }
         });
       }
+      const langParam = params.get("lang");
+      if (langParam !== null) {
+        this.currentLanguage = langParam;
+      } else {
+        this.currentLanguage = "en";
+      }
     });
   }
 
@@ -66,9 +73,15 @@ export class LibraryItemComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigate(["/"], {
-      queryParams: { module: "library" },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.currentLanguage, module: "library" },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: { module: "library" },
+      });
+    }
   }
 
   onClickFavorite() {

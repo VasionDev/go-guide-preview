@@ -66,9 +66,8 @@
               <p
                 class="cg-library__category-link ch-jumbo-acu4"
                 (click)="onCLickPost(post)"
-              >
-                {{ post.post_title }}
-              </p>
+                [innerHTML]="post.post_title"
+              ></p>
             </li>
           </ul>
         </div>

@@ -43,6 +43,12 @@ export class WordpressService {
     return this.http.get<any[]>(this.apiBaseURL + "/get-download-module/v2/");
   }
 
+  getDownloadModuleWithLanguage(language: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      this.apiBaseURL + "/get-download-module/v2/?lang=" + language
+    );
+  }
+
   /*getPosts(): Observable<any[]> {
     return this.http.get<any[]>(
       this.apiBaseURL+'/getLearningtools/v2/'

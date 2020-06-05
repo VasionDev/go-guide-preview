@@ -10,7 +10,7 @@ declare let apiUrl: any;
 @Component({
   selector: "app-options",
   templateUrl: "./options.component.html",
-  styleUrls: ["./options.component.css"]
+  styleUrls: ["./options.component.css"],
 })
 export class OptionsComponent implements OnInit {
   menuOpened: boolean = false;
@@ -28,6 +28,7 @@ export class OptionsComponent implements OnInit {
   selectedLanguage = "";
   selectedCategory = "";
   categories = [];
+  moduleName = "";
 
   constructor(
     private data: DataService,
@@ -45,7 +46,7 @@ export class OptionsComponent implements OnInit {
     if (JSON.parse(localStorage.getItem("signInStatus")) !== null) {
       this.userLoggedIn = JSON.parse(localStorage.getItem("signInStatus"));
     }
-    this.route.queryParams.subscribe(res => {
+    this.route.queryParams.subscribe((res) => {
       this.selectedLanguage = res.lang;
       if (this.selectedLanguage === undefined) {
         this.selectedLanguage = "en";
@@ -56,6 +57,11 @@ export class OptionsComponent implements OnInit {
         this.currentPage = res.page;
       } else {
         this.currentPage = "";
+      }
+      if (res.module === undefined) {
+        this.moduleName = "";
+      } else {
+        this.moduleName = res.module;
       }
     });
 
@@ -90,10 +96,10 @@ export class OptionsComponent implements OnInit {
     postData.forEach((post: any) => {
       if (post.hasOwnProperty("category")) {
         post.category.forEach((category: any) => {
-          if (!this.categories.some(item => item.catSlug === category.slug)) {
+          if (!this.categories.some((item) => item.catSlug === category.slug)) {
             this.categories.push({
               catName: category.name,
-              catSlug: category.slug
+              catSlug: category.slug,
             });
           }
         });
@@ -162,6 +168,12 @@ export class OptionsComponent implements OnInit {
     if (language === "es") {
       languageName = "Spanish";
     }
+    if (language === "de") {
+      languageName = "German";
+    }
+    if (language === "it") {
+      languageName = "Italian";
+    }
     return languageName;
   }
 
@@ -171,6 +183,10 @@ export class OptionsComponent implements OnInit {
       languageFlag = "https://image.flaticon.com/icons/svg/2151/2151303.svg";
     } else if (language === "es") {
       languageFlag = "https://image.flaticon.com/icons/svg/206/206600.svg";
+    } else if (language === "de") {
+      languageFlag = "https://image.flaticon.com/icons/svg/2151/2151319.svg";
+    } else if (language === "it") {
+      languageFlag = "https://image.flaticon.com/icons/svg/2151/2151340.svg";
     } else {
       languageFlag = "https://image.flaticon.com/icons/svg/330/330425.svg";
     }
@@ -183,6 +199,10 @@ export class OptionsComponent implements OnInit {
       iconName = "flag-icon-chinese";
     } else if (language === "es") {
       iconName = "flag-icon-spanish";
+    } else if (language === "de") {
+      iconName = "flag-icon-german";
+    } else if (language === "it") {
+      iconName = "flag-icon-italian";
     } else {
       iconName = "flag-icon-us";
     }
@@ -209,12 +229,26 @@ export class OptionsComponent implements OnInit {
 
     // this.data.dataChange(day10Guide);
     // console.log(language);
-    if (language === "zh-hant" || language === "zh-hans" || language === "es") {
-      this.router.navigate(["/"], { queryParams: { lang: language } });
-      this.data.nameChange("CategoryComponent");
+    if (
+      language === "zh-hant" ||
+      language === "zh-hans" ||
+      language === "es" ||
+      language === "de" ||
+      language === "it"
+    ) {
+      if (this.moduleName === "library") {
+        this.router.navigate(["/"], {
+          queryParams: { lang: language, module: "library" },
+        });
+      } else {
+        this.router.navigate(["/"], { queryParams: { lang: language } });
+      }
     } else {
-      this.router.navigate(["/"]);
-      this.data.nameChange("CategoryComponent");
+      if (this.moduleName === "library") {
+        this.router.navigate(["/"], { queryParams: { module: "library" } });
+      } else {
+        this.router.navigate(["/"]);
+      }
     }
   }
 
@@ -286,6 +320,24 @@ export class OptionsComponent implements OnInit {
   }
 
   onClickOption() {
-    this.data.nameChange("CategoryComponent");
+    if (this.selectedLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.selectedLanguage },
+      });
+    } else {
+      this.router.navigate(["/"]);
+    }
+  }
+
+  onClickLibrary() {
+    if (this.selectedLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.selectedLanguage, module: "library" },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: { module: "library" },
+      });
+    }
   }
 }

@@ -1961,6 +1961,16 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.flag-icon-german {
+  background-image: url(https://image.flaticon.com/icons/svg/2151/2151319.svg);
+  background-repeat: no-repeat;
+}
+
+.flag-icon-italian {
+  background-image: url(https://image.flaticon.com/icons/svg/2151/2151340.svg);
+  background-repeat: no-repeat;
+}
+
 .member__lenguage-btn {
   border: none;
   color: #fff;

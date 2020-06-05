@@ -41,7 +41,6 @@
 
 </header> -->
 
-
 <!-- <ng-sidebar #sidebar [(opened)]="menuOpened" [(showBackdrop)]="menuOpened"> -->
 <!-- <ng-sidebar #sidebar [(opened)]="openedIn">
   <section class="side__menu">
@@ -67,7 +66,6 @@
   </section>
 </ng-sidebar> -->
 
-
 <!-- <section class="side__menu">
   <div class="side__menu-container">
     <div class="side__menu-container--top">
@@ -86,29 +84,52 @@
   </div>
 </section> -->
 
-
 <section class="side__menu">
   <div class="side__menu-container">
     <div class="side__menu-container--top">
       <ul class="side__menu-list">
         <li class="side__menu-items side__menu--colse">
-          <a closeSidebar class="side__menu--colse-icon pointer text-left">&times;</a>
+          <a closeSidebar class="side__menu--colse-icon pointer text-left"
+            >&times;</a
+          >
           <div class="btn-group" role="group">
-            <a href="#" class="dropdown-toggle member__lenguage-btn" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              <span [ngClass]="getFlagIcon(selectedLanguage)" class="flag-icon">&nbsp;</span><i
-                class="fal fa-angle-down member__lenguage-arrow"></i>
+            <a
+              href="#"
+              class="dropdown-toggle member__lenguage-btn"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span [ngClass]="getFlagIcon(selectedLanguage)" class="flag-icon"
+                >&nbsp;</span
+              ><i class="fal fa-angle-down member__lenguage-arrow"></i>
             </a>
             <ul class="dropdown-menu custom__dropdown-menu">
               <li *ngFor="let language of languages">
-                <a closeSidebar (click)="onClickLanguage(language)"><img src="{{ getLanguageIcon(language) }}"
-                    alt="{{ language }}" class="member__language--icon">{{ getLanguageName(language) }}</a>
+                <a closeSidebar (click)="onClickLanguage(language)"
+                  ><img
+                    src="{{ getLanguageIcon(language) }}"
+                    alt="{{ language }}"
+                    class="member__language--icon"
+                  />{{ getLanguageName(language) }}</a
+                >
               </li>
             </ul>
           </div>
         </li>
-        <li closeSidebar class="side__menu-items side__menu-challenge-cat" [class.active]="currentPage === ''">
-          <a class="side__menu--links" role="button" (click)="onClickOption()">Challenges</a>
+        <li
+          closeSidebar
+          class="side__menu-items side__menu-challenge-cat"
+          [class.active]="currentPage === ''"
+        >
+          <a class="side__menu--links" role="button" (click)="onClickOption()"
+            >Challenges</a
+          >
+        </li>
+        <li class="side__menu-items">
+          <a (click)="onClickLibrary()" class="side__menu--links pointer"
+            >Library</a
+          >
         </li>
         <!-- <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body side__menu--collapse-body">
@@ -122,13 +143,24 @@
             </ul>
           </div>
         </div> -->
-        <li class="side__menu-items challenge_active"><a (click)="onInvite()"
-            class="side__menu--links pointer">Challenge Friends</a></li>
-        <li class="side__menu-items"><a (click)="onGetHelp()" class="side__menu--links pointer">GET HELP</a></li>
-        <li *ngIf="!userLoggedIn" class="side__menu-items"><a (click)="onLogin()" class="side__menu--links pointer">log
-            in</a></li>
-        <li *ngIf="userLoggedIn" class="side__menu-items"><a (click)="onClickSignOut()"
-            class="side__menu--links pointer">{{ 'options.logOut' | translate }}</a></li>
+        <li class="side__menu-items challenge_active">
+          <a (click)="onInvite()" class="side__menu--links pointer"
+            >Challenge Friends</a
+          >
+        </li>
+        <li class="side__menu-items">
+          <a (click)="onGetHelp()" class="side__menu--links pointer"
+            >GET HELP</a
+          >
+        </li>
+        <li *ngIf="!userLoggedIn" class="side__menu-items">
+          <a (click)="onLogin()" class="side__menu--links pointer">log in</a>
+        </li>
+        <li *ngIf="userLoggedIn" class="side__menu-items">
+          <a (click)="onClickSignOut()" class="side__menu--links pointer">{{
+            "options.logOut" | translate
+          }}</a>
+        </li>
       </ul>
     </div>
 

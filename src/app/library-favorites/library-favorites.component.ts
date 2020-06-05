@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { DataService } from "../services/data.service";
 
 @Component({
@@ -10,14 +10,27 @@ import { DataService } from "../services/data.service";
 export class LibraryFavoritesComponent implements OnInit {
   favoritesPosts = [];
   categories = [];
+  currentLanguage = "";
 
-  constructor(private data: DataService, private router: Router) {}
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.loadFavoritesData();
   }
 
   loadFavoritesData() {
+    this.route.queryParamMap.subscribe((params) => {
+      const langParam = params.get("lang");
+      if (langParam !== null) {
+        this.currentLanguage = langParam;
+      } else {
+        this.currentLanguage = "en";
+      }
+    });
     this.data.currentLibraryData.subscribe((data: any) => {
       this.categories = data.category_info;
     });
@@ -45,13 +58,24 @@ export class LibraryFavoritesComponent implements OnInit {
 
   onCLickPost(post: any) {
     const topicName = this.getTopicName(post.post_id);
-    this.router.navigate(["/"], {
-      queryParams: {
-        module: "library",
-        topic: topicName,
-        item: post.post_id,
-      },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: {
+          lang: this.currentLanguage,
+          module: "library",
+          topic: topicName,
+          item: post.post_id,
+        },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: {
+          module: "library",
+          topic: topicName,
+          item: post.post_id,
+        },
+      });
+    }
   }
 
   getTopicName(postID: number) {
@@ -67,8 +91,14 @@ export class LibraryFavoritesComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigate(["/"], {
-      queryParams: { module: "library" },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.currentLanguage, module: "library" },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: { module: "library" },
+      });
+    }
   }
 }
