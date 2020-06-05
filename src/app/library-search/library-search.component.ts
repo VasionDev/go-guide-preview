@@ -13,6 +13,7 @@ export class LibrarySearchComponent implements OnInit {
   filteredTopicArray = [];
   searchParam = "";
   itemSelected = "";
+  currentLanguage = "";
 
   constructor(
     private router: Router,
@@ -27,6 +28,12 @@ export class LibrarySearchComponent implements OnInit {
   loadLibraryData() {
     this.route.queryParamMap.subscribe((params) => {
       this.searchParam = params.get("search");
+      const langParam = params.get("lang");
+      if (langParam !== null) {
+        this.currentLanguage = langParam;
+      } else {
+        this.currentLanguage = "en";
+      }
     });
     this.data.currentLibraryData.subscribe((data: any) => {
       this.categories = data.category_info;
@@ -53,20 +60,37 @@ export class LibrarySearchComponent implements OnInit {
   }
 
   onClickBack() {
-    this.router.navigate(["/"], {
-      queryParams: { module: "library" },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.currentLanguage, module: "library" },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: { module: "library" },
+      });
+    }
   }
 
   onClickPost(post: any) {
     const topicName = this.getTopicName(post.post_id);
-    this.router.navigate(["/"], {
-      queryParams: {
-        module: "library",
-        topic: topicName,
-        item: post.post_id,
-      },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: {
+          lang: this.currentLanguage,
+          module: "library",
+          topic: topicName,
+          item: post.post_id,
+        },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: {
+          module: "library",
+          topic: topicName,
+          item: post.post_id,
+        },
+      });
+    }
   }
 
   getTopicName(postID: number) {

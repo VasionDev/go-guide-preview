@@ -146,6 +146,17 @@ export class AppComponent implements OnInit {
         const langParam = params.get("lang");
         if (langParam !== null) {
           this.currentLanguage = params.get("lang");
+          if (this.currentLanguage !== "en") {
+            this.wp
+              .getDownloadModuleWithLanguage(this.currentLanguage)
+              .subscribe((library: any) => {
+                this.data.libraryDataChange(library);
+              });
+          }
+        } else {
+          this.wp.getDownloadModule().subscribe((data: any) => {
+            this.data.libraryDataChange(data);
+          });
         }
       });
       const postData = JSON.parse(postsData[this.currentLanguage]);

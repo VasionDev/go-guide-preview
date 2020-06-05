@@ -12,6 +12,7 @@ export class LibraryCategoryComponent implements OnInit {
   topicParam = "";
   libraryPosts = [];
   topicName = "";
+  currentLanguage = "";
 
   constructor(
     private data: DataService,
@@ -37,22 +38,45 @@ export class LibraryCategoryComponent implements OnInit {
           }
         });
       }
+      const langParam = params.get("lang");
+      if (langParam !== null) {
+        this.currentLanguage = langParam;
+      } else {
+        this.currentLanguage = "en";
+      }
     });
   }
 
   onCLickPost(post: any) {
-    this.router.navigate(["/"], {
-      queryParams: {
-        module: "library",
-        topic: this.topicParam,
-        item: post.post_id,
-      },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: {
+          lang: this.currentLanguage,
+          module: "library",
+          topic: this.topicParam,
+          item: post.post_id,
+        },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: {
+          module: "library",
+          topic: this.topicParam,
+          item: post.post_id,
+        },
+      });
+    }
   }
 
   onClickBack() {
-    this.router.navigate(["/"], {
-      queryParams: { module: "library" },
-    });
+    if (this.currentLanguage !== "en") {
+      this.router.navigate(["/"], {
+        queryParams: { lang: this.currentLanguage, module: "library" },
+      });
+    } else {
+      this.router.navigate(["/"], {
+        queryParams: { module: "library" },
+      });
+    }
   }
 }
