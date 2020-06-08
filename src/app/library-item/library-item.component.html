@@ -123,13 +123,17 @@
   <section class="cg-library">
     <div class="container">
       <div class="cg-library__content library-li challenge-img-responsive">
-        <h3 class="ch-jumbo-acu3 ch-black-color">{{ itemPost.post_title }}</h3>
+        <h3
+          class="ch-jumbo-acu3 ch-black-color"
+          *ngIf="itemPost"
+          [innerHTML]="itemPost?.post_title"
+        ></h3>
 
-        <div class="cg-library__category">
-          <p [innerHTML]="renderDynamicHtml(this.itemPost.post_content)"></p>
+        <div class="cg-library__category" *ngIf="itemPost">
+          <p [innerHTML]="renderDynamicHtml(itemPost?.post_content)"></p>
           <div style="margin-top: 30px;">
             <a
-              href="{{ itemPost.download_url }}"
+              href="{{ itemPost?.download_url }}"
               target="_blank"
               class="ch-btn-invite pointer"
               >Download</a

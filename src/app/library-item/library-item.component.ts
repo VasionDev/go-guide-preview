@@ -35,31 +35,34 @@ export class LibraryItemComponent implements OnInit {
   loadLibraryItemData() {
     this.data.currentLibraryData.subscribe((data: any) => {
       this.libraries = data.category_info;
-    });
-    this.route.queryParamMap.subscribe((params) => {
-      this.topicParam = params.get("topic");
-      this.itemParam = params.get("item");
-      if (this.topicParam !== null && this.itemParam !== null) {
-        this.libraries.forEach((library: any) => {
-          if (library.cat_slug === this.topicParam) {
-            library.cat_posts.forEach((post: any) => {
-              if (post.post_id === +this.itemParam) {
-                this.itemPost = post;
+
+      this.route.queryParamMap.subscribe((params) => {
+        this.topicParam = params.get("topic");
+        this.itemParam = params.get("item");
+        if (this.topicParam !== null && this.itemParam !== null) {
+          if (this.libraries) {
+            this.libraries.forEach((library: any) => {
+              if (library.cat_slug === this.topicParam) {
+                library.cat_posts.forEach((post: any) => {
+                  if (post.post_id === +this.itemParam) {
+                    this.itemPost = post;
+                  }
+                });
               }
             });
           }
-        });
-      }
-      const langParam = params.get("lang");
-      if (langParam !== null) {
-        this.currentLanguage = langParam;
-      } else {
-        this.currentLanguage = "en";
-      }
+        }
+        const langParam = params.get("lang");
+        if (langParam !== null) {
+          this.currentLanguage = langParam;
+        } else {
+          this.currentLanguage = "en";
+        }
+      });
     });
   }
 
-  renderDynamicHtml(dynamicHtml) {
+  renderDynamicHtml(dynamicHtml: any) {
     return this.sanitizer.bypassSecurityTrustHtml(dynamicHtml);
   }
 

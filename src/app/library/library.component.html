@@ -92,7 +92,10 @@
     <main>
       <section class="cg-library">
         <div class="container">
-          <div class="cg-library__content">
+          <div
+            class="cg-library__content"
+            *ngIf="recentPosts?.length !== 0 && categories?.length !== 0"
+          >
             <h3 class="ch-jumbo-acu3 ch-black-color">Library</h3>
             <form class="cg-library__search">
               <div class="cg-library__input-group">

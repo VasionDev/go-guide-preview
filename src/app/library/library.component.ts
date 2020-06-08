@@ -37,6 +37,15 @@ export class LibraryComponent implements OnInit {
       this.categories = data.category_info;
       this.recentPosts = data.recent_posts;
     });
+
+    const userLanguage = localStorage.getItem("userLanguage");
+    if (userLanguage !== null) {
+      if (userLanguage !== "en") {
+        this.router.navigate(["/"], {
+          queryParams: { lang: userLanguage, module: "library" },
+        });
+      }
+    }
   }
 
   onClickLibraryItem(category: any) {

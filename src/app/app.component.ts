@@ -7,7 +7,7 @@ import { OptionsComponent } from "./options/options.component";
 import { Component, OnInit } from "@angular/core";
 import { HomeComponent } from "./home/home.component";
 import { ResourceComponent } from "./resource/resource.component";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ExperienceComponent } from "./experience/experience.component";
 import { ExperienceLessonComponent } from "./experience-lesson/experience-lesson.component";
 import { InviteComponent } from "./invite/invite.component";
@@ -121,6 +121,10 @@ export class AppComponent implements OnInit {
           localStorage.setItem("experienceStatus", JSON.stringify(""));
         }
 
+        const userInfo = JSON.parse(user.mvuser_info);
+        const userLanguage = userInfo.collection[0].language.toLowerCase();
+        localStorage.setItem("userLanguage", userLanguage);
+
         this.subscribeLessons();
       } else {
         window.location.href = this.redirectUrl;
@@ -134,11 +138,9 @@ export class AppComponent implements OnInit {
     // this.wp.getCategories().subscribe((data: any) => {
     //    console.log(data);
     // });
-    forkJoin(
-      this.wp.getDownloadModule(),
-      this.wp.getPostsWithLanguages()
-    ).subscribe(([libraryData, postsData]) => {
-      this.data.libraryDataChange(libraryData);
+
+    this.wp.getPostsWithLanguages().subscribe((postsData) => {
+      // this.data.libraryDataChange(libraryData);
 
       this.data.dataWithLanguagesChange(postsData);
       this.data.languagesChange(Object.keys(postsData));
