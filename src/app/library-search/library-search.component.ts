@@ -39,18 +39,26 @@ export class LibrarySearchComponent implements OnInit {
       this.categories = data.category_info;
 
       const tempPosts = [];
-      this.categories.forEach((category: any) => {
-        category.cat_posts.forEach((post: any) => {
-          if (!tempPosts.some((item) => item.post_id === post.post_id)) {
-            tempPosts.push(post);
-          }
+      if (this.categories) {
+        this.categories.forEach((category: any) => {
+          category.cat_posts.forEach((post: any) => {
+            if (!tempPosts.some((item) => item.post_id === post.post_id)) {
+              tempPosts.push(post);
+            }
+          });
         });
-      });
-      this.categoriesPosts = tempPosts.filter(
-        (x: any) =>
-          x.post_title.toLowerCase().includes(this.searchParam.toLowerCase()) ||
-          x.post_content.toLowerCase().includes(this.searchParam.toLowerCase())
-      );
+      }
+      if (this.searchParam !== null) {
+        this.categoriesPosts = tempPosts.filter(
+          (x: any) =>
+            x.post_title
+              .toLowerCase()
+              .includes(this.searchParam.toLowerCase()) ||
+            x.post_content
+              .toLowerCase()
+              .includes(this.searchParam.toLowerCase())
+        );
+      }
 
       this.categoriesPosts.sort((a, b) =>
         a.post_title > b.post_title ? 1 : -1
@@ -107,25 +115,27 @@ export class LibrarySearchComponent implements OnInit {
 
   getTopicItems() {
     this.filteredTopicArray = [];
-    this.categories.forEach((category: any) => {
-      let tempPostCount = 0;
-      let tempCatName = "";
-      const tempPosts = [];
-      category.cat_posts.forEach((post: any) => {
-        this.categoriesPosts.forEach((filteredPost: any) => {
-          if (post.post_id === filteredPost.post_id) {
-            tempPostCount++;
-            tempPosts.push(post);
-            tempCatName = category.cat_slug;
-          }
+    if (this.categories) {
+      this.categories.forEach((category: any) => {
+        let tempPostCount = 0;
+        let tempCatName = "";
+        const tempPosts = [];
+        category.cat_posts.forEach((post: any) => {
+          this.categoriesPosts.forEach((filteredPost: any) => {
+            if (post.post_id === filteredPost.post_id) {
+              tempPostCount++;
+              tempPosts.push(post);
+              tempCatName = category.cat_slug;
+            }
+          });
+        });
+        this.filteredTopicArray.push({
+          module: tempCatName,
+          posts: tempPosts,
+          count: tempPostCount,
         });
       });
-      this.filteredTopicArray.push({
-        module: tempCatName,
-        posts: tempPosts,
-        count: tempPostCount,
-      });
-    });
+    }
   }
 
   onClickTopic(topic: any) {

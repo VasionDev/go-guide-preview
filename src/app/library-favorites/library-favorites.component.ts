@@ -33,27 +33,29 @@ export class LibraryFavoritesComponent implements OnInit {
     });
     this.data.currentLibraryData.subscribe((data: any) => {
       this.categories = data.category_info;
-    });
-    const favorites = JSON.parse(localStorage.getItem("Favorites"));
-    if (favorites !== null) {
-      const tempFavorites = [];
-      favorites.forEach((favorite: any) => {
-        this.categories.forEach((category: any) => {
-          category.cat_posts.forEach((post: any) => {
-            if (post.post_id === +favorite) {
-              if (
-                !tempFavorites.some(
-                  (item: any) => item.post_id === post.post_id
-                )
-              ) {
-                tempFavorites.push(post);
-              }
-            }
-          });
+      const favorites = JSON.parse(localStorage.getItem("Favorites"));
+      if (favorites !== null) {
+        const tempFavorites = [];
+        favorites.forEach((favorite: any) => {
+          if (this.categories) {
+            this.categories.forEach((category: any) => {
+              category.cat_posts.forEach((post: any) => {
+                if (post.post_id === +favorite) {
+                  if (
+                    !tempFavorites.some(
+                      (item: any) => item.post_id === post.post_id
+                    )
+                  ) {
+                    tempFavorites.push(post);
+                  }
+                }
+              });
+            });
+          }
         });
-      });
-      this.favoritesPosts = tempFavorites;
-    }
+        this.favoritesPosts = tempFavorites;
+      }
+    });
   }
 
   onCLickPost(post: any) {

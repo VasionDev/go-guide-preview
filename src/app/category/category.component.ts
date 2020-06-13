@@ -61,6 +61,15 @@ export class CategoryComponent implements OnInit {
     if (tempActiveSmartship !== null) {
       this.activeSmartship = tempActiveSmartship;
     }
+
+    const userLanguage = localStorage.getItem("userLanguage");
+    if (userLanguage !== null) {
+      if (userLanguage !== "en") {
+        this.router.navigate(["/"], {
+          queryParams: { lang: userLanguage },
+        });
+      }
+    }
   }
 
   loadCategoryData() {

@@ -27,23 +27,25 @@ export class LibraryCategoryComponent implements OnInit {
   loadLibraryData() {
     this.data.currentLibraryData.subscribe((data: any) => {
       this.libraries = data.category_info;
-    });
-    this.route.queryParamMap.subscribe((params) => {
-      this.topicParam = params.get("topic");
-      if (this.topicParam !== null) {
-        this.libraries.forEach((library: any) => {
-          if (library.cat_slug === this.topicParam) {
-            this.topicName = library.cat_name;
-            this.libraryPosts = library.cat_posts;
+      this.route.queryParamMap.subscribe((params) => {
+        this.topicParam = params.get("topic");
+        if (this.topicParam !== null) {
+          if (this.libraries) {
+            this.libraries.forEach((library: any) => {
+              if (library.cat_slug === this.topicParam) {
+                this.topicName = library.cat_name;
+                this.libraryPosts = library.cat_posts;
+              }
+            });
           }
-        });
-      }
-      const langParam = params.get("lang");
-      if (langParam !== null) {
-        this.currentLanguage = langParam;
-      } else {
-        this.currentLanguage = "en";
-      }
+        }
+        const langParam = params.get("lang");
+        if (langParam !== null) {
+          this.currentLanguage = langParam;
+        } else {
+          this.currentLanguage = "en";
+        }
+      });
     });
   }
 
