@@ -498,6 +498,8 @@ export class HomeComponent implements OnInit {
   }
 
   onClickRedo() {
+    const translation = this.translate.instant("home");
+
     let LessonArray = JSON.parse(localStorage.getItem("Lesson"));
     let IndexArray = JSON.parse(localStorage.getItem("Index"));
     const Favorites = JSON.parse(localStorage.getItem("Favorites"));
@@ -531,11 +533,7 @@ export class HomeComponent implements OnInit {
 
     const UserId = localStorage.getItem("UserID");
 
-    if (
-      confirm(
-        "This will reset all current progress for this Challenge. It cannot be undone. Are you sure you want to proceed?"
-      )
-    ) {
+    if (confirm(translation.redoAlertMessage)) {
       if (UserId !== null) {
         this.wp
           .saveData({

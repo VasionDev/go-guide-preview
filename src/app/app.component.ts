@@ -92,11 +92,7 @@ export class AppComponent implements OnInit {
       if (user.mvuser_id !== undefined && user.mvuser_id !== "") {
         localStorage.setItem("UserID", user.mvuser_id);
         localStorage.setItem("UserStatus", user.mvuser_status);
-        if (!user.hasOwnProperty("active_smartship")) {
-          localStorage.setItem("ActiveSmartship", "");
-        } else {
-          localStorage.setItem("ActiveSmartship", user.active_smartship);
-        }
+        localStorage.setItem("SmartshipStatus", user.smartship_status);
         console.log(user);
         // console.log(user.mvuser_refCode);
         this.data.saveRefCode(user.mvuser_refCode);

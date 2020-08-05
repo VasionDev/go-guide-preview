@@ -4,17 +4,25 @@
     "completed": "完成",
     "nextUpIs": "接下來是",
     "continueJourney": "繼續旅程",
-    "keepGoing": "繼續"
+    "keepGoing": "繼續",
+    "redoChallenge": "重置挑戰",
+    "redoAlertMessage": "本挑戰的現有進度將被重置。此操作無法撤銷。你確定要繼續重置嗎？"
   },
   "category": {
     "logOut": "登出",
-    "completed": "完成"
+    "completed": "完成",
+    "challenges": "挑戰",
+    "locked": "已鎖定",
+    "requires": "需要",
+    "readyToBegin": "準備開始"
   },
   "lesson": {
     "continueJourney": "繼續旅程",
     "overview": "概覽",
     "resources": "資源",
-    "stepsCompleted": "所有步驟已完成"
+    "stepsCompleted": "所有步驟已完成",
+    "completeSection": "完成本部分",
+    "congratsMessage": "恭喜你，你已完成"
   },
   "options": {
     "logOut": "登出"
