@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   menuOpened = false;
   userLoggedIn = true;
   logoutTo: any = "";
-  activeSmartship = "";
+  smartshipStatus = "";
 
   constructor(
     private data: DataService,
@@ -53,13 +53,13 @@ export class CategoryComponent implements OnInit {
   loadSignInStatus() {
     this.logoutTo = apiUrl;
     const tempUserStatus = localStorage.getItem("UserStatus");
-    const tempActiveSmartship = localStorage.getItem("ActiveSmartship");
+    const tempActiveSmartship = localStorage.getItem("SmartshipStatus");
     if (tempUserStatus !== null) {
       this.userStatus = tempUserStatus;
       this.userLoggedIn = true;
     }
     if (tempActiveSmartship !== null) {
-      this.activeSmartship = tempActiveSmartship;
+      this.smartshipStatus = tempActiveSmartship;
     }
 
     const userLanguage = localStorage.getItem("userLanguage");
@@ -84,17 +84,13 @@ export class CategoryComponent implements OnInit {
               !this.categories.some((item) => item.catSlug === category.slug)
             ) {
               this.categories.push({
+                catID: category.id,
                 catName: category.name,
                 catSlug: category.slug,
                 catColor1: category.bg_color_1,
                 catColor2: category.bg_color_2,
                 catImage: category.image,
-                customer: category.customer,
-                promoter: category.promoter,
-                champion: category.champion,
-                champion_rank_7: category.champion_rank_7,
-                champion_rank_8: category.champion_rank_8,
-                active_smartship: category.active_smartship,
+                availabilityFor: category.availability_for,
               });
             }
           });
@@ -256,61 +252,107 @@ export class CategoryComponent implements OnInit {
   }
 
   getActiveUser(cat: any) {
-    let tempUser = false;
-    let tempSmartship = false;
-    Object.entries(cat).forEach(([key, value]) => {
-      if (key === this.userStatus) {
-        if (value === "on") {
-          tempUser = true;
+    console.log(this.smartshipStatus, this.userStatus, cat);
+    if (this.smartshipStatus !== "") {
+      if (this.userStatus === "rank_6") {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === "rank_7" ||
+          cat.availabilityFor === "promoter" ||
+          cat.availabilityFor === this.smartshipStatus ||
+          cat.availabilityFor === "all_smartship" ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if (this.userStatus === "rank_7") {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === "promoter" ||
+          cat.availabilityFor === this.smartshipStatus ||
+          cat.availabilityFor === "all_smartship" ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === this.smartshipStatus ||
+          cat.availabilityFor === "all_smartship" ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
         }
       }
-      if (key === "active_smartship") {
-        if (value === "on") {
-          if (this.activeSmartship === "1") {
-            tempSmartship = true;
-          }
-        }
-      }
-    });
-    if (tempUser || tempSmartship) {
-      return true;
     } else {
-      return false;
+      if (this.userStatus === "rank_6") {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === "rank_7" ||
+          cat.availabilityFor === "promoter" ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if (this.userStatus === "rank_7") {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === "promoter" ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if (
+          cat.availabilityFor === this.userStatus ||
+          cat.availabilityFor === "all"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
   }
 
   getRequiredAvailability(cat: any) {
     const requiredAvailability = [];
-    Object.entries(cat).forEach(([key, value]) => {
-      if (key !== this.userStatus) {
-        if (value === "on") {
-          let availableCatName = "";
-          if (key === "customer") {
-            availableCatName = "Customer";
-          }
-          if (key === "promoter") {
-            availableCatName = "Promoter";
-          }
-          if (key === "champion") {
-            availableCatName = "Champions (Rank 6+)";
-          }
-          if (key === "champion_rank_7") {
-            availableCatName = "Pro Champs (Rank 7+)";
-          }
-          if (key === "champion_rank_8") {
-            availableCatName = "Prime Time Prüvers (Rank 8+)";
-          }
-          requiredAvailability.push(availableCatName);
-        }
+    if (cat.availabilityFor !== this.userStatus) {
+      let availableCatName = "";
+      if (cat.availabilityFor === "customer") {
+        availableCatName = "Customer";
       }
-      if (key === "active_smartship") {
-        if (value === "on") {
-          if (this.activeSmartship === "") {
-            requiredAvailability.push("Active SmartShip");
-          }
-        }
+      if (cat.availabilityFor === "promoter") {
+        availableCatName = "Promoter";
       }
-    });
+      if (cat.availabilityFor === "rank_6") {
+        availableCatName = "Champions (Rank 6+)";
+      }
+      if (cat.availabilityFor === "rank_7") {
+        availableCatName = "Pro Champs (Rank 7+)";
+      }
+      if (cat.availabilityFor === "smartship_customer") {
+        availableCatName = "SmartShip Customers";
+      }
+      if (cat.availabilityFor === "smartship_promoter") {
+        availableCatName = "SmartShip Promoters";
+      }
+      if (cat.availabilityFor === "all_smartship") {
+        availableCatName = "Active SmartShip";
+      }
+      requiredAvailability.push(availableCatName);
+    }
     return requiredAvailability;
   }
 

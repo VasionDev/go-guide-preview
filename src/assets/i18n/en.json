@@ -4,17 +4,25 @@
     "completed": "COMPLETED",
     "nextUpIs": "Next up is",
     "continueJourney": "CONTINUE Journey",
-    "keepGoing": "keep going"
+    "keepGoing": "keep going",
+    "redoChallenge": "REDO CHALLENGE",
+    "redoAlertMessage": "This will reset all current progress for this Challenge. It cannot be undone. Are you sure you want to proceed?"
   },
   "category": {
     "logOut": "LOG OUT",
-    "completed": "Completed"
+    "completed": "Completed",
+    "challenges": "Challenges",
+    "locked": "Locked",
+    "requires": "Requires",
+    "readyToBegin": "Ready to begin"
   },
   "lesson": {
-    "continueJourney": "Continue journey",
+    "continueJourney": "CONTINUE JOURNEY",
     "overview": "overview",
     "resources": "RESOURCES",
-    "stepsCompleted": "All steps are completed"
+    "stepsCompleted": "All steps are completed",
+    "completeSection": "COMPLETE SECTION",
+    "congratsMessage": "Congratulations, you just finished"
   },
   "options": {
     "logOut": "Log Out"
