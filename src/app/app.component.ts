@@ -16,7 +16,6 @@ import { LibraryCategoryComponent } from "./library-category/library-category.co
 import { LibraryItemComponent } from "./library-item/library-item.component";
 import { LibrarySearchComponent } from "./library-search/library-search.component";
 import { LibraryFavoritesComponent } from "./library-favorites/library-favorites.component";
-import { forkJoin } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -327,14 +326,6 @@ export class AppComponent implements OnInit {
       if (pageName != null) {
         if (pageName === "option") {
           this.data.nameChange("OptionsComponent");
-        } else if (pageName === "experience") {
-          console.log(this.experienceLogin);
-          if (!this.experienceLogin) {
-            window.location.href = `
-            https://pg-app-4sn1wg84isf5h18lb2d73ydf2zhxgr.scalabl.cloud/v1/authorize?redirectURL=https://challenge.com/go/`;
-          } else {
-            this.data.nameChange("ExperienceComponent");
-          }
         }
       } else if (expLessonID != null) {
         this.data.nameChange("ExperienceLessonComponent");
@@ -353,9 +344,16 @@ export class AppComponent implements OnInit {
       } else if (module !== null) {
         if (module === "invite") {
           this.data.nameChange("InviteComponent");
-        }
-        if (module === "library") {
+        }else if (module === "library") {
           this.data.nameChange("LibraryComponent");
+        }else if (module === "experience") {
+          console.log(this.experienceLogin);
+          if (!this.experienceLogin) {
+            window.location.href = `
+            https://pg-app-9dfh2kb0auoxwzcgrca8678kjc14dc.scalabl.cloud/v1/authorize?redirectURL=https://demo.challenge.com/go/`;
+          } else {
+            this.data.nameChange("ExperienceComponent");
+          }
         }
       } else {
         this.myComponent = CategoryComponent;

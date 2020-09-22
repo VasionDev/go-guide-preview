@@ -131,7 +131,7 @@ export class OptionsComponent implements OnInit {
   }
 
   onExperiencePage() {
-    this.router.navigate(["/"], { queryParams: { page: "experience" } });
+    this.router.navigate(["/"], { queryParams: { module: "experience" } });
     this.data.nameChange("ExperienceComponent");
   }
 

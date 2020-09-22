@@ -230,7 +230,7 @@ export class ExperienceLessonComponent implements OnInit, AfterContentChecked, A
   }
 
   onExperiencePage() {
-    this.router.navigate(['/'], {queryParams: {page: 'experience'}});
+    this.router.navigate(['/'], {queryParams: {module: 'experience'}});
     this.data.nameChange('ExperienceComponent');
   }
 

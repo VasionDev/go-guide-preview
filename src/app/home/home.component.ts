@@ -187,11 +187,11 @@ export class HomeComponent implements OnInit {
         const expLessonID = params.get("explesson");
         const lessonID = params.get("lesson");
         if (pageName != null) {
-          if (pageName === "option") {
+          /*if (pageName === "option") {
             this.data.nameChange("OptionsComponent");
           } else if (pageName === "experience") {
             this.data.nameChange("ExperienceComponent");
-          }
+          }*/
         } else if (expLessonID != null) {
           this.data.nameChange("ExperienceLessonComponent");
         } else if (lessonID != null) {
