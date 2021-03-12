@@ -22,7 +22,7 @@
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^3.4.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-circle-progress": "^1.5.1",
     "ng-sidebar": "^9.2.0",
     "ngx-bootstrap": "^5.2.0",
